@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias - Big News Costa Esmeralda</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Últimas notícias da Costa Esmeralda. Cobertura completa de Itapema, Porto Belo e Bombinhas.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Notícias - Big News">
+    <meta property="og:description" content="Últimas notícias da Costa Esmeralda">
+    <meta property="og:url" content="https://bignewssc.com.br/noticias.html">
+    
+    <!-- Fonts e CSS (mesmo do index.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== VARIÁVEIS ===== */
+        :root {
+            --primary: #1a365d;
+            --primary-dark: #0f2942;
+            --primary-light: #2c5282;
+            --secondary: #475569;
+            --accent: #b8860b;
+            --accent-light: #d4a017;
+            --bg-paper: #fafaf9;
+            --text-dark: #1f2937;
+            --text-regular: #374151;
+            --text-light: #4b5563;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --success: #059669;
+            --error: #dc2626;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --focus-outline: 3px solid #b8860b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            background-color: var(--bg-paper);
+            color: var(--text-regular);
+            line-height: 1.6;
+        }
+
+        :focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+        }
+
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 10000;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .header-top {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header-top-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .logo-icon img {
+            width: 48px;
+            height: 48px;
+            display: block;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* ===== NAVEGAÇÃO ===== */
+        .nav-desktop {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            min-height: 44px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-sm {
+            padding: 0.375rem 0.75rem;
+        }
+
+        /* ===== MAIN ===== */
+        main {
+            margin-top: 120px;
+            min-height: calc(100vh - 120px);
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+        }
+
+        /* ===== LISTA DE NOTÍCIAS ===== */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .news-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-image {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .news-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .news-content h2 a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .news-content h2 a:hover {
+            color: var(--accent);
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8125rem;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .news-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--bg-paper);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-family: 'Inter', sans-serif;
+            margin-right: 0.5rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo-title {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.9;
+            margin: 1rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9375rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            opacity: 0.8;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+
+            .news-item {
+                grid-template-columns: 1fr;
+            }
+
+            .news-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Pular para conteúdo principal</a>
+
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <span><i class="fas fa-map-marker-alt"></i> Costa Esmeralda, SC</span>
+                <span><i class="fas fa-clock"></i> <span id="current-date"></span></span>
+            </div>
+        </div>
+        <div class="header-main">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="icon-192x192.png" alt="Big News" width="48" height="48">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Big News</span>
+                    <span class="logo-subtitle">Costa Esmeralda</span>
+                </div>
+            </a>
+
+                        <nav class="nav-desktop" aria-label="Menu principal">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="noticias.html" class="nav-link active" aria-current="page">Notícias</a>
+                <a href="esportes.html" class="nav-link">Esportes</a>
+                <a href="politica.html" class="nav-link">Política</a>
+                <a href="fact-checking.html" class="nav-link">Fact-Checking</a>
+                <a href="analises.html" class="nav-link">Análises</a>
+                <a href="podcast.html" class="nav-link">Podcast</a>
+                <a href="explica.html" class="nav-link">Explica</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i><span class="sr-only">Buscar</span></button>
+                <button class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span></button>
+                            <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-overlay" id="mobile-overlay" role="presentation"></div>
+    <nav class="mobile-drawer" id="mobile-drawer" aria-label="Menu mobile">
+        <div class="mobile-drawer-header">
+            <div class="logo-title" style="font-size:1.2rem;color:#fff">Big News</div>
+            <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Fechar menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i>Home</a>
+            <a href="noticias.html" class="mobile-nav-link active"><i class="fas fa-newspaper"></i>Notícias</a>
+            <a href="esportes.html" class="mobile-nav-link"><i class="fas fa-trophy"></i>Esportes</a>
+            <a href="politica.html" class="mobile-nav-link"><i class="fas fa-landmark"></i>Política</a>
+            <a href="fact-checking.html" class="mobile-nav-link"><i class="fas fa-check-circle"></i>Fact-Checking</a>
+            <a href="analises.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i>Análises</a>
+            <a href="podcast.html" class="mobile-nav-link"><i class="fas fa-microphone"></i>Podcast</a>
+            <a href="explica.html" class="mobile-nav-link"><i class="fas fa-lightbulb"></i>Explica</a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Notícias</h1>
+                    <p>Últimas atualizações da Costa Esmeralda</p>
+                </div>
+
+                <div class="news-list">
+                    <article class="news-item">
+                        <div class="news-image">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="tag">Itapema</span>
+                                <span class="tag">Política</span>
+                                <span><i class="fas fa-clock"></i> 2 horas atrás</span>
+                            </div>
+                            <h2><a href="#">Câmara aprova projeto de lei que altera regras de zoneamento urbano</a></h2>
+                            <p class="news-excerpt">Projeto foi aprovado por 9 votos a 2 após três horas de debate. Oposição questiona falta de audiências públicas.</p>
+                            <a href="#" class="btn btn-outline btn-sm">Ler mais</a>
+                        </div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-image" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="tag">Porto Belo</span>
+                                <span class="tag">Meio Ambiente</span>
+                                <span><i class="fas fa-clock"></i> 4 horas atrás</span>
+                            </div>
+                            <h2><a href="#">Prefeitura anuncia projeto de despoluição da Baía de Porto Belo</a></h2>
+                            <p class="news-excerpt">Investimento de R$ 12 milhões prevê saneamento básico para 80% da área urbana até 2026.</p>
+                            <a href="#" class="btn btn-outline btn-sm">Ler mais</a>
+                        </div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-image" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="tag">Bombinhas</span>
+                                <span class="tag">Transparência</span>
+                                <span><i class="fas fa-clock"></i> 6 horas atrás</span>
+                            </div>
+                            <h2><a href="#">Promessa de campanha sobre iluminação pública não foi cumprida</a></h2>
+                            <p class="news-excerpt">Dados da prefeitura mostram que apenas 40% das metas de iluminação LED foram atingidas.</p>
+                            <a href="#" class="btn btn-outline btn-sm">Ler mais</a>
+                        </div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-image" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="tag">Costa Esmeralda</span>
+                                <span class="tag">Economia</span>
+                                <span><i class="fas fa-clock"></i> 1 dia atrás</span>
+                            </div>
+                            <h2><a href="#">Turismo 2025: dados oficiais mostram crescimento na região</a></h2>
+                            <p class="news-excerpt">Itapema lidera em número de visitantes, mas Bombinhas apresenta maior ticket médio por turista.</p>
+                            <a href="#" class="btn btn-outline btn-sm">Ler mais</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-title" style="font-size: 1.875rem;">Big News</div>
+                    <p>Portal de notícias e análises da Costa Esmeralda. Documentamos o presente para informar o futuro da nossa região.</p>
+                                        <div class="social-links">
+                        <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Seções</h4>
+                    <ul class="footer-links">
+                        <li><a href="noticias.html">Notícias</a></li>
+                        <li><a href="esportes.html">Esportes</a></li>
+                        <li><a href="politica.html">Política</a></li>
+                        <li><a href="fact-checking.html">Fact-Checking</a></li>
+                        <li><a href="analises.html">Análises</a></li>
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="explica.html">Explica</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Região</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Itapema</a></li>
+                        <li><a href="#">Porto Belo</a></li>
+                        <li><a href="#">Bombinhas</a></li>
+                        <li><a href="#">Costa Esmeralda</a></li>
+                    </ul>
+                </div>
+                                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contato@bignewssc.com.br"><i class="fas fa-envelope" style="margin-right:6px;opacity:.7"></i>contato@bignewssc.com.br</a></li>
+                        <li><a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="margin-right:6px;opacity:.7"></i>WhatsApp</a></li>
+                        <li style="margin-top:.75rem;font-size:.8125rem;color:var(--text-light);font-family:'Inter',sans-serif;">Seg–Sex, 09h–18h</li>
+                    </ul>
+                    <div style="margin-top:1rem;">
+                        <div style="font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:.5rem;">Siga o Big News</div>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color=''"><i class="fab fa-instagram"></i></a>
+                            <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Twitter/X" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''"><i class="fab fa-x-twitter"></i></a>
+                            <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color=''"><i class="fab fa-youtube"></i></a>
+                            <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color=''"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" aria-label="TikTok" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Big News. Todos os direitos reservados.</div>
+                <div class="footer-bottom-links">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        <script>
+                // ── Mobile Drawer ──
+        const mobileMenuBtn = document.getElementById('mobile-menu-button');
+        const mobileDrawer  = document.getElementById('mobile-drawer');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const mobileClose   = document.getElementById('mobile-drawer-close');
+        function openDrawer()  { mobileDrawer?.classList.add('open'); mobileOverlay?.classList.add('open'); document.body.style.overflow='hidden'; }
+        function closeDrawer() { mobileDrawer?.classList.remove('open'); mobileOverlay?.classList.remove('open'); document.body.style.overflow=''; }
+        mobileMenuBtn?.addEventListener('click', openDrawer);
+        mobileClose?.addEventListener('click', closeDrawer);
+        mobileOverlay?.addEventListener('click', closeDrawer);
+        document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
+        window.addEventListener('resize', () => { if(window.innerWidth > 768) closeDrawer(); });
+    </script>
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+            });
+        }
+    </script>
+</body>
+</html>
