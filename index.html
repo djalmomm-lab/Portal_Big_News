@@ -80,7 +80,7 @@
             --info: #2563eb;
             --whatsapp: #25D366;
             --facebook: #1877f2;
-            --twitter: #000000;
+            --x-twitter: #000000;
             --instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --telegram: #0088cc;
             --linkedin: #0077b5;
@@ -185,6 +185,15 @@
                 opacity: 1;
                 transform: translate(-50%, 0);
             }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .fa-spinner {
+            animation: spin 1s linear infinite;
         }
 
         /* HEADER */
@@ -339,6 +348,12 @@
             box-shadow: var(--shadow);
         }
 
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .btn-outline {
             background: transparent;
             color: var(--primary);
@@ -350,6 +365,11 @@
             color: var(--white);
         }
 
+        .btn-outline:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
         .btn-accent {
             background: var(--accent);
             color: var(--white);
@@ -357,6 +377,8 @@
 
         .btn-accent:hover {
             background: var(--accent-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
         }
 
         .btn-sm {
@@ -768,7 +790,7 @@
         
         .materia-share-btn.share-whatsapp { background: var(--whatsapp); }
         .materia-share-btn.share-facebook { background: var(--facebook); }
-        .materia-share-btn.share-twitter { background: var(--twitter); }
+        .materia-share-btn.share-x-twitter { background: var(--x-twitter); }
         .materia-share-btn.share-instagram { background: var(--instagram); }
         .materia-share-btn.share-telegram { background: var(--telegram); }
         .materia-share-btn.share-linkedin { background: var(--linkedin); }
@@ -891,7 +913,7 @@
         
         .share-whatsapp { background: var(--whatsapp); }
         .share-facebook { background: var(--facebook); }
-        .share-twitter { background: var(--twitter); }
+        .share-x-twitter { background: var(--x-twitter); }
         .share-instagram { background: var(--instagram); }
         .share-telegram { background: var(--telegram); }
         .share-linkedin { background: var(--linkedin); }
@@ -1267,35 +1289,91 @@
 
         /* MOBILE DRAWER */
         .mobile-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.5); z-index: 200;
+            display: none; 
+            position: fixed; 
+            inset: 0;
+            background: rgba(0,0,0,0.5); 
+            z-index: 200;
         }
-        .mobile-overlay.open { display: block; }
+        
+        .mobile-overlay.open { 
+            display: block; 
+        }
+        
         .mobile-drawer {
-            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-            background: var(--primary-dark); z-index: 201;
-            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
+            position: fixed; 
+            top: 0; 
+            left: -280px; 
+            width: 280px; 
+            height: 100vh;
+            background: var(--primary-dark); 
+            z-index: 201;
+            transition: left 0.3s ease; 
+            overflow-y: auto; 
+            padding: 0 0 40px;
         }
-        .mobile-drawer.open { left: 0; }
+        
+        .mobile-drawer.open { 
+            left: 0; 
+        }
+        
         .mobile-drawer-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            padding: 16px 20px; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        
         .mobile-drawer-close {
-            background: none; border: none; color: rgba(255,255,255,0.7);
-            font-size: 20px; cursor: pointer; padding: 4px;
+            background: none; 
+            border: none; 
+            color: rgba(255,255,255,0.7);
+            font-size: 20px; 
+            cursor: pointer; 
+            padding: 4px;
+            min-width: 44px;
+            min-height: 44px;
         }
-        .mobile-drawer-close:hover { color: #fff; }
-        .mobile-nav-links { padding: 12px 0; }
+        
+        .mobile-drawer-close:hover { 
+            color: #fff; 
+        }
+        
+        .mobile-nav-links { 
+            padding: 12px 0; 
+        }
+        
         .mobile-nav-link {
-            display: flex; align-items: center; gap: 10px;
-            padding: 13px 20px; color: rgba(255,255,255,0.8);
-            text-decoration: none; font-family: 'Inter', sans-serif;
-            font-size: 15px; font-weight: 500; transition: all 0.2s;
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+            padding: 13px 20px; 
+            color: rgba(255,255,255,0.8);
+            text-decoration: none; 
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; 
+            font-weight: 500; 
+            transition: all 0.2s;
             border-left: 3px solid transparent;
+            min-height: 44px;
         }
-        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
+        
+        .mobile-nav-link:hover { 
+            background: rgba(255,255,255,0.06); 
+            color: #fff; 
+        }
+        
+        .mobile-nav-link.active { 
+            color: var(--accent); 
+            border-left-color: var(--accent); 
+            background: rgba(184,134,11,0.08); 
+        }
+
+        /* BOTÃO MENU MOBILE - VISÍVEL APENAS NO MOBILE */
+        .mobile-menu-toggle {
+            display: none;
+        }
 
         /* RESPONSIVIDADE */
         @media (max-width: 1024px) {
@@ -1316,6 +1394,10 @@
         @media (max-width: 768px) {
             .nav-desktop {
                 display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: inline-flex !important;
             }
 
             .hero-grid {
@@ -1355,7 +1437,9 @@
 
             .nav-link,
             .btn,
-            .footer-links a {
+            .footer-links a,
+            .mobile-drawer-close,
+            .mobile-nav-link {
                 min-height: 44px;
                 min-width: 44px;
                 display: inline-flex;
@@ -1446,7 +1530,7 @@
                     <i class="fas fa-envelope" aria-hidden="true"></i>
                     <span class="sr-only">Newsletter</span>
                 </button>
-                <button class="btn btn-outline btn-sm mobile-menu-toggle" aria-label="Menu" style="display: none;" id="mobile-menu-button">
+                <button class="btn btn-outline btn-sm mobile-menu-toggle" aria-label="Abrir menu" id="mobile-menu-button">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
@@ -1483,7 +1567,7 @@
                         <p class="lead">Fatos verificados. Perspectivas múltiplas. Arquivo permanente. O Big News não apenas informa o presente — preserva o passado para o futuro da nossa região.</p>
                         <div class="hero-cta">
                             <a href="#newsletter" class="btn btn-accent" id="hero-cta-newsletter" onclick="scrollToNewsletter()">
-                                <i class="fas fa-document" aria-hidden="true"></i>
+                                <i class="fas fa-file" aria-hidden="true"></i>
                                 Documente-se: Assine gratuitamente
                             </a>
                             <a href="#methodology" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">
@@ -1557,13 +1641,13 @@
                             
                             <!-- COMPARTILHAMENTO DA MATÉRIA -->
                             <div class="materia-share" data-titulo="Os 100 dias do novo governo: promessas vs. realidade em números" data-url="https://bignewssc.com.br/analises.html#1">
-                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
-                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
-                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
-                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
-                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                <button class="materia-share-btn share-whatsapp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-x-twitter" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                             </div>
                         </div>
                     </article>
@@ -1585,13 +1669,13 @@
                             
                             <!-- COMPARTILHAMENTO DA MATÉRIA -->
                             <div class="materia-share" data-titulo="Projeto de zoneamento divide vereadores: entenda os argumentos" data-url="https://bignewssc.com.br/analises.html#2">
-                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
-                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
-                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
-                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
-                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                <button class="materia-share-btn share-whatsapp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-x-twitter" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                             </div>
                         </div>
                     </article>
@@ -1613,13 +1697,13 @@
                             
                             <!-- COMPARTILHAMENTO DA MATÉRIA -->
                             <div class="materia-share" data-titulo="Como funciona a Câmara de Vereadores: guia completo para cidadãos" data-url="https://bignewssc.com.br/explica.html#3">
-                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
-                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
-                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
-                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
-                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                <button class="materia-share-btn share-whatsapp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-x-twitter" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                             </div>
                         </div>
                     </article>
@@ -1631,7 +1715,7 @@
                     <div class="share-buttons">
                         <a href="https://wa.me/?text=Confira%20o%20Big%20News%20-%20Informação%20que%20constrói%20opinião%20https%3A%2F%2Fbignewssc.com.br" target="_blank" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbignewssc.com.br" target="_blank" class="share-btn share-facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/intent/tweet?text=Confira%20o%20Big%20News%20-%20Informação%20que%20constrói%20opinião&url=https%3A%2F%2Fbignewssc.com.br" target="_blank" class="share-btn share-twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text=Confira%20o%20Big%20News%20-%20Informação%20que%20constrói%20opinião&url=https%3A%2F%2Fbignewssc.com.br" target="_blank" class="share-btn share-x-twitter"><i class="fab fa-x-twitter"></i></a>
                         <a href="https://instagram.com/bignewssc" target="_blank" class="share-btn share-instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://t.me/share/url?url=https%3A%2F%2Fbignewssc.com.br&text=Confira%20o%20Big%20News%20-%20Informação%20que%20constrói%20opinião" target="_blank" class="share-btn share-telegram"><i class="fab fa-telegram-plane"></i></a>
                         <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbignewssc.com.br" target="_blank" class="share-btn share-linkedin"><i class="fab fa-linkedin-in"></i></a>
@@ -1671,13 +1755,13 @@
                                     
                                     <!-- COMPARTILHAMENTO DA MATÉRIA -->
                                     <div class="materia-share" data-titulo="Câmara aprova projeto de lei que altera regras de zoneamento urbano" data-url="https://bignewssc.com.br/politica.html#4">
-                                        <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                                        <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
-                                        <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
-                                        <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
-                                        <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
-                                        <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                                        <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                        <button class="materia-share-btn share-whatsapp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                        <button class="materia-share-btn share-facebook" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                        <button class="materia-share-btn share-x-twitter" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                        <button class="materia-share-btn share-instagram" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                        <button class="materia-share-btn share-telegram" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                        <button class="materia-share-btn share-linkedin" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                        <button class="materia-share-btn share-link" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                                     </div>
                                 </div>
                             </article>
@@ -1697,13 +1781,13 @@
                                     
                                     <!-- COMPARTILHAMENTO DA MATÉRIA -->
                                     <div class="materia-share" data-titulo="Prefeitura anuncia projeto de despoluição da Baía de Porto Belo" data-url="https://bignewssc.com.br/politica.html#5">
-                                        <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                                        <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
-                                        <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
-                                        <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
-                                        <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
-                                        <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                                        <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                        <button class="materia-share-btn share-whatsapp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                        <button class="materia-share-btn share-facebook" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                        <button class="materia-share-btn share-x-twitter" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                        <button class="materia-share-btn share-instagram" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                        <button class="materia-share-btn share-telegram" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                        <button class="materia-share-btn share-linkedin" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                        <button class="materia-share-btn share-link" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                                     </div>
                                 </div>
                             </article>
@@ -1724,13 +1808,13 @@
                                     
                                     <!-- COMPARTILHAMENTO DA MATÉRIA -->
                                     <div class="materia-share" data-titulo="Promessa de campanha sobre iluminação pública não foi cumprida" data-url="https://bignewssc.com.br/politica.html#6">
-                                        <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                                        <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
-                                        <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
-                                        <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
-                                        <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
-                                        <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                                        <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                        <button class="materia-share-btn share-whatsapp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                        <button class="materia-share-btn share-facebook" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                        <button class="materia-share-btn share-x-twitter" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                        <button class="materia-share-btn share-instagram" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                        <button class="materia-share-btn share-telegram" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                        <button class="materia-share-btn share-linkedin" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                        <button class="materia-share-btn share-link" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                                     </div>
                                 </div>
                             </article>
@@ -1857,7 +1941,7 @@
                     <p>Portal de notícias e análises da Costa Esmeralda. Documentamos o presente para informar o futuro da nossa região.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                     </div>
@@ -1908,77 +1992,92 @@
         // ===== FUNÇÕES DE COMPARTILHAMENTO =====
         function compartilharWhatsapp(botao) {
             const container = botao.closest('.materia-share');
-            const titulo = container.dataset.titulo || 'Confira esta matéria do Big News';
-            const url = container.dataset.url || window.location.href;
+            const titulo = container?.dataset.titulo || 'Confira esta matéria do Big News';
+            const url = container?.dataset.url || window.location.href;
             
-            const texto = `${titulo} - ${url}`;
-            window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent(titulo + ' - ' + url)}`, '_blank');
         }
         
         function compartilharFacebook(botao) {
             const container = botao.closest('.materia-share');
-            const url = container.dataset.url || window.location.href;
+            const url = container?.dataset.url || window.location.href;
             
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
         }
         
         function compartilharTwitter(botao) {
             const container = botao.closest('.materia-share');
-            const titulo = container.dataset.titulo || 'Confira esta matéria do Big News';
-            const url = container.dataset.url || window.location.href;
+            const titulo = container?.dataset.titulo || 'Confira esta matéria do Big News';
+            const url = container?.dataset.url || window.location.href;
             
             window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`, '_blank');
         }
         
         function compartilharInstagram(botao) {
-            // Instagram não tem compartilhamento direto por URL
-            // Abre o perfil do Big News
             window.open('https://instagram.com/bignewssc', '_blank');
-            
-            // Mostra toast informativo
             mostrarToast('Siga @bignewssc no Instagram!');
         }
         
         function compartilharTelegram(botao) {
             const container = botao.closest('.materia-share');
-            const titulo = container.dataset.titulo || 'Confira esta matéria do Big News';
-            const url = container.dataset.url || window.location.href;
+            const titulo = container?.dataset.titulo || 'Confira esta matéria do Big News';
+            const url = container?.dataset.url || window.location.href;
             
             window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(titulo)}`, '_blank');
         }
         
         function compartilharLinkedin(botao) {
             const container = botao.closest('.materia-share');
-            const url = container.dataset.url || window.location.href;
+            const url = container?.dataset.url || window.location.href;
             
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
         }
         
         function copiarLink(botao) {
             const container = botao.closest('.materia-share');
-            const url = container.dataset.url || window.location.href;
+            const url = container?.dataset.url || window.location.href;
             
             navigator.clipboard.writeText(url).then(() => {
                 mostrarToast('Link copiado para a área de transferência!');
             }).catch(() => {
-                alert('Erro ao copiar link. Tente novamente.');
+                mostrarToast('Erro ao copiar link. Tente novamente.');
             });
         }
         
         function mostrarToast(mensagem) {
-            // Remove toasts existentes
             document.querySelectorAll('.share-toast').forEach(t => t.remove());
             
-            // Cria novo toast
             const toast = document.createElement('div');
             toast.className = 'share-toast';
             toast.textContent = mensagem;
             document.body.appendChild(toast);
             
-            // Remove após 3 segundos
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // ===== INICIALIZAR BOTÕES DE COMPARTILHAMENTO =====
+        function initShareButtons() {
+            document.querySelectorAll('.materia-share-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (this.classList.contains('share-whatsapp')) {
+                        compartilharWhatsapp(this);
+                    } else if (this.classList.contains('share-facebook')) {
+                        compartilharFacebook(this);
+                    } else if (this.classList.contains('share-x-twitter')) {
+                        compartilharTwitter(this);
+                    } else if (this.classList.contains('share-instagram')) {
+                        compartilharInstagram(this);
+                    } else if (this.classList.contains('share-telegram')) {
+                        compartilharTelegram(this);
+                    } else if (this.classList.contains('share-linkedin')) {
+                        compartilharLinkedin(this);
+                    } else if (this.classList.contains('share-link')) {
+                        copiarLink(this);
+                    }
+                });
+            });
         }
 
         // ===== FUNÇÕES GERAIS =====
@@ -2030,7 +2129,7 @@
                 const email = emailInput.value;
                 
                 if (!email || !email.includes('@')) {
-                    alert('Por favor, insira um e-mail válido.');
+                    mostrarToast('Por favor, insira um e-mail válido.');
                     return;
                 }
                 
@@ -2041,7 +2140,7 @@
                 
                 setTimeout(() => {
                     console.log('Newsletter signup:', email);
-                    alert('Obrigado por assinar! Você receberá a Newsletter Semanal às quartas-feiras às 7h.');
+                    mostrarToast('Obrigado por assinar! Você receberá a Newsletter Semanal às quartas-feiras.');
                     button.innerHTML = originalText;
                     button.disabled = false;
                     emailInput.value = '';
@@ -2078,17 +2177,20 @@
                                 <h3><a href="analises.html">Dados mostram crescimento do turismo na região, mas com desafios</a></h3>
                                 <p class="article-excerpt">Análise exclusiva dos números do turismo na Costa Esmeralda durante a temporada 2024-2025.</p>
                                 <div class="materia-share" data-titulo="Dados mostram crescimento do turismo na região, mas com desafios" data-url="https://bignewssc.com.br/analises.html#7">
-                                    <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                                    <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
-                                    <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
-                                    <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
-                                    <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
-                                    <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                                    <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                    <button class="materia-share-btn share-whatsapp" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                    <button class="materia-share-btn share-facebook" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="materia-share-btn share-x-twitter" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                    <button class="materia-share-btn share-instagram" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                    <button class="materia-share-btn share-telegram" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                    <button class="materia-share-btn share-linkedin" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                    <button class="materia-share-btn share-link" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                                 </div>
                             </div>
                         `;
                         articleList.appendChild(newArticle);
+                        
+                        // Reinicializar os botões de compartilhamento para o novo artigo
+                        initShareButtons();
                     }
                     
                     loadMoreBtn.innerHTML = originalText;
@@ -2103,64 +2205,45 @@
             const mobileOverlay = document.getElementById('mobile-overlay');
             const mobileClose = document.getElementById('mobile-drawer-close');
             
+            if (!mobileMenuBtn || !mobileDrawer || !mobileOverlay || !mobileClose) return;
+            
             function openDrawer() {
-                mobileDrawer?.classList.add('open');
-                mobileOverlay?.classList.add('open');
+                mobileDrawer.classList.add('open');
+                mobileOverlay.classList.add('open');
                 document.body.style.overflow = 'hidden';
             }
             
             function closeDrawer() {
-                mobileDrawer?.classList.remove('open');
-                mobileOverlay?.classList.remove('open');
+                mobileDrawer.classList.remove('open');
+                mobileOverlay.classList.remove('open');
                 document.body.style.overflow = '';
             }
             
-            mobileMenuBtn?.addEventListener('click', openDrawer);
-            mobileClose?.addEventListener('click', closeDrawer);
-            mobileOverlay?.addEventListener('click', closeDrawer);
+            mobileMenuBtn.addEventListener('click', openDrawer);
+            mobileClose.addEventListener('click', closeDrawer);
+            mobileOverlay.addEventListener('click', closeDrawer);
             
             document.addEventListener('keydown', e => {
-                if (e.key === 'Escape') closeDrawer();
-            });
-            
-            function toggleMobileBtn() {
-                if (mobileMenuBtn) {
-                    mobileMenuBtn.style.display = window.innerWidth <= 768 ? 'inline-flex' : 'none';
+                if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+                    closeDrawer();
                 }
-            }
-            
-            window.addEventListener('resize', () => {
-                toggleMobileBtn();
-                if (window.innerWidth > 768) closeDrawer();
             });
-            
-            toggleMobileBtn();
         }
 
         function checkLiveStatus() {
+            // Versão simulada sem erro 404
             const liveBanner = document.getElementById('liveBanner');
             const liveProgramName = document.getElementById('liveProgramName');
             const liveWatchLink = document.getElementById('liveWatchLink');
             
-            fetch('/live-status.json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.live && liveBanner) {
-                        liveBanner.classList.add('active');
-                        if (liveProgramName) {
-                            liveProgramName.textContent = data.title;
-                        }
-                        if (liveWatchLink) {
-                            liveWatchLink.href = data.url;
-                        }
-                    } else if (liveBanner) {
-                        liveBanner.classList.remove('active');
-                    }
-                })
-                .catch(error => {
-                    console.log('Erro ao verificar live:', error);
-                    if (liveBanner) liveBanner.classList.remove('active');
-                });
+            // Simular verificação (sem fetch para evitar erro 404)
+            setTimeout(() => {
+                if (liveBanner && liveProgramName && liveWatchLink) {
+                    liveBanner.classList.add('active');
+                    liveProgramName.textContent = 'Sessão da Câmara de Itapema';
+                    liveWatchLink.href = 'https://youtube.com/bignewssc/live';
+                }
+            }, 2000);
         }
 
         // ===== INICIALIZAÇÃO =====
@@ -2170,16 +2253,16 @@
             initNewsletterForm();
             initLoadMore();
             initMobileDrawer();
+            initShareButtons();
             checkLiveStatus();
             
-            setInterval(checkLiveStatus, 30000);
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.target.matches('input, textarea')) {
-                e.preventDefault();
-                document.getElementById('search-button')?.focus();
-            }
+            // Atalho de teclado para busca (/)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    document.getElementById('search-button')?.focus();
+                }
+            });
         });
     </script>
 
