@@ -68,7 +68,9 @@
             --whatsapp: #25D366;
             --facebook: #1877f2;
             --twitter: #000000;
+            --instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --telegram: #0088cc;
+            --linkedin: #0077b5;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -122,6 +124,17 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
         }
 
         /* HEADER */
@@ -582,6 +595,184 @@
             transform: rotate(180deg);
         }
 
+        /* COMPARTILHAMENTO POR MATÉRIA */
+        .materia-share {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+            flex-wrap: wrap;
+        }
+        
+        .materia-share-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .materia-share-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .materia-share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .materia-share-btn:hover::before {
+            transform: translateY(0);
+        }
+        
+        .materia-share-btn.share-whatsapp { background: var(--whatsapp); }
+        .materia-share-btn.share-facebook { background: var(--facebook); }
+        .materia-share-btn.share-twitter { background: var(--twitter); }
+        .materia-share-btn.share-instagram { background: var(--instagram); }
+        .materia-share-btn.share-telegram { background: var(--telegram); }
+        .materia-share-btn.share-linkedin { background: var(--linkedin); }
+        .materia-share-btn.share-link { background: var(--primary); }
+        
+        /* Tooltip */
+        .materia-share-btn {
+            position: relative;
+        }
+        
+        .materia-share-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-dark);
+            color: white;
+            font-size: 0.625rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .materia-share-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
+            bottom: -25px;
+        }
+        
+        /* Toast de notificação */
+        .share-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
+            animation: slideUp 0.3s ease;
+        }
+
+        /* COMPARTILHAR PÁGINA */
+        .share-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            padding: 1.5rem 0;
+            border-top: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+        
+        .share-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .share-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .share-btn:hover::before {
+            transform: translateY(0);
+        }
+        
+        .share-btn i {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .share-whatsapp { background: var(--whatsapp); }
+        .share-facebook { background: var(--facebook); }
+        .share-twitter { background: var(--twitter); }
+        .share-instagram { background: var(--instagram); }
+        .share-telegram { background: var(--telegram); }
+        .share-linkedin { background: var(--linkedin); }
+
         /* ESTATÍSTICAS */
         .stats-grid {
             display: grid;
@@ -614,48 +805,6 @@
         .stat-true { color: var(--success); }
         .stat-false { color: var(--error); }
         .stat-misleading { color: var(--warning); }
-
-        /* COMPARTILHAR */
-        .share-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .share-label {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-        
-        .share-buttons {
-            display: flex;
-            gap: 0.75rem;
-        }
-        
-        .share-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-        
-        .share-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .share-whatsapp { background: var(--whatsapp); color: white; }
-        .share-facebook { background: var(--facebook); color: white; }
-        .share-twitter { background: var(--twitter); color: white; }
-        .share-telegram { background: var(--telegram); color: white; }
 
         /* SIDEBAR */
         .sidebar {
@@ -950,6 +1099,10 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .materia-share {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1069,7 +1222,7 @@
 
                 <!-- LISTA DE FACT-CHECKS -->
                 <div class="factcheck-list">
-                    <!-- ITEM 1 -->
+                    <!-- FACT-CHECK 1 -->
                     <div class="factcheck-item" id="fc1">
                         <div class="factcheck-header" onclick="toggleFactCheck('fc1')">
                             <div class="factcheck-content">
@@ -1113,11 +1266,22 @@
                                     <a href="#">Ofício 12/2025</a> · 
                                     <a href="#">Ofício 23/2025</a>
                                 </div>
+                                
+                                <!-- COMPARTILHAMENTO DO FACT-CHECK -->
+                                <div class="materia-share" data-titulo="Fact-Check: Prefeito de Itapema afirma que obra foi entregue dentro do prazo" data-url="https://bignewssc.com.br/fact-checking.html#fc1">
+                                    <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                    <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                    <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                    <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                    <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                    <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ITEM 2 -->
+                    <!-- FACT-CHECK 2 -->
                     <div class="factcheck-item" id="fc2">
                         <div class="factcheck-header" onclick="toggleFactCheck('fc2')">
                             <div class="factcheck-content">
@@ -1157,11 +1321,22 @@
                                     <strong>Fonte:</strong>
                                     <a href="#">TCE/SC - Ranking de Transparência 2024-2026</a>
                                 </div>
+                                
+                                <!-- COMPARTILHAMENTO DO FACT-CHECK -->
+                                <div class="materia-share" data-titulo="Fact-Check: Índice de transparência de Porto Belo aumentou 20%" data-url="https://bignewssc.com.br/fact-checking.html#fc2">
+                                    <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                    <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                    <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                    <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                    <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                    <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ITEM 3 -->
+                    <!-- FACT-CHECK 3 -->
                     <div class="factcheck-item" id="fc3">
                         <div class="factcheck-header" onclick="toggleFactCheck('fc3')">
                             <div class="factcheck-content">
@@ -1203,11 +1378,22 @@
                                     <a href="#">Plano de Governo - TSE</a> · 
                                     <a href="#">Relatório de Gestão 2024-2026</a>
                                 </div>
+                                
+                                <!-- COMPARTILHAMENTO DO FACT-CHECK -->
+                                <div class="materia-share" data-titulo="Fact-Check: Secretário de Bombinhas diz que 90% das promessas foram cumpridas" data-url="https://bignewssc.com.br/fact-checking.html#fc3">
+                                    <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                    <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                    <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                    <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                    <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                    <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ITEM 4 -->
+                    <!-- FACT-CHECK 4 -->
                     <div class="factcheck-item" id="fc4">
                         <div class="factcheck-header" onclick="toggleFactCheck('fc4')">
                             <div class="factcheck-content">
@@ -1249,11 +1435,22 @@
                                     <strong>Fonte:</strong>
                                     <a href="#">Secretaria de Educação - Relatório de Infraestrutura 2026</a>
                                 </div>
+                                
+                                <!-- COMPARTILHAMENTO DO FACT-CHECK -->
+                                <div class="materia-share" data-titulo="Fact-Check: Nenhuma escola de Itapema tem internet de qualidade?" data-url="https://bignewssc.com.br/fact-checking.html#fc4">
+                                    <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                    <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                    <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                    <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                    <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                    <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ITEM 5 -->
+                    <!-- FACT-CHECK 5 -->
                     <div class="factcheck-item" id="fc5">
                         <div class="factcheck-header" onclick="toggleFactCheck('fc5')">
                             <div class="factcheck-content">
@@ -1292,6 +1489,17 @@
                                 
                                 <div class="factcheck-sources">
                                     <strong>Observação:</strong> A verificação será atualizada assim que o TCE publicar o parecer.
+                                </div>
+                                
+                                <!-- COMPARTILHAMENTO DO FACT-CHECK -->
+                                <div class="materia-share" data-titulo="Fact-Check: Ex-prefeito afirma que deixou superávit de R$ 5 milhões" data-url="https://bignewssc.com.br/fact-checking.html#fc5">
+                                    <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                    <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                    <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                    <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                    <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                    <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                    <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -1332,7 +1540,9 @@
                         <a href="https://wa.me/?text=Confira%20os%20fact-checks%20do%20Big%20News%20-%20Costa%20Esmeralda%20https%3A%2F%2Fbignewssc.com.br%2Ffact-checking.html" target="_blank" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbignewssc.com.br%2Ffact-checking.html" target="_blank" class="share-btn share-facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://twitter.com/intent/tweet?text=Confira%20os%20fact-checks%20do%20Big%20News%20-%20Costa%20Esmeralda&url=https%3A%2F%2Fbignewssc.com.br%2Ffact-checking.html" target="_blank" class="share-btn share-twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://instagram.com/bignewssc" target="_blank" class="share-btn share-instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://t.me/share/url?url=https%3A%2F%2Fbignewssc.com.br%2Ffact-checking.html&text=Confira%20os%20fact-checks%20do%20Big%20News%20-%20Costa%20Esmeralda" target="_blank" class="share-btn share-telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbignewssc.com.br%2Ffact-checking.html" target="_blank" class="share-btn share-linkedin"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -1413,7 +1623,81 @@
     </footer>
 
     <script>
-        // Atualizar data
+        // ===== FUNÇÕES DE COMPARTILHAMENTO =====
+        function compartilharWhatsapp(botao) {
+            const container = botao.closest('.materia-share');
+            const titulo = container.dataset.titulo || 'Confira este fact-check do Big News';
+            const url = container.dataset.url || window.location.href;
+            
+            const texto = `${titulo} - ${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
+        }
+        
+        function compartilharFacebook(botao) {
+            const container = botao.closest('.materia-share');
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+        
+        function compartilharTwitter(botao) {
+            const container = botao.closest('.materia-share');
+            const titulo = container.dataset.titulo || 'Confira este fact-check do Big News';
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`, '_blank');
+        }
+        
+        function compartilharInstagram(botao) {
+            window.open('https://instagram.com/bignewssc', '_blank');
+            mostrarToast('Siga @bignewssc no Instagram!');
+        }
+        
+        function compartilharTelegram(botao) {
+            const container = botao.closest('.materia-share');
+            const titulo = container.dataset.titulo || 'Confira este fact-check do Big News';
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(titulo)}`, '_blank');
+        }
+        
+        function compartilharLinkedin(botao) {
+            const container = botao.closest('.materia-share');
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        }
+        
+        function copiarLink(botao) {
+            const container = botao.closest('.materia-share');
+            const url = container.dataset.url || window.location.href;
+            
+            navigator.clipboard.writeText(url).then(() => {
+                mostrarToast('Link copiado para a área de transferência!');
+            }).catch(() => {
+                alert('Erro ao copiar link. Tente novamente.');
+            });
+        }
+        
+        function mostrarToast(mensagem) {
+            document.querySelectorAll('.share-toast').forEach(t => t.remove());
+            
+            const toast = document.createElement('div');
+            toast.className = 'share-toast';
+            toast.textContent = mensagem;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // ===== FUNÇÕES GERAIS =====
+        function toggleFactCheck(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('expanded');
+        }
+
         const dateEl = document.getElementById('current-date');
         if (dateEl) {
             dateEl.textContent = new Date().toLocaleDateString('pt-BR', {
@@ -1433,7 +1717,6 @@
             });
         }
 
-        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) {
@@ -1442,12 +1725,6 @@
                 header?.classList.remove('scrolled');
             }
         });
-
-        // Toggle fact-check details
-        window.toggleFactCheck = function(id) {
-            const element = document.getElementById(id);
-            element.classList.toggle('expanded');
-        };
 
         // Filtros
         document.querySelectorAll('.filter-tag').forEach(tag => {
@@ -1460,7 +1737,6 @@
                     this.classList.add('active');
                     document.querySelector('.filter-tag:first-child')?.classList.remove('active');
                 }
-                // Aqui entraria lógica de filtro real
             });
         });
 
@@ -1473,7 +1749,6 @@
             }, 1000);
         });
 
-        // Scroll para newsletter
         window.scrollToNewsletter = function() {
             const newsletter = document.getElementById('newsletter');
             if (newsletter) {
@@ -1486,7 +1761,6 @@
             }
         };
 
-        // Newsletter form
         const newsletterForm = document.getElementById('newsletter-form');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', (e) => {
@@ -1509,8 +1783,6 @@
                     button.innerHTML = originalText;
                     button.disabled = false;
                     emailInput.value = '';
-                    
-                    // Esconder newsletter após envio
                     document.getElementById('newsletter').style.display = 'none';
                 }, 1000);
             });
@@ -1555,7 +1827,6 @@
         
         toggleMobileBtn();
 
-        // Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js').catch(() => {});
