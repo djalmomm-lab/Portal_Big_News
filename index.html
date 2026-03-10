@@ -1287,7 +1287,7 @@
             color: var(--accent);
         }
 
-        /* MOBILE DRAWER */
+        /* MOBILE DRAWER - CORRIGIDO */
         .mobile-overlay {
             display: none; 
             position: fixed; 
@@ -1303,14 +1303,15 @@
         .mobile-drawer {
             position: fixed; 
             top: 0; 
-            left: -280px; 
-            width: 280px; 
+            left: -300px; 
+            width: 300px; 
             height: 100vh;
             background: var(--primary-dark); 
             z-index: 201;
             transition: left 0.3s ease; 
             overflow-y: auto; 
-            padding: 0 0 40px;
+            padding: 0 0 80px;
+            -webkit-overflow-scrolling: touch;
         }
         
         .mobile-drawer.open { 
@@ -1321,7 +1322,7 @@
             display: flex; 
             align-items: center; 
             justify-content: space-between;
-            padding: 16px 20px; 
+            padding: 20px; 
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
@@ -1329,11 +1330,14 @@
             background: none; 
             border: none; 
             color: rgba(255,255,255,0.7);
-            font-size: 20px; 
+            font-size: 24px; 
             cursor: pointer; 
-            padding: 4px;
+            padding: 10px;
             min-width: 44px;
             min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .mobile-drawer-close:hover { 
@@ -1341,38 +1345,110 @@
         }
         
         .mobile-nav-links { 
-            padding: 12px 0; 
+            padding: 12px 0;
+            display: flex;
+            flex-direction: column;
         }
         
         .mobile-nav-link {
             display: flex; 
             align-items: center; 
-            gap: 10px;
-            padding: 13px 20px; 
-            color: rgba(255,255,255,0.8);
+            gap: 15px;
+            padding: 16px 20px; 
+            color: rgba(255,255,255,0.9);
             text-decoration: none; 
             font-family: 'Inter', sans-serif;
-            font-size: 15px; 
+            font-size: 16px; 
             font-weight: 500; 
             transition: all 0.2s;
             border-left: 3px solid transparent;
-            min-height: 44px;
+            min-height: 52px;
+        }
+        
+        .mobile-nav-link i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .mobile-nav-link span {
+            flex: 1;
         }
         
         .mobile-nav-link:hover { 
-            background: rgba(255,255,255,0.06); 
+            background: rgba(255,255,255,0.1); 
             color: #fff; 
         }
         
         .mobile-nav-link.active { 
             color: var(--accent); 
             border-left-color: var(--accent); 
-            background: rgba(184,134,11,0.08); 
+            background: rgba(184,134,11,0.15); 
         }
 
         /* BOTÃO MENU MOBILE - VISÍVEL APENAS NO MOBILE */
         .mobile-menu-toggle {
             display: none;
+        }
+
+        /* BUSCA - CORRIGIDA */
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(184,134,11,0.1);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            min-height: 44px;
+        }
+
+        .search-button:hover {
+            background: var(--accent-light);
+        }
+
+        .search-results {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .search-result-item:hover {
+            background: var(--bg-paper);
         }
 
         /* RESPONSIVIDADE */
@@ -1537,7 +1613,7 @@
         </div>
     </header>
 
-    <!-- Mobile Drawer -->
+    <!-- Mobile Drawer - CORRIGIDO -->
     <div class="mobile-overlay" id="mobile-overlay" role="presentation"></div>
     <nav class="mobile-drawer" id="mobile-drawer" aria-label="Menu mobile">
         <div class="mobile-drawer-header">
@@ -1547,14 +1623,38 @@
             </button>
         </div>
         <div class="mobile-nav-links">
-            <a href="index.html" class="mobile-nav-link active"><i class="fas fa-home"></i>Home</a>
-            <a href="noticias.html" class="mobile-nav-link"><i class="fas fa-newspaper"></i>Notícias</a>
-            <a href="esportes.html" class="mobile-nav-link"><i class="fas fa-trophy"></i>Esportes</a>
-            <a href="politica.html" class="mobile-nav-link"><i class="fas fa-landmark"></i>Política</a>
-            <a href="fact-checking.html" class="mobile-nav-link"><i class="fas fa-check-circle"></i>Fact-Checking</a>
-            <a href="analises.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i>Análises</a>
-            <a href="podcast.html" class="mobile-nav-link"><i class="fas fa-microphone"></i>Podcast</a>
-            <a href="explica.html" class="mobile-nav-link"><i class="fas fa-lightbulb"></i>Explica</a>
+            <a href="index.html" class="mobile-nav-link active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="noticias.html" class="mobile-nav-link">
+                <i class="fas fa-newspaper"></i>
+                <span>Notícias</span>
+            </a>
+            <a href="esportes.html" class="mobile-nav-link">
+                <i class="fas fa-trophy"></i>
+                <span>Esportes</span>
+            </a>
+            <a href="politica.html" class="mobile-nav-link">
+                <i class="fas fa-landmark"></i>
+                <span>Política</span>
+            </a>
+            <a href="fact-checking.html" class="mobile-nav-link">
+                <i class="fas fa-check-circle"></i>
+                <span>Fact-Checking</span>
+            </a>
+            <a href="analises.html" class="mobile-nav-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Análises</span>
+            </a>
+            <a href="podcast.html" class="mobile-nav-link">
+                <i class="fas fa-microphone"></i>
+                <span>Podcast</span>
+            </a>
+            <a href="explica.html" class="mobile-nav-link">
+                <i class="fas fa-lightbulb"></i>
+                <span>Explica</span>
+            </a>
         </div>
     </nav>
 
@@ -2058,25 +2158,44 @@
         // ===== INICIALIZAR BOTÕES DE COMPARTILHAMENTO =====
         function initShareButtons() {
             document.querySelectorAll('.materia-share-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    if (this.classList.contains('share-whatsapp')) {
-                        compartilharWhatsapp(this);
-                    } else if (this.classList.contains('share-facebook')) {
-                        compartilharFacebook(this);
-                    } else if (this.classList.contains('share-x-twitter')) {
-                        compartilharTwitter(this);
-                    } else if (this.classList.contains('share-instagram')) {
-                        compartilharInstagram(this);
-                    } else if (this.classList.contains('share-telegram')) {
-                        compartilharTelegram(this);
-                    } else if (this.classList.contains('share-linkedin')) {
-                        compartilharLinkedin(this);
-                    } else if (this.classList.contains('share-link')) {
-                        copiarLink(this);
-                    }
-                });
+                // Remove listeners antigos para evitar duplicação
+                btn.removeEventListener('click', handleShareClick);
+                btn.addEventListener('click', handleShareClick);
+            });
+        }
+
+        function handleShareClick(e) {
+            e.preventDefault();
+            const btn = e.currentTarget;
+            
+            if (btn.classList.contains('share-whatsapp')) {
+                compartilharWhatsapp(btn);
+            } else if (btn.classList.contains('share-facebook')) {
+                compartilharFacebook(btn);
+            } else if (btn.classList.contains('share-x-twitter')) {
+                compartilharTwitter(btn);
+            } else if (btn.classList.contains('share-instagram')) {
+                compartilharInstagram(btn);
+            } else if (btn.classList.contains('share-telegram')) {
+                compartilharTelegram(btn);
+            } else if (btn.classList.contains('share-linkedin')) {
+                compartilharLinkedin(btn);
+            } else if (btn.classList.contains('share-link')) {
+                copiarLink(btn);
+            }
+        }
+
+        // ===== FUNÇÕES DE BUSCA =====
+        function initSearch() {
+            const searchButton = document.getElementById('search-button');
+            if (!searchButton) return;
+            
+            searchButton.addEventListener('click', function() {
+                // Criar modal de busca simples
+                const searchTerm = prompt('Digite o que você está procurando:');
+                if (searchTerm && searchTerm.trim() !== '') {
+                    window.location.href = `busca.html?q=${encodeURIComponent(searchTerm)}`;
+                }
             });
         }
 
@@ -2228,10 +2347,14 @@
                     closeDrawer();
                 }
             });
+
+            // Fechar ao clicar em um link
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', closeDrawer);
+            });
         }
 
         function checkLiveStatus() {
-            // Versão simulada sem erro 404
             const liveBanner = document.getElementById('liveBanner');
             const liveProgramName = document.getElementById('liveProgramName');
             const liveWatchLink = document.getElementById('liveWatchLink');
@@ -2254,13 +2377,14 @@
             initLoadMore();
             initMobileDrawer();
             initShareButtons();
+            initSearch();
             checkLiveStatus();
             
             // Atalho de teclado para busca (/)
             document.addEventListener('keydown', (e) => {
                 if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.target.matches('input, textarea')) {
                     e.preventDefault();
-                    document.getElementById('search-button')?.focus();
+                    document.getElementById('search-button')?.click();
                 }
             });
         });
