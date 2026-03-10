@@ -8,17 +8,35 @@
     <!-- SEO -->
     <meta name="description" content="Últimas notícias da Costa Esmeralda. Cobertura completa de Itapema, Porto Belo e Bombinhas.">
     <meta name="robots" content="index, follow">
+    <meta name="author" content="Big News Costa Esmeralda">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Notícias - Big News">
-    <meta property="og:description" content="Últimas notícias da Costa Esmeralda">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://bignewssc.com.br/noticias.html">
+    <meta property="og:title" content="Notícias - Big News Costa Esmeralda">
+    <meta property="og:description" content="Últimas notícias da Costa Esmeralda">
+    <meta property="og:image" content="https://bignewssc.com.br/images/social-noticias.jpg">
     
-    <!-- Fonts e CSS (mesmo do index.html) -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://bignewssc.com.br/noticias.html">
+    <meta name="twitter:title" content="Notícias - Big News">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://bignewssc.com.br/noticias.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <style>
         /* ===== VARIÁVEIS ===== */
@@ -37,6 +55,7 @@
             --border: #e5e7eb;
             --success: #059669;
             --error: #dc2626;
+            --live: #dc2626;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -86,7 +105,7 @@
             top: 0;
         }
 
-        /* ===== HEADER ===== */
+        /* HEADER */
         .header {
             background: var(--white);
             border-bottom: 1px solid var(--border);
@@ -168,7 +187,7 @@
             text-transform: uppercase;
         }
 
-        /* ===== NAVEGAÇÃO ===== */
+        /* NAVEGAÇÃO */
         .nav-desktop {
             display: flex;
             gap: 2rem;
@@ -221,11 +240,16 @@
             border: 2px solid var(--primary);
         }
 
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
         .btn-sm {
             padding: 0.375rem 0.75rem;
         }
 
-        /* ===== MAIN ===== */
+        /* MAIN */
         main {
             margin-top: 120px;
             min-height: calc(100vh - 120px);
@@ -258,7 +282,68 @@
             font-size: 1.125rem;
         }
 
-        /* ===== LISTA DE NOTÍCIAS ===== */
+        /* INDICADOR AO VIVO */
+        .live-indicator-page {
+            display: none;
+            margin-bottom: 2rem;
+        }
+        
+        .live-indicator-page a {
+            text-decoration: none;
+        }
+        
+        .live-indicator-box {
+            background: var(--live);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .live-badge-white {
+            background: white;
+            color: var(--live);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .live-badge-white i {
+            color: var(--live);
+            animation: pulse 2s infinite;
+        }
+        
+        .live-info-text {
+            flex: 1;
+        }
+        
+        .live-info-text strong {
+            font-size: 1.125rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .live-info-text p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .live-arrow {
+            font-size: 1.25rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* LISTA DE NOTÍCIAS */
         .news-list {
             display: flex;
             flex-direction: column;
@@ -329,7 +414,76 @@
             margin-right: 0.5rem;
         }
 
-        /* ===== FOOTER ===== */
+        /* SIDEBAR */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-title {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .newsletter-widget {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+        }
+
+        .newsletter-widget .widget-title {
+            color: var(--white);
+            border-bottom-color: var(--accent);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            min-height: 44px;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-light);
+        }
+
+        /* FOOTER */
         .footer {
             background: var(--primary);
             color: var(--white);
@@ -420,7 +574,13 @@
             text-decoration: none;
         }
 
-        /* ===== RESPONSIVIDADE ===== */
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-desktop {
                 display: none;
@@ -443,14 +603,18 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .live-indicator-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .live-badge-white {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <a href="#main-content" class="skip-to-content">Pular para conteúdo principal</a>
@@ -473,7 +637,7 @@
                 </div>
             </a>
 
-                        <nav class="nav-desktop" aria-label="Menu principal">
+            <nav class="nav-desktop" aria-label="Menu principal">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="noticias.html" class="nav-link active" aria-current="page">Notícias</a>
                 <a href="esportes.html" class="nav-link">Esportes</a>
@@ -482,13 +646,14 @@
                 <a href="analises.html" class="nav-link">Análises</a>
                 <a href="podcast.html" class="nav-link">Podcast</a>
                 <a href="explica.html" class="nav-link">Explica</a>
+                <a href="live.html" class="nav-link">Ao Vivo</a>
             </nav>
 
             <div class="header-actions">
                 <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i><span class="sr-only">Buscar</span></button>
                 <button class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span></button>
-                            <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
-                    <i class="fas fa-bars" aria-hidden="true"></i>
+                <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
@@ -512,6 +677,7 @@
             <a href="analises.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i>Análises</a>
             <a href="podcast.html" class="mobile-nav-link"><i class="fas fa-microphone"></i>Podcast</a>
             <a href="explica.html" class="mobile-nav-link"><i class="fas fa-lightbulb"></i>Explica</a>
+            <a href="live.html" class="mobile-nav-link"><i class="fas fa-video"></i>Ao Vivo</a>
         </div>
     </nav>
 
@@ -521,6 +687,22 @@
                 <div class="page-header">
                     <h1>Notícias</h1>
                     <p>Últimas atualizações da Costa Esmeralda</p>
+                </div>
+
+                <!-- INDICADOR AO VIVO -->
+                <div class="live-indicator-page" id="livePageIndicator">
+                    <a href="live.html" id="livePageLink">
+                        <div class="live-indicator-box">
+                            <span class="live-badge-white">
+                                <i class="fas fa-circle"></i> AO VIVO AGORA
+                            </span>
+                            <div class="live-info-text">
+                                <strong id="livePageTitle">Carregando...</strong>
+                                <p>Clique para assistir à transmissão</p>
+                            </div>
+                            <i class="fas fa-arrow-right live-arrow"></i>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="news-list">
@@ -592,23 +774,23 @@
         </section>
     </main>
 
-        <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo-title" style="font-size: 1.875rem;">Big News</div>
                     <p>Portal de notícias e análises da Costa Esmeralda. Documentamos o presente para informar o futuro da nossa região.</p>
-                                        <div class="social-links">
-                        <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
-                        <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                        <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                        <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h4>Seções</h4>
                     <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="noticias.html">Notícias</a></li>
                         <li><a href="esportes.html">Esportes</a></li>
                         <li><a href="politica.html">Política</a></li>
@@ -616,6 +798,7 @@
                         <li><a href="analises.html">Análises</a></li>
                         <li><a href="podcast.html">Podcast</a></li>
                         <li><a href="explica.html">Explica</a></li>
+                        <li><a href="live.html">Ao Vivo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -627,23 +810,14 @@
                         <li><a href="#">Costa Esmeralda</a></li>
                     </ul>
                 </div>
-                                <div class="footer-column">
-                    <h4>Contato</h4>
+                <div class="footer-column">
+                    <h4>Institucional</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:contato@bignewssc.com.br"><i class="fas fa-envelope" style="margin-right:6px;opacity:.7"></i>contato@bignewssc.com.br</a></li>
-                        <li><a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="margin-right:6px;opacity:.7"></i>WhatsApp</a></li>
-                        <li style="margin-top:.75rem;font-size:.8125rem;color:var(--text-light);font-family:'Inter',sans-serif;">Seg–Sex, 09h–18h</li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Metodologia</a></li>
+                        <li><a href="#">Transparência</a></li>
+                        <li><a href="#">Contato</a></li>
                     </ul>
-                    <div style="margin-top:1rem;">
-                        <div style="font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:.5rem;">Siga o Big News</div>
-                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-                            <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color=''"><i class="fab fa-instagram"></i></a>
-                            <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Twitter/X" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''"><i class="fab fa-x-twitter"></i></a>
-                            <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color=''"><i class="fab fa-youtube"></i></a>
-                            <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color=''"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" aria-label="TikTok" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''"><i class="fab fa-tiktok"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -657,6 +831,7 @@
     </footer>
 
     <script>
+        // Atualizar data
         document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR', { 
             weekday: 'long', 
             year: 'numeric', 
@@ -673,21 +848,74 @@
                 header.classList.remove('scrolled');
             }
         });
-        <script>
-                // ── Mobile Drawer ──
+
+        // Mobile Drawer
         const mobileMenuBtn = document.getElementById('mobile-menu-button');
         const mobileDrawer  = document.getElementById('mobile-drawer');
         const mobileOverlay = document.getElementById('mobile-overlay');
         const mobileClose   = document.getElementById('mobile-drawer-close');
-        function openDrawer()  { mobileDrawer?.classList.add('open'); mobileOverlay?.classList.add('open'); document.body.style.overflow='hidden'; }
-        function closeDrawer() { mobileDrawer?.classList.remove('open'); mobileOverlay?.classList.remove('open'); document.body.style.overflow=''; }
+        
+        function openDrawer() {
+            mobileDrawer?.classList.add('open');
+            mobileOverlay?.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeDrawer() {
+            mobileDrawer?.classList.remove('open');
+            mobileOverlay?.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        
         mobileMenuBtn?.addEventListener('click', openDrawer);
         mobileClose?.addEventListener('click', closeDrawer);
         mobileOverlay?.addEventListener('click', closeDrawer);
-        document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
-        window.addEventListener('resize', () => { if(window.innerWidth > 768) closeDrawer(); });
-    </script>
+        
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeDrawer();
+        });
+        
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) closeDrawer();
+        });
 
+        // VERIFICAR STATUS AO VIVO (API REAL)
+        function checkLiveStatus() {
+            fetch('/live-status.json')
+                .then(response => response.json())
+                .then(data => {
+                    const liveIndicator = document.getElementById('livePageIndicator');
+                    const liveTitle = document.getElementById('livePageTitle');
+                    const liveLink = document.getElementById('livePageLink');
+                    
+                    if (data.live) {
+                        // Mostrar indicador
+                        liveIndicator.style.display = 'block';
+                        
+                        // Atualizar título
+                        liveTitle.textContent = data.title;
+                        
+                        // Atualizar link com o programa correto
+                        liveLink.href = data.url;
+                    } else {
+                        // Esconder indicador
+                        liveIndicator.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.log('Erro ao verificar live:', error);
+                    // Em caso de erro, esconder o indicador
+                    document.getElementById('livePageIndicator').style.display = 'none';
+                });
+        }
+
+        // Verificar na carga da página e a cada 30 segundos
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLiveStatus();
+            setInterval(checkLiveStatus, 30000);
+        });
+
+        // Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js').catch(() => {});
