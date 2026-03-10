@@ -68,7 +68,9 @@
             --whatsapp: #25D366;
             --facebook: #1877f2;
             --twitter: #000000;
+            --instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --telegram: #0088cc;
+            --linkedin: #0077b5;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -122,6 +124,17 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
         }
 
         /* HEADER */
@@ -516,6 +529,184 @@
             font-size: 5rem;
         }
 
+        /* COMPARTILHAMENTO POR MATÉRIA */
+        .materia-share {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+            flex-wrap: wrap;
+        }
+        
+        .materia-share-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .materia-share-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .materia-share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .materia-share-btn:hover::before {
+            transform: translateY(0);
+        }
+        
+        .materia-share-btn.share-whatsapp { background: var(--whatsapp); }
+        .materia-share-btn.share-facebook { background: var(--facebook); }
+        .materia-share-btn.share-twitter { background: var(--twitter); }
+        .materia-share-btn.share-instagram { background: var(--instagram); }
+        .materia-share-btn.share-telegram { background: var(--telegram); }
+        .materia-share-btn.share-linkedin { background: var(--linkedin); }
+        .materia-share-btn.share-link { background: var(--primary); }
+        
+        /* Tooltip */
+        .materia-share-btn {
+            position: relative;
+        }
+        
+        .materia-share-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-dark);
+            color: white;
+            font-size: 0.625rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .materia-share-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
+            bottom: -25px;
+        }
+        
+        /* Toast de notificação */
+        .share-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
+            animation: slideUp 0.3s ease;
+        }
+
+        /* COMPARTILHAR PÁGINA */
+        .share-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            padding: 1.5rem 0;
+            border-top: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+        
+        .share-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .share-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .share-btn:hover::before {
+            transform: translateY(0);
+        }
+        
+        .share-btn i {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .share-whatsapp { background: var(--whatsapp); }
+        .share-facebook { background: var(--facebook); }
+        .share-twitter { background: var(--twitter); }
+        .share-instagram { background: var(--instagram); }
+        .share-telegram { background: var(--telegram); }
+        .share-linkedin { background: var(--linkedin); }
+
         /* COLUNISTAS */
         .columnists {
             margin: 4rem 0;
@@ -572,48 +763,6 @@
             font-size: 0.9375rem;
             margin-bottom: 1rem;
         }
-
-        /* COMPARTILHAR */
-        .share-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .share-label {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-        
-        .share-buttons {
-            display: flex;
-            gap: 0.75rem;
-        }
-        
-        .share-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-        
-        .share-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .share-whatsapp { background: var(--whatsapp); color: white; }
-        .share-facebook { background: var(--facebook); color: white; }
-        .share-twitter { background: var(--twitter); color: white; }
-        .share-telegram { background: var(--telegram); color: white; }
 
         /* SIDEBAR */
         .sidebar {
@@ -903,6 +1052,10 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .materia-share {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1009,7 +1162,8 @@
 
                 <!-- GRADE DE ANÁLISES -->
                 <div class="analises-grid">
-                    <article class="analise-card">
+                    <!-- ANÁLISE 1 -->
+                    <article class="analise-card" data-article-id="1">
                         <div class="analise-image">
                             <span class="analise-category">Política</span>
                             <i class="fas fa-landmark"></i>
@@ -1029,10 +1183,22 @@
                                 </span>
                                 <span class="read-time">8 min</span>
                             </div>
+                            
+                            <!-- COMPARTILHAMENTO DA MATÉRIA -->
+                            <div class="materia-share" data-titulo="Os 100 dias do novo governo: promessas vs. realidade em Itapema" data-url="https://bignewssc.com.br/analises.html#1">
+                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="analise-card">
+                    <!-- ANÁLISE 2 -->
+                    <article class="analise-card" data-article-id="2">
                         <div class="analise-image" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
                             <span class="analise-category">Urbanismo</span>
                             <i class="fas fa-city"></i>
@@ -1052,10 +1218,22 @@
                                 </span>
                                 <span class="read-time">10 min</span>
                             </div>
+                            
+                            <!-- COMPARTILHAMENTO DA MATÉRIA -->
+                            <div class="materia-share" data-titulo="Zoneamento urbano em Porto Belo: o que muda com o novo código" data-url="https://bignewssc.com.br/analises.html#2">
+                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="analise-card">
+                    <!-- ANÁLISE 3 -->
+                    <article class="analise-card" data-article-id="3">
                         <div class="analise-image" style="background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%);">
                             <span class="analise-category">Economia</span>
                             <i class="fas fa-chart-pie"></i>
@@ -1075,10 +1253,22 @@
                                 </span>
                                 <span class="read-time">12 min</span>
                             </div>
+                            
+                            <!-- COMPARTILHAMENTO DA MATÉRIA -->
+                            <div class="materia-share" data-titulo="Turismo na Costa Esmeralda: números mostram crescimento desigual" data-url="https://bignewssc.com.br/analises.html#3">
+                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="analise-card">
+                    <!-- ANÁLISE 4 -->
+                    <article class="analise-card" data-article-id="4">
                         <div class="analise-image" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
                             <span class="analise-category">Meio Ambiente</span>
                             <i class="fas fa-water"></i>
@@ -1098,10 +1288,22 @@
                                 </span>
                                 <span class="read-time">15 min</span>
                             </div>
+                            
+                            <!-- COMPARTILHAMENTO DA MATÉRIA -->
+                            <div class="materia-share" data-titulo="Projeto de despoluição da Baía: o que funciona e o que falta" data-url="https://bignewssc.com.br/analises.html#4">
+                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="analise-card">
+                    <!-- ANÁLISE 5 -->
+                    <article class="analise-card" data-article-id="5">
                         <div class="analise-image" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
                             <span class="analise-category">Transparência</span>
                             <i class="fas fa-eye"></i>
@@ -1121,10 +1323,22 @@
                                 </span>
                                 <span class="read-time">9 min</span>
                             </div>
+                            
+                            <!-- COMPARTILHAMENTO DA MATÉRIA -->
+                            <div class="materia-share" data-titulo="Ranking de transparência: por que Bombinhas lidera?" data-url="https://bignewssc.com.br/analises.html#5">
+                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="analise-card">
+                    <!-- ANÁLISE 6 -->
+                    <article class="analise-card" data-article-id="6">
                         <div class="analise-image" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
                             <span class="analise-category">Social</span>
                             <i class="fas fa-users"></i>
@@ -1144,6 +1358,17 @@
                                 </span>
                                 <span class="read-time">7 min</span>
                             </div>
+                            
+                            <!-- COMPARTILHAMENTO DA MATÉRIA -->
+                            <div class="materia-share" data-titulo="Participação popular nas Câmaras: ainda um desafio" data-url="https://bignewssc.com.br/analises.html#6">
+                                <button class="materia-share-btn share-whatsapp" onclick="compartilharWhatsapp(this)" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                                <button class="materia-share-btn share-facebook" onclick="compartilharFacebook(this)" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button class="materia-share-btn share-twitter" onclick="compartilharTwitter(this)" data-tooltip="Twitter/X"><i class="fab fa-x-twitter"></i></button>
+                                <button class="materia-share-btn share-instagram" onclick="compartilharInstagram(this)" data-tooltip="Instagram"><i class="fab fa-instagram"></i></button>
+                                <button class="materia-share-btn share-telegram" onclick="compartilharTelegram(this)" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i></button>
+                                <button class="materia-share-btn share-linkedin" onclick="compartilharLinkedin(this)" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                                <button class="materia-share-btn share-link" onclick="copiarLink(this)" data-tooltip="Copiar link"><i class="fas fa-link"></i></button>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -1162,7 +1387,9 @@
                         <a href="https://wa.me/?text=Confira%20as%20análises%20do%20Big%20News%20-%20Costa%20Esmeralda%20https%3A%2F%2Fbignewssc.com.br%2Fanalises.html" target="_blank" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbignewssc.com.br%2Fanalises.html" target="_blank" class="share-btn share-facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://twitter.com/intent/tweet?text=Confira%20as%20análises%20do%20Big%20News%20-%20Costa%20Esmeralda&url=https%3A%2F%2Fbignewssc.com.br%2Fanalises.html" target="_blank" class="share-btn share-twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://instagram.com/bignewssc" target="_blank" class="share-btn share-instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://t.me/share/url?url=https%3A%2F%2Fbignewssc.com.br%2Fanalises.html&text=Confira%20as%20análises%20do%20Big%20News%20-%20Costa%20Esmeralda" target="_blank" class="share-btn share-telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbignewssc.com.br%2Fanalises.html" target="_blank" class="share-btn share-linkedin"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
@@ -1276,7 +1503,76 @@
     </footer>
 
     <script>
-        // Atualizar data
+        // ===== FUNÇÕES DE COMPARTILHAMENTO =====
+        function compartilharWhatsapp(botao) {
+            const container = botao.closest('.materia-share');
+            const titulo = container.dataset.titulo || 'Confira esta matéria do Big News';
+            const url = container.dataset.url || window.location.href;
+            
+            const texto = `${titulo} - ${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
+        }
+        
+        function compartilharFacebook(botao) {
+            const container = botao.closest('.materia-share');
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+        
+        function compartilharTwitter(botao) {
+            const container = botao.closest('.materia-share');
+            const titulo = container.dataset.titulo || 'Confira esta matéria do Big News';
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`, '_blank');
+        }
+        
+        function compartilharInstagram(botao) {
+            window.open('https://instagram.com/bignewssc', '_blank');
+            mostrarToast('Siga @bignewssc no Instagram!');
+        }
+        
+        function compartilharTelegram(botao) {
+            const container = botao.closest('.materia-share');
+            const titulo = container.dataset.titulo || 'Confira esta matéria do Big News';
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(titulo)}`, '_blank');
+        }
+        
+        function compartilharLinkedin(botao) {
+            const container = botao.closest('.materia-share');
+            const url = container.dataset.url || window.location.href;
+            
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        }
+        
+        function copiarLink(botao) {
+            const container = botao.closest('.materia-share');
+            const url = container.dataset.url || window.location.href;
+            
+            navigator.clipboard.writeText(url).then(() => {
+                mostrarToast('Link copiado para a área de transferência!');
+            }).catch(() => {
+                alert('Erro ao copiar link. Tente novamente.');
+            });
+        }
+        
+        function mostrarToast(mensagem) {
+            document.querySelectorAll('.share-toast').forEach(t => t.remove());
+            
+            const toast = document.createElement('div');
+            toast.className = 'share-toast';
+            toast.textContent = mensagem;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // ===== FUNÇÕES GERAIS =====
         const dateEl = document.getElementById('current-date');
         if (dateEl) {
             dateEl.textContent = new Date().toLocaleDateString('pt-BR', {
@@ -1296,7 +1592,6 @@
             });
         }
 
-        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) {
@@ -1311,7 +1606,6 @@
             tag.addEventListener('click', function() {
                 document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                // Aqui entraria lógica de filtro real
             });
         });
 
@@ -1324,7 +1618,6 @@
             }, 1000);
         });
 
-        // Scroll para newsletter
         window.scrollToNewsletter = function() {
             const newsletter = document.getElementById('newsletter');
             if (newsletter) {
@@ -1337,7 +1630,6 @@
             }
         };
 
-        // Newsletter form
         const newsletterForm = document.getElementById('newsletter-form');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', (e) => {
@@ -1360,8 +1652,6 @@
                     button.innerHTML = originalText;
                     button.disabled = false;
                     emailInput.value = '';
-                    
-                    // Esconder newsletter após envio
                     document.getElementById('newsletter').style.display = 'none';
                 }, 1000);
             });
@@ -1406,7 +1696,6 @@
         
         toggleMobileBtn();
 
-        // Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js').catch(() => {});
