@@ -32,6 +32,12 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
     
+    <!-- Preparação para App -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Big News">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +65,10 @@
             --live: #dc2626;
             --warning: #d97706;
             --info: #2563eb;
+            --whatsapp: #25D366;
+            --facebook: #1877f2;
+            --twitter: #000000;
+            --telegram: #0088cc;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -106,6 +116,12 @@
 
         .skip-to-content:focus {
             top: 0;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* HEADER */
@@ -274,7 +290,7 @@
         }
 
         .page-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--accent);
         }
@@ -295,63 +311,6 @@
             font-size: 0.875rem;
             display: block;
             margin-top: 0.5rem;
-        }
-
-        /* INDICADOR AO VIVO (SIDEBAR) */
-        .live-sidebar-indicator {
-            display: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        .live-sidebar-indicator a {
-            text-decoration: none;
-        }
-        
-        .live-sidebar-box {
-            background: var(--live);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .live-sidebar-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .live-sidebar-badge {
-            background: white;
-            color: var(--live);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .live-sidebar-badge i {
-            color: var(--live);
-            animation: pulse 2s infinite;
-        }
-        
-        .live-sidebar-title {
-            font-weight: 600;
-            font-size: 0.9375rem;
-        }
-        
-        .live-sidebar-box p {
-            font-size: 0.8125rem;
-            opacity: 0.9;
-            margin: 0;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         /* FILTROS */
@@ -614,6 +573,48 @@
             margin-bottom: 1rem;
         }
 
+        /* COMPARTILHAR */
+        .share-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .share-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .share-whatsapp { background: var(--whatsapp); color: white; }
+        .share-facebook { background: var(--facebook); color: white; }
+        .share-twitter { background: var(--twitter); color: white; }
+        .share-telegram { background: var(--telegram); color: white; }
+
         /* SIDEBAR */
         .sidebar {
             display: flex;
@@ -688,6 +689,56 @@
 
         .newsletter-form button:hover {
             background: var(--accent-light);
+        }
+
+        .database-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .database-stat {
+            padding: 1rem;
+            background: var(--bg-paper);
+            border-radius: 4px;
+        }
+
+        .database-stat-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+        }
+
+        .database-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--error);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .live-indicator::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
         /* FOOTER */
@@ -782,6 +833,38 @@
             text-decoration: none;
         }
 
+        /* MOBILE DRAWER */
+        .mobile-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 200;
+        }
+        .mobile-overlay.open { display: block; }
+        .mobile-drawer {
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
+            background: var(--primary-dark); z-index: 201;
+            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
+        }
+        .mobile-drawer.open { left: 0; }
+        .mobile-drawer-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-drawer-close {
+            background: none; border: none; color: rgba(255,255,255,0.7);
+            font-size: 20px; cursor: pointer; padding: 4px;
+        }
+        .mobile-drawer-close:hover { color: #fff; }
+        .mobile-nav-links { padding: 12px 0; }
+        .mobile-nav-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 13px 20px; color: rgba(255,255,255,0.8);
+            text-decoration: none; font-family: 'Inter', sans-serif;
+            font-size: 15px; font-weight: 500; transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
+
         /* RESPONSIVIDADE */
         @media (max-width: 1024px) {
             .analises-grid,
@@ -815,39 +898,12 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .share-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
-        
-        /* MOBILE DRAWER */
-        .mobile-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.5); z-index: 200;
-        }
-        .mobile-overlay.open { display: block; }
-        .mobile-drawer {
-            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-            background: var(--primary-dark); z-index: 201;
-            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
-        }
-        .mobile-drawer.open { left: 0; }
-        .mobile-drawer-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .mobile-drawer-close {
-            background: none; border: none; color: rgba(255,255,255,0.7);
-            font-size: 20px; cursor: pointer; padding: 4px;
-        }
-        .mobile-drawer-close:hover { color: #fff; }
-        .mobile-nav-links { padding: 12px 0; }
-        .mobile-nav-link {
-            display: flex; align-items: center; gap: 10px;
-            padding: 13px 20px; color: rgba(255,255,255,0.8);
-            text-decoration: none; font-family: 'Inter', sans-serif;
-            font-size: 15px; font-weight: 500; transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
     </style>
 </head>
 <body>
@@ -880,12 +936,13 @@
                 <a href="analises.html" class="nav-link active" aria-current="page">Análises</a>
                 <a href="podcast.html" class="nav-link">Podcast</a>
                 <a href="explica.html" class="nav-link">Explica</a>
-                <a href="live.html" class="nav-link">Ao Vivo</a>
             </nav>
 
             <div class="header-actions">
                 <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i><span class="sr-only">Buscar</span></button>
-                <button class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span></button>
+                <button class="btn btn-primary btn-sm" onclick="scrollToNewsletter()">
+                    <i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span>
+                </button>
                 <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -911,7 +968,6 @@
             <a href="analises.html" class="mobile-nav-link active"><i class="fas fa-chart-line"></i>Análises</a>
             <a href="podcast.html" class="mobile-nav-link"><i class="fas fa-microphone"></i>Podcast</a>
             <a href="explica.html" class="mobile-nav-link"><i class="fas fa-lightbulb"></i>Explica</a>
-            <a href="live.html" class="mobile-nav-link"><i class="fas fa-video"></i>Ao Vivo</a>
         </div>
     </nav>
 
@@ -924,302 +980,245 @@
                     <small>Atualizado em <span id="update-date"></span></small>
                 </div>
 
-                <div class="content-layout">
-                    <!-- COLUNA PRINCIPAL -->
-                    <div>
-                        <!-- FILTROS -->
-                        <div class="filters">
-                            <span class="filter-tag active">Todas</span>
-                            <span class="filter-tag">Política</span>
-                            <span class="filter-tag">Economia</span>
-                            <span class="filter-tag">Meio Ambiente</span>
-                            <span class="filter-tag">Urbanismo</span>
-                            <span class="filter-tag">Social</span>
-                        </div>
+                <!-- FILTROS -->
+                <div class="filters">
+                    <span class="filter-tag active">Todas</span>
+                    <span class="filter-tag">Política</span>
+                    <span class="filter-tag">Economia</span>
+                    <span class="filter-tag">Meio Ambiente</span>
+                    <span class="filter-tag">Urbanismo</span>
+                    <span class="filter-tag">Social</span>
+                </div>
 
-                        <!-- ANÁLISE EM DESTAQUE -->
-                        <div class="featured-analysis">
-                            <div class="featured-content">
-                                <span class="featured-label">Análise Exclusiva</span>
-                                <h2>Eleições 2026: o cenário político na Costa Esmeralda</h2>
-                                <p>Com as eleições se aproximando, analisamos as possíveis alianças, os nomes fortes e os desafios de cada município da região.</p>
-                                <div class="featured-meta">
-                                    <span><i class="fas fa-user"></i> Carlos Mendes</span>
-                                    <span><i class="fas fa-clock"></i> 12 min de leitura</span>
-                                </div>
-                                <a href="#" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Ler análise completa</a>
+                <!-- ANÁLISE EM DESTAQUE -->
+                <div class="featured-analysis">
+                    <div class="featured-content">
+                        <span class="featured-label">Análise Exclusiva</span>
+                        <h2>Eleições 2026: o cenário político na Costa Esmeralda</h2>
+                        <p>Com as eleições se aproximando, analisamos as possíveis alianças, os nomes fortes e os desafios de cada município da região.</p>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-user"></i> Carlos Mendes</span>
+                            <span><i class="fas fa-clock"></i> 12 min de leitura</span>
+                        </div>
+                        <a href="#" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Ler análise completa</a>
+                    </div>
+                    <div class="featured-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+
+                <!-- GRADE DE ANÁLISES -->
+                <div class="analises-grid">
+                    <article class="analise-card">
+                        <div class="analise-image">
+                            <span class="analise-category">Política</span>
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="analise-content">
+                            <div class="analise-meta">
+                                <span><i class="fas fa-calendar"></i> 05/03/2026</span>
+                                <span><i class="fas fa-eye"></i> 1.247 leituras</span>
                             </div>
-                            <div class="featured-image">
-                                <i class="fas fa-chart-line"></i>
+                            <h3 class="analise-title">
+                                <a href="#">Os 100 dias do novo governo: promessas vs. realidade em Itapema</a>
+                            </h3>
+                            <p class="analise-excerpt">Análise detalhada das 12 promessas de campanha do prefeito de Itapema e o status atual de cada uma, com dados oficiais da prefeitura.</p>
+                            <div class="analise-footer">
+                                <span class="analise-author">
+                                    <i class="fas fa-user"></i> Redação
+                                </span>
+                                <span class="read-time">8 min</span>
                             </div>
                         </div>
+                    </article>
 
-                        <!-- GRADE DE ANÁLISES -->
-                        <div class="analises-grid">
-                            <article class="analise-card">
-                                <div class="analise-image">
-                                    <span class="analise-category">Política</span>
-                                    <i class="fas fa-landmark"></i>
-                                </div>
-                                <div class="analise-content">
-                                    <div class="analise-meta">
-                                        <span><i class="fas fa-calendar"></i> 05/03/2026</span>
-                                        <span><i class="fas fa-eye"></i> 1.247 leituras</span>
-                                    </div>
-                                    <h3 class="analise-title">
-                                        <a href="#">Os 100 dias do novo governo: promessas vs. realidade em Itapema</a>
-                                    </h3>
-                                    <p class="analise-excerpt">Análise detalhada das 12 promessas de campanha do prefeito de Itapema e o status atual de cada uma, com dados oficiais da prefeitura.</p>
-                                    <div class="analise-footer">
-                                        <span class="analise-author">
-                                            <i class="fas fa-user"></i> Redação
-                                        </span>
-                                        <span class="read-time">8 min</span>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="analise-card">
-                                <div class="analise-image" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
-                                    <span class="analise-category">Urbanismo</span>
-                                    <i class="fas fa-city"></i>
-                                </div>
-                                <div class="analise-content">
-                                    <div class="analise-meta">
-                                        <span><i class="fas fa-calendar"></i> 04/03/2026</span>
-                                        <span><i class="fas fa-eye"></i> 987 leituras</span>
-                                    </div>
-                                    <h3 class="analise-title">
-                                        <a href="#">Zoneamento urbano em Porto Belo: o que muda com o novo código</a>
-                                    </h3>
-                                    <p class="analise-excerpt">Entenda as principais alterações no código urbanístico e como elas afetam moradores, construtoras e o meio ambiente.</p>
-                                    <div class="analise-footer">
-                                        <span class="analise-author">
-                                            <i class="fas fa-user"></i> Ana Beatriz
-                                        </span>
-                                        <span class="read-time">10 min</span>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="analise-card">
-                                <div class="analise-image" style="background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%);">
-                                    <span class="analise-category">Economia</span>
-                                    <i class="fas fa-chart-pie"></i>
-                                </div>
-                                <div class="analise-content">
-                                    <div class="analise-meta">
-                                        <span><i class="fas fa-calendar"></i> 03/03/2026</span>
-                                        <span><i class="fas fa-eye"></i> 1.562 leituras</span>
-                                    </div>
-                                    <h3 class="analise-title">
-                                        <a href="#">Turismo na Costa Esmeralda: números mostram crescimento desigual</a>
-                                    </h3>
-                                    <p class="analise-excerpt">Enquanto Itapema lidera em número de visitantes, Bombinhas se destaca no ticket médio. Análise dos dados da temporada.</p>
-                                    <div class="analise-footer">
-                                        <span class="analise-author">
-                                            <i class="fas fa-user"></i> Pedro Santos
-                                        </span>
-                                        <span class="read-time">12 min</span>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="analise-card">
-                                <div class="analise-image" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
-                                    <span class="analise-category">Meio Ambiente</span>
-                                    <i class="fas fa-water"></i>
-                                </div>
-                                <div class="analise-content">
-                                    <div class="analise-meta">
-                                        <span><i class="fas fa-calendar"></i> 02/03/2026</span>
-                                        <span><i class="fas fa-eye"></i> 2.103 leituras</span>
-                                    </div>
-                                    <h3 class="analise-title">
-                                        <a href="#">Projeto de despoluição da Baía: o que funciona e o que falta</a>
-                                    </h3>
-                                    <p class="analise-excerpt">Especialistas analisam o plano da prefeitura de Porto Belo e apontam pontos fortes e fragilidades da proposta.</p>
-                                    <div class="analise-footer">
-                                        <span class="analise-author">
-                                            <i class="fas fa-user"></i> Marina Costa
-                                        </span>
-                                        <span class="read-time">15 min</span>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="analise-card">
-                                <div class="analise-image" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
-                                    <span class="analise-category">Transparência</span>
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <div class="analise-content">
-                                    <div class="analise-meta">
-                                        <span><i class="fas fa-calendar"></i> 01/03/2026</span>
-                                        <span><i class="fas fa-eye"></i> 1.890 leituras</span>
-                                    </div>
-                                    <h3 class="analise-title">
-                                        <a href="#">Ranking de transparência: por que Bombinhas lidera?</a>
-                                    </h3>
-                                    <p class="analise-excerpt">Comparativo entre os três municípios da Costa Esmeralda revela práticas que podem ser replicadas para melhorar o acesso à informação.</p>
-                                    <div class="analise-footer">
-                                        <span class="analise-author">
-                                            <i class="fas fa-user"></i> Carlos Mendes
-                                        </span>
-                                        <span class="read-time">9 min</span>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="analise-card">
-                                <div class="analise-image" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
-                                    <span class="analise-category">Social</span>
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div class="analise-content">
-                                    <div class="analise-meta">
-                                        <span><i class="fas fa-calendar"></i> 28/02/2026</span>
-                                        <span><i class="fas fa-eye"></i> 1.234 leituras</span>
-                                    </div>
-                                    <h3 class="analise-title">
-                                        <a href="#">Participação popular nas Câmaras: ainda um desafio</a>
-                                    </h3>
-                                    <p class="analise-excerpt">Análise da presença da sociedade civil nas sessões legislativas e canais de participação disponíveis.</p>
-                                    <div class="analise-footer">
-                                        <span class="analise-author">
-                                            <i class="fas fa-user"></i> Redação
-                                        </span>
-                                        <span class="read-time">7 min</span>
-                                    </div>
-                                </div>
-                            </article>
+                    <article class="analise-card">
+                        <div class="analise-image" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                            <span class="analise-category">Urbanismo</span>
+                            <i class="fas fa-city"></i>
                         </div>
-
-                        <!-- BOTÃO CARREGAR MAIS -->
-                        <div style="text-align: center;">
-                            <button class="btn btn-outline" id="load-more">
-                                <i class="fas fa-plus"></i> Carregar mais análises
-                            </button>
-                        </div>
-
-                        <!-- COLUNISTAS -->
-                        <div class="columnists">
-                            <h2>Nossos Colunistas</h2>
-                            <div class="columnists-grid">
-                                <div class="columnist-card">
-                                    <div class="columnist-avatar">
-                                        <i class="fas fa-user-tie"></i>
-                                    </div>
-                                    <h3 class="columnist-name">Carlos Mendes</h3>
-                                    <div class="columnist-role">Editor-chefe</div>
-                                    <p class="columnist-bio">Jornalista com 15 anos de experiência em cobertura política. Especialista em análises de cenário eleitoral.</p>
-                                </div>
-
-                                <div class="columnist-card">
-                                    <div class="columnist-avatar">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <h3 class="columnist-name">Ana Beatriz</h3>
-                                    <div class="columnist-role">Urbanismo</div>
-                                    <p class="columnist-bio">Arquiteta e urbanista, mestre em planejamento urbano. Colabora com análises sobre crescimento das cidades.</p>
-                                </div>
-
-                                <div class="columnist-card">
-                                    <div class="columnist-avatar">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <h3 class="columnist-name">Pedro Santos</h3>
-                                    <div class="columnist-role">Economia</div>
-                                    <p class="columnist-bio">Economista com foco em desenvolvimento regional. Analisa os impactos econômicos na Costa Esmeralda.</p>
-                                </div>
+                        <div class="analise-content">
+                            <div class="analise-meta">
+                                <span><i class="fas fa-calendar"></i> 04/03/2026</span>
+                                <span><i class="fas fa-eye"></i> 987 leituras</span>
                             </div>
+                            <h3 class="analise-title">
+                                <a href="#">Zoneamento urbano em Porto Belo: o que muda com o novo código</a>
+                            </h3>
+                            <p class="analise-excerpt">Entenda as principais alterações no código urbanístico e como elas afetam moradores, construtoras e o meio ambiente.</p>
+                            <div class="analise-footer">
+                                <span class="analise-author">
+                                    <i class="fas fa-user"></i> Ana Beatriz
+                                </span>
+                                <span class="read-time">10 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="analise-card">
+                        <div class="analise-image" style="background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%);">
+                            <span class="analise-category">Economia</span>
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="analise-content">
+                            <div class="analise-meta">
+                                <span><i class="fas fa-calendar"></i> 03/03/2026</span>
+                                <span><i class="fas fa-eye"></i> 1.562 leituras</span>
+                            </div>
+                            <h3 class="analise-title">
+                                <a href="#">Turismo na Costa Esmeralda: números mostram crescimento desigual</a>
+                            </h3>
+                            <p class="analise-excerpt">Enquanto Itapema lidera em número de visitantes, Bombinhas se destaca no ticket médio. Análise dos dados da temporada.</p>
+                            <div class="analise-footer">
+                                <span class="analise-author">
+                                    <i class="fas fa-user"></i> Pedro Santos
+                                </span>
+                                <span class="read-time">12 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="analise-card">
+                        <div class="analise-image" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                            <span class="analise-category">Meio Ambiente</span>
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="analise-content">
+                            <div class="analise-meta">
+                                <span><i class="fas fa-calendar"></i> 02/03/2026</span>
+                                <span><i class="fas fa-eye"></i> 2.103 leituras</span>
+                            </div>
+                            <h3 class="analise-title">
+                                <a href="#">Projeto de despoluição da Baía: o que funciona e o que falta</a>
+                            </h3>
+                            <p class="analise-excerpt">Especialistas analisam o plano da prefeitura de Porto Belo e apontam pontos fortes e fragilidades da proposta.</p>
+                            <div class="analise-footer">
+                                <span class="analise-author">
+                                    <i class="fas fa-user"></i> Marina Costa
+                                </span>
+                                <span class="read-time">15 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="analise-card">
+                        <div class="analise-image" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                            <span class="analise-category">Transparência</span>
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="analise-content">
+                            <div class="analise-meta">
+                                <span><i class="fas fa-calendar"></i> 01/03/2026</span>
+                                <span><i class="fas fa-eye"></i> 1.890 leituras</span>
+                            </div>
+                            <h3 class="analise-title">
+                                <a href="#">Ranking de transparência: por que Bombinhas lidera?</a>
+                            </h3>
+                            <p class="analise-excerpt">Comparativo entre os três municípios da Costa Esmeralda revela práticas que podem ser replicadas para melhorar o acesso à informação.</p>
+                            <div class="analise-footer">
+                                <span class="analise-author">
+                                    <i class="fas fa-user"></i> Carlos Mendes
+                                </span>
+                                <span class="read-time">9 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="analise-card">
+                        <div class="analise-image" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
+                            <span class="analise-category">Social</span>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="analise-content">
+                            <div class="analise-meta">
+                                <span><i class="fas fa-calendar"></i> 28/02/2026</span>
+                                <span><i class="fas fa-eye"></i> 1.234 leituras</span>
+                            </div>
+                            <h3 class="analise-title">
+                                <a href="#">Participação popular nas Câmaras: ainda um desafio</a>
+                            </h3>
+                            <p class="analise-excerpt">Análise da presença da sociedade civil nas sessões legislativas e canais de participação disponíveis.</p>
+                            <div class="analise-footer">
+                                <span class="analise-author">
+                                    <i class="fas fa-user"></i> Redação
+                                </span>
+                                <span class="read-time">7 min</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- BOTÃO CARREGAR MAIS -->
+                <div style="text-align: center;">
+                    <button class="btn btn-outline" id="load-more">
+                        <i class="fas fa-plus"></i> Carregar mais análises
+                    </button>
+                </div>
+
+                <!-- COMPARTILHAR PÁGINA -->
+                <div class="share-container">
+                    <span class="share-label">Compartilhe esta página:</span>
+                    <div class="share-buttons">
+                        <a href="https://wa.me/?text=Confira%20as%20análises%20do%20Big%20News%20-%20Costa%20Esmeralda%20https%3A%2F%2Fbignewssc.com.br%2Fanalises.html" target="_blank" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbignewssc.com.br%2Fanalises.html" target="_blank" class="share-btn share-facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text=Confira%20as%20análises%20do%20Big%20News%20-%20Costa%20Esmeralda&url=https%3A%2F%2Fbignewssc.com.br%2Fanalises.html" target="_blank" class="share-btn share-twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://t.me/share/url?url=https%3A%2F%2Fbignewssc.com.br%2Fanalises.html&text=Confira%20as%20análises%20do%20Big%20News%20-%20Costa%20Esmeralda" target="_blank" class="share-btn share-telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+
+                <!-- COLUNISTAS -->
+                <div class="columnists">
+                    <h2>Nossos Colunistas</h2>
+                    <div class="columnists-grid">
+                        <div class="columnist-card">
+                            <div class="columnist-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3 class="columnist-name">Carlos Mendes</h3>
+                            <div class="columnist-role">Editor-chefe</div>
+                            <p class="columnist-bio">Jornalista com 15 anos de experiência em cobertura política. Especialista em análises de cenário eleitoral.</p>
+                        </div>
+
+                        <div class="columnist-card">
+                            <div class="columnist-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3 class="columnist-name">Ana Beatriz</h3>
+                            <div class="columnist-role">Urbanismo</div>
+                            <p class="columnist-bio">Arquiteta e urbanista, mestre em planejamento urbano. Colabora com análises sobre crescimento das cidades.</p>
+                        </div>
+
+                        <div class="columnist-card">
+                            <div class="columnist-avatar">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="columnist-name">Pedro Santos</h3>
+                            <div class="columnist-role">Economia</div>
+                            <p class="columnist-bio">Economista com foco em desenvolvimento regional. Analisa os impactos econômicos na Costa Esmeralda.</p>
                         </div>
                     </div>
-
-                    <!-- SIDEBAR -->
-                    <aside class="sidebar">
-                        <!-- INDICADOR AO VIVO (SIDEBAR) -->
-                        <div class="live-sidebar-indicator" id="liveSidebarIndicator">
-                            <a href="live.html" id="liveSidebarLink">
-                                <div class="live-sidebar-box">
-                                    <div class="live-sidebar-header">
-                                        <span class="live-sidebar-badge">
-                                            <i class="fas fa-circle"></i> AO VIVO
-                                        </span>
-                                        <span class="live-sidebar-title" id="liveSidebarTitle">Carregando...</span>
-                                    </div>
-                                    <p>Clique para assistir</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- NEWSLETTER -->
-                        <div class="sidebar-widget newsletter-widget" id="newsletter">
-                            <h3 class="widget-title">
-                                <i class="fas fa-envelope-open-text"></i>
-                                Newsletter Semanal
-                            </h3>
-                            <p>Receba toda quarta-feira, às 7h, o resumo da semana com as melhores análises e perspectivas da Costa Esmeralda.</p>
-                            <form class="newsletter-form" id="newsletter-form">
-                                <input type="email" placeholder="Seu melhor e-mail" required>
-                                <button type="submit">
-                                    <i class="fas fa-paper-plane"></i>
-                                    Assinar gratuitamente
-                                </button>
-                            </form>
-                        </div>
-
-                        <!-- AO VIVO (widget adicional) -->
-                        <div class="sidebar-widget">
-                            <h3 class="widget-title">
-                                <i class="fas fa-broadcast-tower"></i>
-                                Ao Vivo
-                            </h3>
-                            <div class="live-indicator" role="status" style="background: var(--error); color: white; padding: 0.5rem 1rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                                <i class="fas fa-circle" style="animation: pulse 2s infinite;"></i> NO AR AGORA
-                            </div>
-                            <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Debate Eleições 2026</h4>
-                            <p style="color: var(--text-light); font-size: 0.9375rem; margin-bottom: 1rem;">Análise ao vivo com nossos colunistas sobre o cenário político.</p>
-                            <a href="live.html" class="btn btn-primary" style="width: 100%;">
-                                <i class="fas fa-play"></i>
-                                Assistir transmissão
-                            </a>
-                        </div>
-
-                        <!-- BANCO DE DADOS -->
-                        <div class="sidebar-widget">
-                            <h3 class="widget-title">
-                                <i class="fas fa-database"></i>
-                                Banco de Dados
-                            </h3>
-                            <p style="font-size: 0.9375rem; color: var(--text-light); margin-bottom: 1rem;">Acesse informações estruturadas sobre política local:</p>
-                            <div class="database-grid" 
-                                 data-domain="politico" 
-                                 data-endpoint="resumo"
-                                 data-municipio="todos">
-                                <div class="database-stat">
-                                    <span class="database-stat-number" data-bind="prefeitos">3</span>
-                                    <span class="database-stat-label">Prefeitos</span>
-                                </div>
-                                <div class="database-stat">
-                                    <span class="database-stat-number" data-bind="vereadores">27</span>
-                                    <span class="database-stat-label">Vereadores</span>
-                                </div>
-                                <div class="database-stat">
-                                    <span class="database-stat-number" data-bind="projetos">142</span>
-                                    <span class="database-stat-label">Projetos</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline" style="width: 100%; margin-top: 1rem;">
-                                <i class="fas fa-search"></i>
-                                Explorar dados
-                            </button>
-                        </div>
-                    </aside>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- NEWSLETTER (invisível mas funcional) -->
+    <div style="display: none;" id="newsletter">
+        <div class="sidebar-widget newsletter-widget">
+            <h3 class="widget-title">
+                <i class="fas fa-envelope-open-text"></i>
+                Newsletter Semanal
+            </h3>
+            <p>Receba toda quarta-feira, às 7h, o resumo da semana com as melhores análises e perspectivas da Costa Esmeralda.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    Assinar gratuitamente
+                </button>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -1245,7 +1244,6 @@
                         <li><a href="analises.html">Análises</a></li>
                         <li><a href="podcast.html">Podcast</a></li>
                         <li><a href="explica.html">Explica</a></li>
-                        <li><a href="live.html">Ao Vivo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1326,12 +1324,27 @@
             }, 1000);
         });
 
+        // Scroll para newsletter
+        window.scrollToNewsletter = function() {
+            const newsletter = document.getElementById('newsletter');
+            if (newsletter) {
+                newsletter.style.display = 'block';
+                newsletter.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    const input = newsletter.querySelector('input[type="email"]');
+                    if (input) input.focus();
+                }, 500);
+            }
+        };
+
         // Newsletter form
         const newsletterForm = document.getElementById('newsletter-form');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const email = newsletterForm.querySelector('input[type="email"]').value;
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                const email = emailInput.value;
+                
                 if (!email || !email.includes('@')) {
                     alert('Por favor, insira um e-mail válido.');
                     return;
@@ -1346,7 +1359,10 @@
                     alert('Obrigado por assinar! Você receberá a Newsletter Semanal às quartas-feiras às 7h.');
                     button.innerHTML = originalText;
                     button.disabled = false;
-                    newsletterForm.reset();
+                    emailInput.value = '';
+                    
+                    // Esconder newsletter após envio
+                    document.getElementById('newsletter').style.display = 'none';
                 }, 1000);
             });
         }
@@ -1377,7 +1393,6 @@
             if (e.key === 'Escape') closeDrawer();
         });
 
-        // Mostrar/ocultar botão mobile conforme tamanho da tela
         const toggleMobileBtn = () => {
             if (mobileMenuBtn) {
                 mobileMenuBtn.style.display = window.innerWidth <= 768 ? 'inline-flex' : 'none';
@@ -1390,43 +1405,6 @@
         });
         
         toggleMobileBtn();
-
-        // VERIFICAR STATUS AO VIVO (API REAL)
-        function checkLiveStatus() {
-            fetch('/live-status.json')
-                .then(response => response.json())
-                .then(data => {
-                    const liveIndicator = document.getElementById('liveSidebarIndicator');
-                    const liveTitle = document.getElementById('liveSidebarTitle');
-                    const liveLink = document.getElementById('liveSidebarLink');
-                    
-                    if (data.live) {
-                        // Mostrar indicador na sidebar
-                        if (liveIndicator) liveIndicator.style.display = 'block';
-                        
-                        // Atualizar título
-                        if (liveTitle) liveTitle.textContent = data.title;
-                        
-                        // Atualizar link
-                        if (liveLink) liveLink.href = data.url;
-                    } else {
-                        // Esconder indicador
-                        if (liveIndicator) liveIndicator.style.display = 'none';
-                    }
-                })
-                .catch(error => {
-                    console.log('Erro ao verificar live:', error);
-                    // Em caso de erro, esconder o indicador
-                    const indicator = document.getElementById('liveSidebarIndicator');
-                    if (indicator) indicator.style.display = 'none';
-                });
-        }
-
-        // Verificar na carga da página e a cada 30 segundos
-        document.addEventListener('DOMContentLoaded', () => {
-            checkLiveStatus();
-            setInterval(checkLiveStatus, 30000);
-        });
 
         // Service Worker
         if ('serviceWorker' in navigator) {
