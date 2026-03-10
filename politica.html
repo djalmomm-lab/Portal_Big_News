@@ -32,6 +32,12 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
     
+    <!-- Preparação para App -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Big News">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +65,10 @@
             --live: #dc2626;
             --warning: #d97706;
             --info: #2563eb;
+            --whatsapp: #25D366;
+            --facebook: #1877f2;
+            --twitter: #000000;
+            --telegram: #0088cc;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -106,6 +116,12 @@
 
         .skip-to-content:focus {
             top: 0;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* HEADER */
@@ -274,7 +290,7 @@
         }
 
         .page-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--accent);
         }
@@ -290,61 +306,109 @@
             font-size: 1.125rem;
         }
 
-        /* INDICADOR AO VIVO (SIDEBAR) */
-        .live-sidebar-indicator {
+        /* ESPAÇO AO VIVO */
+        .live-space {
             display: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--live) 0%, #b91c1c 100%);
         }
         
-        .live-sidebar-indicator a {
-            text-decoration: none;
+        .live-space.active {
+            display: block;
         }
         
-        .live-sidebar-box {
-            background: var(--live);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
+        .live-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
         }
         
-        .live-sidebar-header {
+        .live-player {
+            background: #0a0a0a;
+            aspect-ratio: 16/9;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
+            justify-content: center;
+            position: relative;
         }
         
-        .live-sidebar-badge {
+        .live-badge-player {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
             background: white;
             color: var(--live);
-            padding: 0.25rem 0.75rem;
+            padding: 0.5rem 1rem;
             border-radius: 4px;
-            font-size: 0.75rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+        
+        .live-badge-player i {
+            color: var(--live);
+            animation: pulse 2s infinite;
+        }
+        
+        .live-play-icon {
+            font-size: 5rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .live-player p {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            opacity: 0.8;
+        }
+        
+        .live-info {
+            padding: 2rem;
+            color: white;
+        }
+        
+        .live-info h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .live-info p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .live-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .live-watch-btn {
+            background: white;
+            color: var(--live);
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .live-sidebar-badge i {
-            color: var(--live);
-            animation: pulse 2s infinite;
-        }
-        
-        .live-sidebar-title {
-            font-weight: 600;
-            font-size: 0.9375rem;
-        }
-        
-        .live-sidebar-box p {
-            font-size: 0.8125rem;
-            opacity: 0.9;
-            margin: 0;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .live-close-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
         /* SELETOR DE MUNICÍPIOS */
@@ -839,6 +903,7 @@
             gap: 0.5rem;
         }
 
+        /* NEWSLETTER WIDGET (oculto) */
         .newsletter-widget {
             background: var(--primary);
             color: var(--white);
@@ -888,6 +953,48 @@
         .newsletter-form button:hover {
             background: var(--accent-light);
         }
+
+        /* COMPARTILHAR */
+        .share-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .share-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .share-whatsapp { background: var(--whatsapp); color: white; }
+        .share-facebook { background: var(--facebook); color: white; }
+        .share-twitter { background: var(--twitter); color: white; }
+        .share-telegram { background: var(--telegram); color: white; }
 
         /* FOOTER */
         .footer {
@@ -981,6 +1088,38 @@
             text-decoration: none;
         }
 
+        /* MOBILE DRAWER */
+        .mobile-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 200;
+        }
+        .mobile-overlay.open { display: block; }
+        .mobile-drawer {
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
+            background: var(--primary-dark); z-index: 201;
+            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
+        }
+        .mobile-drawer.open { left: 0; }
+        .mobile-drawer-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-drawer-close {
+            background: none; border: none; color: rgba(255,255,255,0.7);
+            font-size: 20px; cursor: pointer; padding: 4px;
+        }
+        .mobile-drawer-close:hover { color: #fff; }
+        .mobile-nav-links { padding: 12px 0; }
+        .mobile-nav-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 13px 20px; color: rgba(255,255,255,0.8);
+            text-decoration: none; font-family: 'Inter', sans-serif;
+            font-size: 15px; font-weight: 500; transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
+
         /* RESPONSIVIDADE */
         @media (max-width: 1024px) {
             .politicos-grid,
@@ -1055,39 +1194,20 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .live-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .live-buttons {
+                flex-direction: column;
+            }
+            
+            .share-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
-        
-        /* MOBILE DRAWER */
-        .mobile-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.5); z-index: 200;
-        }
-        .mobile-overlay.open { display: block; }
-        .mobile-drawer {
-            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-            background: var(--primary-dark); z-index: 201;
-            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
-        }
-        .mobile-drawer.open { left: 0; }
-        .mobile-drawer-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .mobile-drawer-close {
-            background: none; border: none; color: rgba(255,255,255,0.7);
-            font-size: 20px; cursor: pointer; padding: 4px;
-        }
-        .mobile-drawer-close:hover { color: #fff; }
-        .mobile-nav-links { padding: 12px 0; }
-        .mobile-nav-link {
-            display: flex; align-items: center; gap: 10px;
-            padding: 13px 20px; color: rgba(255,255,255,0.8);
-            text-decoration: none; font-family: 'Inter', sans-serif;
-            font-size: 15px; font-weight: 500; transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
     </style>
 </head>
 <body>
@@ -1120,12 +1240,13 @@
                 <a href="analises.html" class="nav-link">Análises</a>
                 <a href="podcast.html" class="nav-link">Podcast</a>
                 <a href="explica.html" class="nav-link">Explica</a>
-                <a href="live.html" class="nav-link">Ao Vivo</a>
             </nav>
 
             <div class="header-actions">
                 <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i><span class="sr-only">Buscar</span></button>
-                <button class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span></button>
+                <button class="btn btn-primary btn-sm" onclick="scrollToNewsletter()">
+                    <i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span>
+                </button>
                 <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -1151,7 +1272,6 @@
             <a href="analises.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i>Análises</a>
             <a href="podcast.html" class="mobile-nav-link"><i class="fas fa-microphone"></i>Podcast</a>
             <a href="explica.html" class="mobile-nav-link"><i class="fas fa-lightbulb"></i>Explica</a>
-            <a href="live.html" class="mobile-nav-link"><i class="fas fa-video"></i>Ao Vivo</a>
         </div>
     </nav>
 
@@ -1163,467 +1283,454 @@
                     <p>Acompanhe mandatos, votações e transparência dos municípios da Costa Esmeralda</p>
                 </div>
 
-                <div class="content-layout">
-                    <!-- COLUNA PRINCIPAL -->
-                    <div>
-                        <!-- SELETOR DE MUNICÍPIOS -->
-                        <div class="municipio-selector">
-                            <button class="municipio-btn active" data-municipio="todos">
-                                <i class="fas fa-map"></i> Todos os municípios
-                            </button>
-                            <button class="municipio-btn" data-municipio="itapema">
-                                <i class="fas fa-city"></i> Itapema
-                            </button>
-                            <button class="municipio-btn" data-municipio="porto-belo">
-                                <i class="fas fa-water"></i> Porto Belo
-                            </button>
-                            <button class="municipio-btn" data-municipio="bombinhas">
-                                <i class="fas fa-umbrella-beach"></i> Bombinhas
-                            </button>
+                <!-- ESPAÇO AO VIVO (Política) -->
+                <div class="live-space" id="liveSpace">
+                    <div class="live-grid">
+                        <div class="live-player">
+                            <span class="live-badge-player">
+                                <i class="fas fa-circle"></i> AO VIVO AGORA
+                            </span>
+                            <i class="fas fa-play-circle live-play-icon"></i>
+                            <p>Clique para assistir</p>
                         </div>
-
-                        <!-- INFO GERAL -->
-                        <div class="info-grid">
-                            <div class="info-card">
-                                <span class="info-number">3</span>
-                                <span class="info-label">Prefeitos</span>
-                                <div class="info-sub">2 mandatos em andamento</div>
-                            </div>
-                            <div class="info-card">
-                                <span class="info-number">27</span>
-                                <span class="info-label">Vereadores</span>
-                                <div class="info-sub">3 câmaras municipais</div>
-                            </div>
-                            <div class="info-card">
-                                <span class="info-number">142</span>
-                                <span class="info-label">Projetos de Lei</span>
-                                <div class="info-sub">em tramitação</div>
+                        
+                        <div class="live-info">
+                            <h3 id="liveTitle">Carregando...</h3>
+                            <p id="liveDescription">Acompanhe debates e entrevistas políticas ao vivo</p>
+                            
+                            <div class="live-buttons">
+                                <a href="#" id="liveWatchBtn" class="live-watch-btn">
+                                    <i class="fas fa-play"></i> Assistir agora
+                                </a>
+                                <button class="live-close-btn" onclick="document.getElementById('liveSpace').classList.remove('active')">
+                                    Fechar
+                                </button>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- PERFIS DE POLÍTICOS - DESTAQUE -->
-                        <h2 class="section-title">
-                            <i class="fas fa-user-tie"></i>
-                            Principais Políticos
-                        </h2>
+                <!-- SELETOR DE MUNICÍPIOS -->
+                <div class="municipio-selector">
+                    <button class="municipio-btn active" data-municipio="todos">
+                        <i class="fas fa-map"></i> Todos os municípios
+                    </button>
+                    <button class="municipio-btn" data-municipio="itapema">
+                        <i class="fas fa-city"></i> Itapema
+                    </button>
+                    <button class="municipio-btn" data-municipio="porto-belo">
+                        <i class="fas fa-water"></i> Porto Belo
+                    </button>
+                    <button class="municipio-btn" data-municipio="bombinhas">
+                        <i class="fas fa-umbrella-beach"></i> Bombinhas
+                    </button>
+                </div>
 
-                        <div class="politicos-grid">
-                            <!-- PREFEITO ITAPEMA -->
-                            <div class="politico-card" data-municipio="itapema">
-                                <div class="politico-header">
-                                    <span class="politico-partido">PSD</span>
-                                    <h3 class="politico-nome">João Silva</h3>
-                                    <p class="politico-cargo">Prefeito de Itapema</p>
-                                </div>
-                                <div class="politico-body">
-                                    <div class="politico-info">
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Mandato:</span>
-                                            <span class="politico-info-value">2025-2028</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Votos recebidos:</span>
-                                            <span class="politico-info-value">12.345 (52,3%)</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Promessas cumpridas:</span>
-                                            <span class="politico-info-value">7/12 (58%)</span>
-                                        </div>
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 58%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="politico-footer">
-                                        <a href="#" class="btn-small">Perfil completo</a>
-                                        <a href="#" class="btn-small">Projetos</a>
-                                        <a href="#" class="btn-small">Votações</a>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- INFO GERAL -->
+                <div class="info-grid">
+                    <div class="info-card">
+                        <span class="info-number">3</span>
+                        <span class="info-label">Prefeitos</span>
+                        <div class="info-sub">2 mandatos em andamento</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-number">27</span>
+                        <span class="info-label">Vereadores</span>
+                        <div class="info-sub">3 câmaras municipais</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-number">142</span>
+                        <span class="info-label">Projetos de Lei</span>
+                        <div class="info-sub">em tramitação</div>
+                    </div>
+                </div>
 
-                            <!-- PREFEITO PORTO BELO -->
-                            <div class="politico-card" data-municipio="porto-belo">
-                                <div class="politico-header">
-                                    <span class="politico-partido">MDB</span>
-                                    <h3 class="politico-nome">Maria Oliveira</h3>
-                                    <p class="politico-cargo">Prefeita de Porto Belo</p>
-                                </div>
-                                <div class="politico-body">
-                                    <div class="politico-info">
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Mandato:</span>
-                                            <span class="politico-info-value">2025-2028</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Votos recebidos:</span>
-                                            <span class="politico-info-value">9.876 (51,8%)</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Promessas cumpridas:</span>
-                                            <span class="politico-info-value">9/14 (64%)</span>
-                                        </div>
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 64%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="politico-footer">
-                                        <a href="#" class="btn-small">Perfil completo</a>
-                                        <a href="#" class="btn-small">Projetos</a>
-                                        <a href="#" class="btn-small">Votações</a>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- PERFIS DE POLÍTICOS - DESTAQUE -->
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie"></i>
+                    Principais Políticos
+                </h2>
 
-                            <!-- PREFEITO BOMBINHAS -->
-                            <div class="politico-card" data-municipio="bombinhas">
-                                <div class="politico-header">
-                                    <span class="politico-partido">PL</span>
-                                    <h3 class="politico-nome">Carlos Souza</h3>
-                                    <p class="politico-cargo">Prefeito de Bombinhas</p>
-                                </div>
-                                <div class="politico-body">
-                                    <div class="politico-info">
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Mandato:</span>
-                                            <span class="politico-info-value">2025-2028</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Votos recebidos:</span>
-                                            <span class="politico-info-value">7.654 (49,2%)</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Promessas cumpridas:</span>
-                                            <span class="politico-info-value">5/10 (50%)</span>
-                                        </div>
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 50%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="politico-footer">
-                                        <a href="#" class="btn-small">Perfil completo</a>
-                                        <a href="#" class="btn-small">Projetos</a>
-                                        <a href="#" class="btn-small">Votações</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- VEREADOR DESTAQUE ITAPEMA -->
-                            <div class="politico-card" data-municipio="itapema">
-                                <div class="politico-header">
-                                    <span class="politico-partido">PT</span>
-                                    <h3 class="politico-nome">Ana Pereira</h3>
-                                    <p class="politico-cargo">Vereadora - Itapema</p>
-                                </div>
-                                <div class="politico-body">
-                                    <div class="politico-info">
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Mandato:</span>
-                                            <span class="politico-info-value">2025-2028</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Votos recebidos:</span>
-                                            <span class="politico-info-value">1.234 (3,2%)</span>
-                                        </div>
-                                        <div class="politico-info-item">
-                                            <span class="politico-info-label">Projetos apresentados:</span>
-                                            <span class="politico-info-value">23</span>
-                                        </div>
-                                    </div>
-                                    <div class="politico-footer">
-                                        <a href="#" class="btn-small">Perfil completo</a>
-                                        <a href="#" class="btn-small">Projetos</a>
-                                        <a href="#" class="btn-small">Votações</a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="politicos-grid">
+                    <!-- PREFEITO ITAPEMA -->
+                    <div class="politico-card" data-municipio="itapema">
+                        <div class="politico-header">
+                            <span class="politico-partido">PSD</span>
+                            <h3 class="politico-nome">João Silva</h3>
+                            <p class="politico-cargo">Prefeito de Itapema</p>
                         </div>
-
-                        <div style="text-align: right; margin-bottom: 2rem;">
-                            <a href="#" class="btn btn-outline">Ver todos os políticos <i class="fas fa-arrow-right"></i></a>
-                        </div>
-
-                        <!-- VOTAÇÕES RECENTES -->
-                        <h2 class="section-title">
-                            <i class="fas fa-check-circle"></i>
-                            Votações Recentes
-                        </h2>
-
-                        <div class="votacoes-list">
-                            <div class="votacao-item">
-                                <div class="votacao-info">
-                                    <h4>PL 023/2026 - Zoneamento Urbano</h4>
-                                    <div class="votacao-meta">
-                                        <span><i class="fas fa-map-marker-alt"></i> Itapema</span>
-                                        <span><i class="fas fa-calendar"></i> 05/03/2026</span>
-                                    </div>
+                        <div class="politico-body">
+                            <div class="politico-info">
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Mandato:</span>
+                                    <span class="politico-info-value">2025-2028</span>
                                 </div>
-                                <div class="votacao-resultado">
-                                    <div class="votacao-numeros">
-                                        <strong>9 votos</strong> a favor<br>
-                                        <strong>2 votos</strong> contra
-                                    </div>
-                                    <span class="votacao-aprovado">APROVADO</span>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Votos recebidos:</span>
+                                    <span class="politico-info-value">12.345 (52,3%)</span>
+                                </div>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Promessas cumpridas:</span>
+                                    <span class="politico-info-value">7/12 (58%)</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 58%"></div>
                                 </div>
                             </div>
-
-                            <div class="votacao-item">
-                                <div class="votacao-info">
-                                    <h4>PL 018/2026 - Orçamento Anual</h4>
-                                    <div class="votacao-meta">
-                                        <span><i class="fas fa-map-marker-alt"></i> Porto Belo</span>
-                                        <span><i class="fas fa-calendar"></i> 03/03/2026</span>
-                                    </div>
-                                </div>
-                                <div class="votacao-resultado">
-                                    <div class="votacao-numeros">
-                                        <strong>7 votos</strong> a favor<br>
-                                        <strong>2 votos</strong> contra
-                                    </div>
-                                    <span class="votacao-aprovado">APROVADO</span>
-                                </div>
-                            </div>
-
-                            <div class="votacao-item">
-                                <div class="votacao-info">
-                                    <h4>PL 015/2026 - Isenção de IPTU</h4>
-                                    <div class="votacao-meta">
-                                        <span><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
-                                        <span><i class="fas fa-calendar"></i> 28/02/2026</span>
-                                    </div>
-                                </div>
-                                <div class="votacao-resultado">
-                                    <div class="votacao-numeros">
-                                        <strong>3 votos</strong> a favor<br>
-                                        <strong>6 votos</strong> contra
-                                    </div>
-                                    <span class="votacao-rejeitado">REJEITADO</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PROJETOS DE LEI -->
-                        <h2 class="section-title">
-                            <i class="fas fa-file-alt"></i>
-                            Projetos de Lei em Destaque
-                        </h2>
-
-                        <div class="projetos-grid">
-                            <div class="projeto-card">
-                                <div class="projeto-numero">PL 023/2026</div>
-                                <h3 class="projeto-titulo">Dispõe sobre o novo zoneamento urbano</h3>
-                                <p class="projeto-ementa">Altera a lei de uso e ocupação do solo, definindo novas áreas para expansão urbana e preservação ambiental.</p>
-                                <span class="projeto-status status-tramitando">Em tramitação</span>
-                                <div class="projeto-autor">
-                                    <i class="fas fa-user"></i> Autor: Executivo Municipal
-                                </div>
-                                <div class="politico-footer">
-                                    <a href="#" class="btn-small">Texto integral</a>
-                                    <a href="#" class="btn-small">Votações</a>
-                                    <a href="#" class="btn-small">Acompanhar</a>
-                                </div>
-                            </div>
-
-                            <div class="projeto-card">
-                                <div class="projeto-numero">PL 018/2026</div>
-                                <h3 class="projeto-titulo">Lei Orçamentária Anual 2027</h3>
-                                <p class="projeto-ementa">Estima a receita e fixa a despesa do município para o exercício financeiro de 2027.</p>
-                                <span class="projeto-status status-tramitando">Em tramitação</span>
-                                <div class="projeto-autor">
-                                    <i class="fas fa-user"></i> Autor: Executivo Municipal
-                                </div>
-                                <div class="politico-footer">
-                                    <a href="#" class="btn-small">Texto integral</a>
-                                    <a href="#" class="btn-small">Votações</a>
-                                    <a href="#" class="btn-small">Acompanhar</a>
-                                </div>
-                            </div>
-
-                            <div class="projeto-card">
-                                <div class="projeto-numero">PL 015/2026</div>
-                                <h3 class="projeto-titulo">Isenção de IPTU para aposentados</h3>
-                                <p class="projeto-ementa">Concede isenção do Imposto Predial e Territorial Urbano para aposentados com renda até 3 salários mínimos.</p>
-                                <span class="projeto-status status-rejeitado">Rejeitado</span>
-                                <div class="projeto-autor">
-                                    <i class="fas fa-user"></i> Autor: Vereador Marcos Souza
-                                </div>
-                                <div class="politico-footer">
-                                    <a href="#" class="btn-small">Texto integral</a>
-                                    <a href="#" class="btn-small">Votações</a>
-                                    <a href="#" class="btn-small">Acompanhar</a>
-                                </div>
-                            </div>
-
-                            <div class="projeto-card">
-                                <div class="projeto-numero">PL 012/2026</div>
-                                <h3 class="projeto-titulo">Criação do Fundo Municipal de Turismo</h3>
-                                <p class="projeto-ementa">Institui o Fundo Municipal de Turismo com recursos para fomento de atividades turísticas.</p>
-                                <span class="projeto-status status-aprovado">Aprovado</span>
-                                <div class="projeto-autor">
-                                    <i class="fas fa-user"></i> Autor: Executivo Municipal
-                                </div>
-                                <div class="politico-footer">
-                                    <a href="#" class="btn-small">Texto integral</a>
-                                    <a href="#" class="btn-small">Votações</a>
-                                    <a href="#" class="btn-small">Acompanhar</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- RANKING DE TRANSPARÊNCIA -->
-                        <h2 class="section-title">
-                            <i class="fas fa-trophy"></i>
-                            Ranking de Transparência
-                        </h2>
-
-                        <div class="ranking-table">
-                            <div class="ranking-row ranking-header">
-                                <div class="ranking-col">Posição</div>
-                                <div class="ranking-col">Município</div>
-                                <div class="ranking-col">Nota</div>
-                                <div class="ranking-col">Variação</div>
-                                <div class="ranking-col">Última atualização</div>
-                            </div>
-                            <div class="ranking-row">
-                                <div class="ranking-col" data-label="Posição"><span class="ranking-pos">1º</span></div>
-                                <div class="ranking-col" data-label="Município"><strong>Bombinhas</strong></div>
-                                <div class="ranking-col" data-label="Nota"><span class="nota-alta">87/100</span></div>
-                                <div class="ranking-col" data-label="Variação"><i class="fas fa-arrow-up" style="color: var(--success);"></i> +5</div>
-                                <div class="ranking-col" data-label="Última atualização">05/03/2026</div>
-                            </div>
-                            <div class="ranking-row">
-                                <div class="ranking-col" data-label="Posição"><span class="ranking-pos">2º</span></div>
-                                <div class="ranking-col" data-label="Município"><strong>Porto Belo</strong></div>
-                                <div class="ranking-col" data-label="Nota"><span class="nota-media">72/100</span></div>
-                                <div class="ranking-col" data-label="Variação"><i class="fas fa-arrow-up" style="color: var(--success);"></i> +3</div>
-                                <div class="ranking-col" data-label="Última atualização">05/03/2026</div>
-                            </div>
-                            <div class="ranking-row">
-                                <div class="ranking-col" data-label="Posição"><span class="ranking-pos">3º</span></div>
-                                <div class="ranking-col" data-label="Município"><strong>Itapema</strong></div>
-                                <div class="ranking-col" data-label="Nota"><span class="nota-baixa">68/100</span></div>
-                                <div class="ranking-col" data-label="Variação"><i class="fas fa-arrow-down" style="color: var(--error);"></i> -2</div>
-                                <div class="ranking-col" data-label="Última atualização">05/03/2026</div>
-                            </div>
-                        </div>
-
-                        <!-- AGENDA PÚBLICA -->
-                        <h2 class="section-title">
-                            <i class="fas fa-calendar-alt"></i>
-                            Agenda Pública
-                        </h2>
-
-                        <div class="agenda-list">
-                            <div class="agenda-item">
-                                <div class="agenda-data">
-                                    <div class="agenda-dia">10</div>
-                                    <div class="agenda-mes">MAR</div>
-                                </div>
-                                <div class="agenda-info">
-                                    <h4>Sessão Ordinária da Câmara</h4>
-                                    <div class="agenda-local">
-                                        <i class="fas fa-map-marker-alt"></i> Câmara de Itapema
-                                    </div>
-                                </div>
-                                <span class="agenda-status confirmado">Confirmado</span>
-                            </div>
-
-                            <div class="agenda-item">
-                                <div class="agenda-data">
-                                    <div class="agenda-dia">12</div>
-                                    <div class="agenda-mes">MAR</div>
-                                </div>
-                                <div class="agenda-info">
-                                    <h4>Reunião com Secretários - Orçamento 2027</h4>
-                                    <div class="agenda-local">
-                                        <i class="fas fa-map-marker-alt"></i> Prefeitura de Porto Belo
-                                    </div>
-                                </div>
-                                <span class="agenda-status confirmado">Confirmado</span>
-                            </div>
-
-                            <div class="agenda-item">
-                                <div class="agenda-data">
-                                    <div class="agenda-dia">15</div>
-                                    <div class="agenda-mes">MAR</div>
-                                </div>
-                                <div class="agenda-info">
-                                    <h4>Audiência Pública - Zoneamento</h4>
-                                    <div class="agenda-local">
-                                        <i class="fas fa-map-marker-alt"></i> Centro Comunitário Bombinhas
-                                    </div>
-                                </div>
-                                <span class="agenda-status pendente">Aguardando confirmação</span>
+                            <div class="politico-footer">
+                                <a href="#" class="btn-small">Perfil completo</a>
+                                <a href="#" class="btn-small">Projetos</a>
+                                <a href="#" class="btn-small">Votações</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- SIDEBAR -->
-                    <aside class="sidebar">
-                        <!-- INDICADOR AO VIVO (SIDEBAR) -->
-                        <div class="live-sidebar-indicator" id="liveSidebarIndicator">
-                            <a href="live.html" id="liveSidebarLink">
-                                <div class="live-sidebar-box">
-                                    <div class="live-sidebar-header">
-                                        <span class="live-sidebar-badge">
-                                            <i class="fas fa-circle"></i> AO VIVO
-                                        </span>
-                                        <span class="live-sidebar-title" id="liveSidebarTitle">Carregando...</span>
-                                    </div>
-                                    <p>Clique para assistir</p>
-                                </div>
-                            </a>
+                    <!-- PREFEITO PORTO BELO -->
+                    <div class="politico-card" data-municipio="porto-belo">
+                        <div class="politico-header">
+                            <span class="politico-partido">MDB</span>
+                            <h3 class="politico-nome">Maria Oliveira</h3>
+                            <p class="politico-cargo">Prefeita de Porto Belo</p>
                         </div>
-
-                        <!-- NEWSLETTER -->
-                        <div class="sidebar-widget newsletter-widget" id="newsletter">
-                            <h3 class="widget-title">
-                                <i class="fas fa-envelope-open-text"></i>
-                                Newsletter Semanal
-                            </h3>
-                            <p>Receba toda quarta-feira, às 7h, o resumo da semana com o que realmente importa na política da Costa Esmeralda.</p>
-                            <form class="newsletter-form" id="newsletter-form">
-                                <input type="email" placeholder="Seu melhor e-mail" required>
-                                <button type="submit">
-                                    <i class="fas fa-paper-plane"></i>
-                                    Assinar gratuitamente
-                                </button>
-                            </form>
-                        </div>
-
-                        <!-- BANCO DE DADOS -->
-                        <div class="sidebar-widget">
-                            <h3 class="widget-title">
-                                <i class="fas fa-database"></i>
-                                Banco de Dados
-                            </h3>
-                            <p style="font-size: 0.9375rem; color: var(--text-light); margin-bottom: 1rem;">Acesse informações estruturadas sobre política local:</p>
-                            <div class="database-grid" 
-                                 data-domain="politico" 
-                                 data-endpoint="resumo"
-                                 data-municipio="todos">
-                                <div class="database-stat">
-                                    <span class="database-stat-number" data-bind="prefeitos">3</span>
-                                    <span class="database-stat-label">Prefeitos</span>
+                        <div class="politico-body">
+                            <div class="politico-info">
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Mandato:</span>
+                                    <span class="politico-info-value">2025-2028</span>
                                 </div>
-                                <div class="database-stat">
-                                    <span class="database-stat-number" data-bind="vereadores">27</span>
-                                    <span class="database-stat-label">Vereadores</span>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Votos recebidos:</span>
+                                    <span class="politico-info-value">9.876 (51,8%)</span>
                                 </div>
-                                <div class="database-stat">
-                                    <span class="database-stat-number" data-bind="projetos">142</span>
-                                    <span class="database-stat-label">Projetos</span>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Promessas cumpridas:</span>
+                                    <span class="politico-info-value">9/14 (64%)</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 64%"></div>
                                 </div>
                             </div>
-                            <button class="btn btn-outline" style="width: 100%; margin-top: 1rem;">
-                                <i class="fas fa-search"></i>
-                                Explorar dados
-                            </button>
+                            <div class="politico-footer">
+                                <a href="#" class="btn-small">Perfil completo</a>
+                                <a href="#" class="btn-small">Projetos</a>
+                                <a href="#" class="btn-small">Votações</a>
+                            </div>
                         </div>
-                    </aside>
+                    </div>
+
+                    <!-- PREFEITO BOMBINHAS -->
+                    <div class="politico-card" data-municipio="bombinhas">
+                        <div class="politico-header">
+                            <span class="politico-partido">PL</span>
+                            <h3 class="politico-nome">Carlos Souza</h3>
+                            <p class="politico-cargo">Prefeito de Bombinhas</p>
+                        </div>
+                        <div class="politico-body">
+                            <div class="politico-info">
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Mandato:</span>
+                                    <span class="politico-info-value">2025-2028</span>
+                                </div>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Votos recebidos:</span>
+                                    <span class="politico-info-value">7.654 (49,2%)</span>
+                                </div>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Promessas cumpridas:</span>
+                                    <span class="politico-info-value">5/10 (50%)</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="politico-footer">
+                                <a href="#" class="btn-small">Perfil completo</a>
+                                <a href="#" class="btn-small">Projetos</a>
+                                <a href="#" class="btn-small">Votações</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VEREADOR DESTAQUE ITAPEMA -->
+                    <div class="politico-card" data-municipio="itapema">
+                        <div class="politico-header">
+                            <span class="politico-partido">PT</span>
+                            <h3 class="politico-nome">Ana Pereira</h3>
+                            <p class="politico-cargo">Vereadora - Itapema</p>
+                        </div>
+                        <div class="politico-body">
+                            <div class="politico-info">
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Mandato:</span>
+                                    <span class="politico-info-value">2025-2028</span>
+                                </div>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Votos recebidos:</span>
+                                    <span class="politico-info-value">1.234 (3,2%)</span>
+                                </div>
+                                <div class="politico-info-item">
+                                    <span class="politico-info-label">Projetos apresentados:</span>
+                                    <span class="politico-info-value">23</span>
+                                </div>
+                            </div>
+                            <div class="politico-footer">
+                                <a href="#" class="btn-small">Perfil completo</a>
+                                <a href="#" class="btn-small">Projetos</a>
+                                <a href="#" class="btn-small">Votações</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: right; margin-bottom: 2rem;">
+                    <a href="#" class="btn btn-outline">Ver todos os políticos <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- VOTAÇÕES RECENTES -->
+                <h2 class="section-title">
+                    <i class="fas fa-check-circle"></i>
+                    Votações Recentes
+                </h2>
+
+                <div class="votacoes-list">
+                    <div class="votacao-item">
+                        <div class="votacao-info">
+                            <h4>PL 023/2026 - Zoneamento Urbano</h4>
+                            <div class="votacao-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Itapema</span>
+                                <span><i class="fas fa-calendar"></i> 05/03/2026</span>
+                            </div>
+                        </div>
+                        <div class="votacao-resultado">
+                            <div class="votacao-numeros">
+                                <strong>9 votos</strong> a favor<br>
+                                <strong>2 votos</strong> contra
+                            </div>
+                            <span class="votacao-aprovado">APROVADO</span>
+                        </div>
+                    </div>
+
+                    <div class="votacao-item">
+                        <div class="votacao-info">
+                            <h4>PL 018/2026 - Orçamento Anual</h4>
+                            <div class="votacao-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Porto Belo</span>
+                                <span><i class="fas fa-calendar"></i> 03/03/2026</span>
+                            </div>
+                        </div>
+                        <div class="votacao-resultado">
+                            <div class="votacao-numeros">
+                                <strong>7 votos</strong> a favor<br>
+                                <strong>2 votos</strong> contra
+                            </div>
+                            <span class="votacao-aprovado">APROVADO</span>
+                        </div>
+                    </div>
+
+                    <div class="votacao-item">
+                        <div class="votacao-info">
+                            <h4>PL 015/2026 - Isenção de IPTU</h4>
+                            <div class="votacao-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
+                                <span><i class="fas fa-calendar"></i> 28/02/2026</span>
+                            </div>
+                        </div>
+                        <div class="votacao-resultado">
+                            <div class="votacao-numeros">
+                                <strong>3 votos</strong> a favor<br>
+                                <strong>6 votos</strong> contra
+                            </div>
+                            <span class="votacao-rejeitado">REJEITADO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJETOS DE LEI -->
+                <h2 class="section-title">
+                    <i class="fas fa-file-alt"></i>
+                    Projetos de Lei em Destaque
+                </h2>
+
+                <div class="projetos-grid">
+                    <div class="projeto-card">
+                        <div class="projeto-numero">PL 023/2026</div>
+                        <h3 class="projeto-titulo">Dispõe sobre o novo zoneamento urbano</h3>
+                        <p class="projeto-ementa">Altera a lei de uso e ocupação do solo, definindo novas áreas para expansão urbana e preservação ambiental.</p>
+                        <span class="projeto-status status-tramitando">Em tramitação</span>
+                        <div class="projeto-autor">
+                            <i class="fas fa-user"></i> Autor: Executivo Municipal
+                        </div>
+                        <div class="politico-footer">
+                            <a href="#" class="btn-small">Texto integral</a>
+                            <a href="#" class="btn-small">Votações</a>
+                            <a href="#" class="btn-small">Acompanhar</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-card">
+                        <div class="projeto-numero">PL 018/2026</div>
+                        <h3 class="projeto-titulo">Lei Orçamentária Anual 2027</h3>
+                        <p class="projeto-ementa">Estima a receita e fixa a despesa do município para o exercício financeiro de 2027.</p>
+                        <span class="projeto-status status-tramitando">Em tramitação</span>
+                        <div class="projeto-autor">
+                            <i class="fas fa-user"></i> Autor: Executivo Municipal
+                        </div>
+                        <div class="politico-footer">
+                            <a href="#" class="btn-small">Texto integral</a>
+                            <a href="#" class="btn-small">Votações</a>
+                            <a href="#" class="btn-small">Acompanhar</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-card">
+                        <div class="projeto-numero">PL 015/2026</div>
+                        <h3 class="projeto-titulo">Isenção de IPTU para aposentados</h3>
+                        <p class="projeto-ementa">Concede isenção do Imposto Predial e Territorial Urbano para aposentados com renda até 3 salários mínimos.</p>
+                        <span class="projeto-status status-rejeitado">Rejeitado</span>
+                        <div class="projeto-autor">
+                            <i class="fas fa-user"></i> Autor: Vereador Marcos Souza
+                        </div>
+                        <div class="politico-footer">
+                            <a href="#" class="btn-small">Texto integral</a>
+                            <a href="#" class="btn-small">Votações</a>
+                            <a href="#" class="btn-small">Acompanhar</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-card">
+                        <div class="projeto-numero">PL 012/2026</div>
+                        <h3 class="projeto-titulo">Criação do Fundo Municipal de Turismo</h3>
+                        <p class="projeto-ementa">Institui o Fundo Municipal de Turismo com recursos para fomento de atividades turísticas.</p>
+                        <span class="projeto-status status-aprovado">Aprovado</span>
+                        <div class="projeto-autor">
+                            <i class="fas fa-user"></i> Autor: Executivo Municipal
+                        </div>
+                        <div class="politico-footer">
+                            <a href="#" class="btn-small">Texto integral</a>
+                            <a href="#" class="btn-small">Votações</a>
+                            <a href="#" class="btn-small">Acompanhar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RANKING DE TRANSPARÊNCIA -->
+                <h2 class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    Ranking de Transparência
+                </h2>
+
+                <div class="ranking-table">
+                    <div class="ranking-row ranking-header">
+                        <div class="ranking-col">Posição</div>
+                        <div class="ranking-col">Município</div>
+                        <div class="ranking-col">Nota</div>
+                        <div class="ranking-col">Variação</div>
+                        <div class="ranking-col">Última atualização</div>
+                    </div>
+                    <div class="ranking-row">
+                        <div class="ranking-col" data-label="Posição"><span class="ranking-pos">1º</span></div>
+                        <div class="ranking-col" data-label="Município"><strong>Bombinhas</strong></div>
+                        <div class="ranking-col" data-label="Nota"><span class="nota-alta">87/100</span></div>
+                        <div class="ranking-col" data-label="Variação"><i class="fas fa-arrow-up" style="color: var(--success);"></i> +5</div>
+                        <div class="ranking-col" data-label="Última atualização">05/03/2026</div>
+                    </div>
+                    <div class="ranking-row">
+                        <div class="ranking-col" data-label="Posição"><span class="ranking-pos">2º</span></div>
+                        <div class="ranking-col" data-label="Município"><strong>Porto Belo</strong></div>
+                        <div class="ranking-col" data-label="Nota"><span class="nota-media">72/100</span></div>
+                        <div class="ranking-col" data-label="Variação"><i class="fas fa-arrow-up" style="color: var(--success);"></i> +3</div>
+                        <div class="ranking-col" data-label="Última atualização">05/03/2026</div>
+                    </div>
+                    <div class="ranking-row">
+                        <div class="ranking-col" data-label="Posição"><span class="ranking-pos">3º</span></div>
+                        <div class="ranking-col" data-label="Município"><strong>Itapema</strong></div>
+                        <div class="ranking-col" data-label="Nota"><span class="nota-baixa">68/100</span></div>
+                        <div class="ranking-col" data-label="Variação"><i class="fas fa-arrow-down" style="color: var(--error);"></i> -2</div>
+                        <div class="ranking-col" data-label="Última atualização">05/03/2026</div>
+                    </div>
+                </div>
+
+                <!-- AGENDA PÚBLICA -->
+                <h2 class="section-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    Agenda Pública
+                </h2>
+
+                <div class="agenda-list">
+                    <div class="agenda-item">
+                        <div class="agenda-data">
+                            <div class="agenda-dia">10</div>
+                            <div class="agenda-mes">MAR</div>
+                        </div>
+                        <div class="agenda-info">
+                            <h4>Sessão Ordinária da Câmara</h4>
+                            <div class="agenda-local">
+                                <i class="fas fa-map-marker-alt"></i> Câmara de Itapema
+                            </div>
+                        </div>
+                        <span class="agenda-status confirmado">Confirmado</span>
+                    </div>
+
+                    <div class="agenda-item">
+                        <div class="agenda-data">
+                            <div class="agenda-dia">12</div>
+                            <div class="agenda-mes">MAR</div>
+                        </div>
+                        <div class="agenda-info">
+                            <h4>Reunião com Secretários - Orçamento 2027</h4>
+                            <div class="agenda-local">
+                                <i class="fas fa-map-marker-alt"></i> Prefeitura de Porto Belo
+                            </div>
+                        </div>
+                        <span class="agenda-status confirmado">Confirmado</span>
+                    </div>
+
+                    <div class="agenda-item">
+                        <div class="agenda-data">
+                            <div class="agenda-dia">15</div>
+                            <div class="agenda-mes">MAR</div>
+                        </div>
+                        <div class="agenda-info">
+                            <h4>Audiência Pública - Zoneamento</h4>
+                            <div class="agenda-local">
+                                <i class="fas fa-map-marker-alt"></i> Centro Comunitário Bombinhas
+                            </div>
+                        </div>
+                        <span class="agenda-status pendente">Aguardando confirmação</span>
+                    </div>
+                </div>
+
+                <!-- COMPARTILHAR PÁGINA -->
+                <div class="share-container">
+                    <span class="share-label">Compartilhe esta página:</span>
+                    <div class="share-buttons">
+                        <a href="https://wa.me/?text=Confira%20a%20cobertura%20política%20do%20Big%20News%20-%20Costa%20Esmeralda%20https%3A%2F%2Fbignewssc.com.br%2Fpolitica.html" target="_blank" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbignewssc.com.br%2Fpolitica.html" target="_blank" class="share-btn share-facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text=Confira%20a%20cobertura%20política%20do%20Big%20News%20-%20Costa%20Esmeralda&url=https%3A%2F%2Fbignewssc.com.br%2Fpolitica.html" target="_blank" class="share-btn share-twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://t.me/share/url?url=https%3A%2F%2Fbignewssc.com.br%2Fpolitica.html&text=Confira%20a%20cobertura%20política%20do%20Big%20News%20-%20Costa%20Esmeralda" target="_blank" class="share-btn share-telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- NEWSLETTER (invisível mas funcional) -->
+    <div style="display: none;" id="newsletter">
+        <div class="sidebar-widget newsletter-widget">
+            <h3 class="widget-title">
+                <i class="fas fa-envelope-open-text"></i>
+                Newsletter Semanal
+            </h3>
+            <p>Receba toda quarta-feira, às 7h, o resumo curado da semana com o que realmente importa na política da Costa Esmeralda.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    Assinar gratuitamente
+                </button>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -1649,7 +1756,6 @@
                         <li><a href="analises.html">Análises</a></li>
                         <li><a href="podcast.html">Podcast</a></li>
                         <li><a href="explica.html">Explica</a></li>
-                        <li><a href="live.html">Ao Vivo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1683,23 +1789,20 @@
 
     <script>
         // Atualizar data
-        const dateEl = document.getElementById('current-date');
-        if (dateEl) {
-            dateEl.textContent = new Date().toLocaleDateString('pt-BR', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
 
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) {
-                header?.classList.add('scrolled');
+                header.classList.add('scrolled');
             } else {
-                header?.classList.remove('scrolled');
+                header.classList.remove('scrolled');
             }
         });
 
@@ -1715,12 +1818,27 @@
             });
         });
 
+        // Scroll para newsletter
+        window.scrollToNewsletter = function() {
+            const newsletter = document.getElementById('newsletter');
+            if (newsletter) {
+                newsletter.style.display = 'block';
+                newsletter.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    const input = newsletter.querySelector('input[type="email"]');
+                    if (input) input.focus();
+                }, 500);
+            }
+        };
+
         // Newsletter form
         const newsletterForm = document.getElementById('newsletter-form');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const email = newsletterForm.querySelector('input[type="email"]').value;
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                const email = emailInput.value;
+                
                 if (!email || !email.includes('@')) {
                     alert('Por favor, insira um e-mail válido.');
                     return;
@@ -1735,7 +1853,10 @@
                     alert('Obrigado por assinar! Você receberá a Newsletter Semanal às quartas-feiras às 7h.');
                     button.innerHTML = originalText;
                     button.disabled = false;
-                    newsletterForm.reset();
+                    emailInput.value = '';
+                    
+                    // Esconder newsletter após envio
+                    document.getElementById('newsletter').style.display = 'none';
                 }, 1000);
             });
         }
@@ -1766,7 +1887,6 @@
             if (e.key === 'Escape') closeDrawer();
         });
 
-        // Mostrar/ocultar botão mobile conforme tamanho da tela
         const toggleMobileBtn = () => {
             if (mobileMenuBtn) {
                 mobileMenuBtn.style.display = window.innerWidth <= 768 ? 'inline-flex' : 'none';
@@ -1780,34 +1900,28 @@
         
         toggleMobileBtn();
 
-        // VERIFICAR STATUS AO VIVO (API REAL)
+        // VERIFICAR STATUS AO VIVO (Política)
         function checkLiveStatus() {
+            const liveSpace = document.getElementById('liveSpace');
+            const liveTitle = document.getElementById('liveTitle');
+            const liveDesc = document.getElementById('liveDescription');
+            const liveWatchBtn = document.getElementById('liveWatchBtn');
+            
             fetch('/live-status.json')
                 .then(response => response.json())
                 .then(data => {
-                    const liveIndicator = document.getElementById('liveSidebarIndicator');
-                    const liveTitle = document.getElementById('liveSidebarTitle');
-                    const liveLink = document.getElementById('liveSidebarLink');
-                    
-                    if (data.live) {
-                        // Mostrar indicador na sidebar
-                        if (liveIndicator) liveIndicator.style.display = 'block';
-                        
-                        // Atualizar título
+                    if (data.live && data.program === 'politica' && liveSpace) {
+                        liveSpace.classList.add('active');
                         if (liveTitle) liveTitle.textContent = data.title;
-                        
-                        // Atualizar link
-                        if (liveLink) liveLink.href = data.url;
-                    } else {
-                        // Esconder indicador
-                        if (liveIndicator) liveIndicator.style.display = 'none';
+                        if (liveDesc) liveDesc.textContent = data.description || 'Acompanhe debates e entrevistas políticas ao vivo';
+                        if (liveWatchBtn) liveWatchBtn.href = data.url;
+                    } else if (liveSpace) {
+                        liveSpace.classList.remove('active');
                     }
                 })
                 .catch(error => {
                     console.log('Erro ao verificar live:', error);
-                    // Em caso de erro, esconder o indicador
-                    const indicator = document.getElementById('liveSidebarIndicator');
-                    if (indicator) indicator.style.display = 'none';
+                    if (liveSpace) liveSpace.classList.remove('active');
                 });
         }
 
