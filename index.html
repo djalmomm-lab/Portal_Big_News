@@ -14,33 +14,31 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bignewssc.com.br/">
+    <meta property="og:url" content="https://bignews-sc.com.br/">
     <meta property="og:title" content="Big News - Informação que constrói opinião">
     <meta property="og:description" content="Portal de notícias e análises da Costa Esmeralda. Fatos verificados, perspectivas múltiplas e arquivo político permanente.">
-    <meta property="og:image" content="https://bignewssc.com.br/images/social-preview.jpg">
+    <meta property="og:image" content="https://bignews-sc.com.br/images/social-preview.jpg">
     <meta property="og:site_name" content="Big News">
     <meta property="og:locale" content="pt_BR">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://bignewssc.com.br/">
+    <meta name="twitter:url" content="https://bignews-sc.com.br/">
     <meta name="twitter:title" content="Big News - Informação que constrói opinião">
     <meta name="twitter:description" content="Portal de notícias e análises da Costa Esmeralda.">
-    <meta name="twitter:image" content="https://bignewssc.com.br/images/social-preview.jpg">
+    <meta name="twitter:image" content="https://bignews-sc.com.br/images/social-preview.jpg">
     <meta name="twitter:site" content="@BigNewsSC">
     
     <!-- Canonical -->
-    <link rel="canonical" href="https://bignewssc.com.br/">
+    <link rel="canonical" href="https://bignews-sc.com.br/">
     
+    <!-- Favicon / Ícones -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
     
     <!-- Preconnect e Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,6 +71,7 @@
             --border: #e5e7eb;
             --success: #059669;
             --error: #dc2626;
+            --live: #dc2626;
             --warning: #d97706;
             --info: #2563eb;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -211,19 +210,16 @@
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            overflow: hidden;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-        .logo-icon img {
-            width: 48px;
-            height: 48px;
-            display: block;
+            font-weight: 900;
+            font-size: 1.25rem;
+            border-radius: 4px;
         }
 
         .logo-text {
@@ -342,6 +338,78 @@
         main {
             margin-top: 120px;
             min-height: calc(100vh - 120px);
+        }
+
+        /* BANNER AO VIVO */
+        .live-banner {
+            background: linear-gradient(135deg, var(--live) 0%, #b91c1c 100%);
+            padding: 1rem 0;
+            display: none;
+            transition: all 0.3s ease;
+            margin-top: 0;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .live-banner.active {
+            display: block;
+        }
+        
+        .live-banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .live-badge {
+            background: white;
+            color: var(--live);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .live-badge i {
+            color: var(--live);
+            animation: pulse 2s infinite;
+        }
+        
+        .live-info {
+            color: white;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .live-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .live-watch-btn {
+            background: white;
+            color: var(--live);
+        }
+        
+        .live-close-btn {
+            border-color: white;
+            color: white;
+        }
+        
+        .live-close-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* HERO SECTION */
@@ -816,11 +884,6 @@
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
         .database-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1063,42 +1126,43 @@
                 display: inline-flex;
                 align-items: center;
             }
+            
+            .live-banner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .live-actions {
+                width: 100%;
+                justify-content: center;
+            }
         }
-            /* ── MOBILE DRAWER ── */
-        .mobile-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.5); z-index: 200;
-        }
-        .mobile-overlay.open { display: block; }
-        .mobile-drawer {
-            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-            background: var(--primary-dark); z-index: 201;
-            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
-        }
-        .mobile-drawer.open { left: 0; }
-        .mobile-drawer-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .mobile-drawer-close {
-            background: none; border: none; color: rgba(255,255,255,0.7);
-            font-size: 20px; cursor: pointer; padding: 4px;
-        }
-        .mobile-drawer-close:hover { color: #fff; }
-        .mobile-nav-links { padding: 12px 0; }
-        .mobile-nav-link {
-            display: flex; align-items: center; gap: 10px;
-            padding: 13px 20px; color: rgba(255,255,255,0.8);
-            text-decoration: none; font-family: 'Inter', sans-serif;
-            font-size: 15px; font-weight: 500; transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
-        </style>
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-to-content">Pular para conteúdo principal</a>
+
+    <!-- BANNER AO VIVO -->
+    <div class="live-banner" id="liveBanner">
+        <div class="container">
+            <div class="live-banner-content">
+                <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                    <span class="live-badge">
+                        <i class="fas fa-circle"></i> AO VIVO AGORA
+                    </span>
+                    <span class="live-info" id="liveProgramName">Carregando...</span>
+                </div>
+                <div class="live-actions">
+                    <a href="live.html" class="btn btn-accent live-watch-btn" id="liveWatchLink">
+                        <i class="fas fa-play"></i> Assistir ao vivo
+                    </a>
+                    <button class="btn btn-outline live-close-btn" onclick="document.getElementById('liveBanner').classList.remove('active')">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <header class="header" id="header">
         <div class="header-top">
@@ -1108,25 +1172,23 @@
             </div>
         </div>
         <div class="header-main">
-            <a href="index.html" class="logo" aria-label="Big News Costa Esmeralda - Página inicial">
-                <div class="logo-icon">
-                    <img src="icon-192x192.png" alt="Big News" width="48" height="48">
-                </div>
+            <a href="/" class="logo" aria-label="Big News Costa Esmeralda - Página inicial">
+                <div class="logo-icon" aria-hidden="true">BN</div>
                 <div class="logo-text">
                     <span class="logo-title">Big News</span>
                     <span class="logo-subtitle">Costa Esmeralda</span>
                 </div>
             </a>
 
-                        <nav class="nav-desktop" aria-label="Menu principal">
-                <a href="index.html" class="nav-link active" aria-current="page">Home</a>
-                <a href="noticias.html" class="nav-link">Notícias</a>
-                <a href="esportes.html" class="nav-link">Esportes</a>
-                <a href="politica.html" class="nav-link">Política</a>
-                <a href="fact-checking.html" class="nav-link">Fact-Checking</a>
-                <a href="analises.html" class="nav-link">Análises</a>
-                <a href="podcast.html" class="nav-link">Podcast</a>
-                <a href="explica.html" class="nav-link">Explica</a>
+            <nav class="nav-desktop" aria-label="Menu principal">
+                <a href="/" class="nav-link" aria-current="page">Home</a>
+                <a href="/noticias.html" class="nav-link">Notícias</a>
+                <a href="/analises.html" class="nav-link">Análises</a>
+                <a href="/fact-checking.html" class="nav-link">Fact-Checking</a>
+                <a href="/politica.html" class="nav-link">Política</a>
+                <a href="/podcast.html" class="nav-link">Podcast</a>
+                <a href="/explica.html" class="nav-link">Explica</a>
+                <a href="/live.html" class="nav-link">Ao Vivo</a>
             </nav>
 
             <div class="header-actions">
@@ -1138,33 +1200,12 @@
                     <i class="fas fa-envelope" aria-hidden="true"></i>
                     <span class="sr-only">Newsletter</span>
                 </button>
-                <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
+                <button class="btn btn-outline btn-sm mobile-menu-toggle" aria-label="Menu" style="display: none;" id="mobile-menu-button">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </header>
-
-    <!-- Mobile Drawer -->
-    <div class="mobile-overlay" id="mobile-overlay" role="presentation"></div>
-    <nav class="mobile-drawer" id="mobile-drawer" aria-label="Menu mobile">
-        <div class="mobile-drawer-header">
-            <div class="logo-title" style="font-size:1.2rem;color:#fff">Big News</div>
-            <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Fechar menu">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="mobile-nav-links">
-            <a href="index.html" class="mobile-nav-link active"><i class="fas fa-home"></i>Home</a>
-            <a href="noticias.html" class="mobile-nav-link"><i class="fas fa-newspaper"></i>Notícias</a>
-            <a href="esportes.html" class="mobile-nav-link"><i class="fas fa-trophy"></i>Esportes</a>
-            <a href="politica.html" class="mobile-nav-link"><i class="fas fa-landmark"></i>Política</a>
-            <a href="fact-checking.html" class="mobile-nav-link"><i class="fas fa-check-circle"></i>Fact-Checking</a>
-            <a href="analises.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i>Análises</a>
-            <a href="podcast.html" class="mobile-nav-link"><i class="fas fa-microphone"></i>Podcast</a>
-            <a href="explica.html" class="mobile-nav-link"><i class="fas fa-lightbulb"></i>Explica</a>
-        </div>
-    </nav>
 
     <main id="main-content">
         <section class="hero">
@@ -1227,7 +1268,7 @@
                         <i class="fas fa-star" aria-hidden="true"></i>
                         Destaques
                     </h2>
-                    <a href="destaques" class="section-link">
+                    <a href="/destaques" class="section-link">
                         Ver todos <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -1237,7 +1278,7 @@
                         <meta itemprop="dateModified" content="2025-03-05T14:30">
                         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
                             <meta itemprop="name" content="Big News Costa Esmeralda">
-                            <meta itemprop="url" content="https://bignewssc.com.br">
+                            <meta itemprop="url" content="https://bignews-sc.com.br">
                         </div>
                         
                         <div class="news-card-image">
@@ -1246,7 +1287,7 @@
                         </div>
                         <div class="news-card-content">
                             <h3 class="news-card-title" itemprop="headline">
-                                <a href="#" itemprop="url">Os 100 dias do novo governo: promessas vs. realidade em números</a>
+                                <a href="/artigo/1" itemprop="url">Os 100 dias do novo governo: promessas vs. realidade em números</a>
                             </h3>
                             <p class="news-card-excerpt" itemprop="description">Análise completa das 12 promessas de campanha do prefeito de Itapema e o status atual de cada uma, com dados oficiais da prefeitura.</p>
                             <div class="news-card-meta">
@@ -1273,7 +1314,7 @@
                         </div>
                         <div class="news-card-content">
                             <h3 class="news-card-title" itemprop="headline">
-                                <a href="#" itemprop="url">Projeto de zoneamento divide vereadores: entenda os argumentos</a>
+                                <a href="/artigo/2" itemprop="url">Projeto de zoneamento divide vereadores: entenda os argumentos</a>
                             </h3>
                             <p class="news-card-excerpt" itemprop="description">Apresentamos as visões da base governista e da oposição sobre a mudança no código urbanístico de Porto Belo.</p>
                             <div class="news-card-meta">
@@ -1300,7 +1341,7 @@
                         </div>
                         <div class="news-card-content">
                             <h3 class="news-card-title" itemprop="headline">
-                                <a href="#" itemprop="url">Como funciona a Câmara de Vereadores: guia completo para cidadãos</a>
+                                <a href="/artigo/3" itemprop="url">Como funciona a Câmara de Vereadores: guia completo para cidadãos</a>
                             </h3>
                             <p class="news-card-excerpt" itemprop="description">Entenda o processo legislativo municipal, como acompanhar votações e como participar das sessões.</p>
                             <div class="news-card-meta">
@@ -1327,7 +1368,7 @@
                                 <i class="fas fa-newspaper" aria-hidden="true"></i>
                                 Últimas Notícias
                             </h2>
-                            <a href="arquivo" class="section-link">
+                            <a href="/arquivo" class="section-link">
                                 Arquivo completo <i class="fas fa-archive" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -1343,7 +1384,7 @@
                                         <span class="tag">Política</span>
                                         <span><i class="fas fa-clock" aria-hidden="true"></i> Há 2 horas</span>
                                     </div>
-                                    <h3><a href="#">Câmara aprova projeto de lei que altera regras de zoneamento urbano</a></h3>
+                                    <h3><a href="/artigo/4">Câmara aprova projeto de lei que altera regras de zoneamento urbano</a></h3>
                                     <p class="article-excerpt">Projeto foi aprovado por 9 votos a 2 após três horas de debate. Oposição questiona falta de audiências públicas.</p>
                                     <span class="tag"><i class="fas fa-check-circle" style="color: var(--success);" aria-hidden="true"></i> Fact-check disponível</span>
                                 </div>
@@ -1359,7 +1400,7 @@
                                         <span class="tag">Meio Ambiente</span>
                                         <span><i class="fas fa-clock" aria-hidden="true"></i> Há 4 horas</span>
                                     </div>
-                                    <h3><a href="#">Prefeitura anuncia projeto de despoluição da Baía de Porto Belo</a></h3>
+                                    <h3><a href="/artigo/5">Prefeitura anuncia projeto de despoluição da Baía de Porto Belo</a></h3>
                                     <p class="article-excerpt">Investimento de R$ 12 milhões prevê saneamento básico para 80% da área urbana até 2026. Especialistas analisam viabilidade.</p>
                                 </div>
                             </article>
@@ -1374,7 +1415,7 @@
                                         <span class="tag">Transparência</span>
                                         <span><i class="fas fa-clock" aria-hidden="true"></i> Há 6 horas</span>
                                     </div>
-                                    <h3><a href="#">Promessa de campanha sobre iluminação pública não foi cumprida, aponta levantamento</a></h3>
+                                    <h3><a href="/artigo/6">Promessa de campanha sobre iluminação pública não foi cumprida, aponta levantamento</a></h3>
                                     <p class="article-excerpt">Dados da prefeitura mostram que apenas 40% das metas de iluminação LED foram atingidas em três anos de gestão.</p>
                                     <span class="tag" style="background: var(--error); color: var(--white);">Promessa não cumprida</span>
                                 </div>
@@ -1389,20 +1430,21 @@
                         </div>
                     </div>
 
-                    <div class="sidebar-widget newsletter-widget" id="newsletter">
-    <h3 class="widget-title">
-        <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-        Newsletter Semanal
-    </h3>
-    <p>Receba toda quarta-feira, às 7h, o resumo curado da semana com o que realmente importa na política da Costa Esmeralda.</p>
-    <form class="newsletter-form" id="newsletter-form">
-        <input type="email" placeholder="Seu melhor e-mail" required aria-label="Seu e-mail para newsletter">
-        <button type="submit">
-            <i class="fas fa-paper-plane" aria-hidden="true"></i>
-            Assinar gratuitamente
-        </button>
-    </form>
-</div>
+                    <aside class="sidebar">
+                        <div class="sidebar-widget newsletter-widget" id="newsletter">
+                            <h3 class="widget-title">
+                                <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+                                Newsletter Semanal
+                            </h3>
+                            <p>Receba toda quarta-feira, às 7h, o resumo curado da semana com o que realmente importa na política da Costa Esmeralda.</p>
+                            <form class="newsletter-form" id="newsletter-form">
+                                <input type="email" placeholder="Seu melhor e-mail" required aria-label="Seu e-mail para newsletter">
+                                <button type="submit">
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                    Assinar gratuitamente
+                                </button>
+                            </form>
+                        </div>
 
                         <div class="sidebar-widget">
                             <h3 class="widget-title">
@@ -1414,10 +1456,10 @@
                             </div>
                             <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Sessão Ordinária da Câmara de Itapema</h4>
                             <p style="color: var(--text-light); font-size: 0.9375rem; margin-bottom: 1rem;">Transmissão ao vivo com comentários em tempo real da nossa equipe.</p>
-                            <button class="btn btn-primary" style="width: 100%;">
+                            <a href="live.html" class="btn btn-primary" style="width: 100%;">
                                 <i class="fas fa-play" aria-hidden="true"></i>
                                 Assistir transmissão
-                            </button>
+                            </a>
                         </div>
 
                         <div class="sidebar-widget">
@@ -1493,65 +1535,55 @@
         </section>
     </main>
 
-        <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo-title" style="font-size: 1.875rem;">Big News</div>
                     <p>Portal de notícias e análises da Costa Esmeralda. Documentamos o presente para informar o futuro da nossa região.</p>
-                                        <div class="social-links">
-                        <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
-                        <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                        <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                        <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h4>Seções</h4>
                     <ul class="footer-links">
-                        <li><a href="noticias.html">Notícias</a></li>
-                        <li><a href="esportes.html">Esportes</a></li>
-                        <li><a href="politica.html">Política</a></li>
-                        <li><a href="fact-checking.html">Fact-Checking</a></li>
-                        <li><a href="analises.html">Análises</a></li>
-                        <li><a href="podcast.html">Podcast</a></li>
-                        <li><a href="explica.html">Explica</a></li>
+                        <li><a href="/noticias.html">Notícias</a></li>
+                        <li><a href="/analises.html">Análises</a></li>
+                        <li><a href="/fact-checking.html">Fact-Checking</a></li>
+                        <li><a href="/politica.html">Política</a></li>
+                        <li><a href="/podcast.html">Podcast</a></li>
+                        <li><a href="/explica.html">Explica</a></li>
+                        <li><a href="/live.html">Ao Vivo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Região</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Itapema</a></li>
-                        <li><a href="#">Porto Belo</a></li>
-                        <li><a href="#">Bombinhas</a></li>
-                        <li><a href="#">Costa Esmeralda</a></li>
+                        <li><a href="/itapema">Itapema</a></li>
+                        <li><a href="/porto-belo">Porto Belo</a></li>
+                        <li><a href="/bombinhas">Bombinhas</a></li>
+                        <li><a href="/costa-esmeralda">Costa Esmeralda</a></li>
                     </ul>
                 </div>
-                                <div class="footer-column">
-                    <h4>Contato</h4>
+                <div class="footer-column">
+                    <h4>Institucional</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:contato@bignewssc.com.br"><i class="fas fa-envelope" style="margin-right:6px;opacity:.7"></i>contato@bignewssc.com.br</a></li>
-                        <li><a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="margin-right:6px;opacity:.7"></i>WhatsApp</a></li>
-                        <li style="margin-top:.75rem;font-size:.8125rem;color:var(--text-light);font-family:'Inter',sans-serif;">Seg–Sex, 09h–18h</li>
+                        <li><a href="/sobre">Sobre</a></li>
+                        <li><a href="/metodologia">Metodologia</a></li>
+                        <li><a href="/transparencia">Transparência</a></li>
+                        <li><a href="/contato">Contato</a></li>
                     </ul>
-                    <div style="margin-top:1rem;">
-                        <div style="font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:.5rem;">Siga o Big News</div>
-                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-                            <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color=''"><i class="fab fa-instagram"></i></a>
-                            <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Twitter/X" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''"><i class="fab fa-x-twitter"></i></a>
-                            <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color=''"><i class="fab fa-youtube"></i></a>
-                            <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color=''"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" aria-label="TikTok" style="color:var(--text-light);font-size:1.1rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''"><i class="fab fa-tiktok"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div>&copy; 2026 Big News. Todos os direitos reservados.</div>
                 <div class="footer-bottom-links">
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de Uso</a>
+                    <a href="/privacidade">Política de Privacidade</a>
+                    <a href="/termos">Termos de Uso</a>
                 </div>
             </div>
         </div>
@@ -1568,6 +1600,9 @@
             const loadMoreBtn = document.getElementById('load-more-btn');
             const heroNewsletterBtn = document.getElementById('hero-cta-newsletter');
             const newsletterButton = document.getElementById('newsletter-button');
+            const liveBanner = document.getElementById('liveBanner');
+            const liveProgramName = document.getElementById('liveProgramName');
+            const liveWatchLink = document.getElementById('liveWatchLink');
             
             // Atualizar data atual
             function updateDate() {
@@ -1612,7 +1647,7 @@
                 });
             }
 
-            // Newsletter form handling
+            // Newsletter form handling (atualizado para Newsletter Semanal)
             function initNewsletterForm() {
                 if (!newsletterForm) return;
                 
@@ -1637,7 +1672,7 @@
                         // Em produção: enviar para API
                         console.log('Newsletter signup:', email);
                         
-                        alert('Obrigado por assinar! Você reeberá toda quarta-feira, às 7h, o resumo curado da semana com o que realmente importa na política da Costa Esmeralda.');
+                        alert('Obrigado por assinar! Você receberá a Newsletter Semanal às quartas-feiras às 7h.');
                         button.innerHTML = originalText;
                         button.disabled = false;
                         emailInput.value = '';
@@ -1672,7 +1707,7 @@
                                         <span class="tag">Economia</span>
                                         <span><i class="fas fa-clock" aria-hidden="true"></i> Há 1 hora</span>
                                     </div>
-                                    <h3><a href="#">Dados mostram crescimento do turismo na região, mas com desafios</a></h3>
+                                    <h3><a href="/artigo/7">Dados mostram crescimento do turismo na região, mas com desafios</a></h3>
                                     <p class="article-excerpt">Análise exclusiva dos números do turismo na Costa Esmeralda durante a temporada 2024-2025.</p>
                                 </div>
                             `;
@@ -1699,6 +1734,33 @@
                 }
             }
 
+            // Verificar status ao vivo
+            function checkLiveStatus() {
+                // Simulação: verificar a cada 30 segundos se há live
+                // Em produção, substituir por fetch para API real
+                
+                // Simulação de live ativa (exemplo: notícias ao vivo)
+                const liveActive = false; // Mude para true para testar
+                const liveProgram = 'noticias'; // noticias, esportes, podcast
+                const programNames = {
+                    noticias: 'Notícias ao Vivo',
+                    esportes: 'Esportes ao Vivo',
+                    podcast: 'Podcast ao Vivo'
+                };
+                
+                if (liveActive && liveBanner) {
+                    liveBanner.classList.add('active');
+                    if (liveProgramName) {
+                        liveProgramName.textContent = programNames[liveProgram] || 'Programa ao Vivo';
+                    }
+                    if (liveWatchLink) {
+                        liveWatchLink.href = `live.html?program=${liveProgram}`;
+                    }
+                } else if (liveBanner) {
+                    liveBanner.classList.remove('active');
+                }
+            }
+
             // Inicializar tudo
             document.addEventListener('DOMContentLoaded', () => {
                 updateDate();
@@ -1706,6 +1768,7 @@
                 initSmoothScroll();
                 initNewsletterForm();
                 initLoadMore();
+                checkLiveStatus();
 
                 // Event listeners para botões de newsletter
                 if (heroNewsletterBtn) {
@@ -1723,6 +1786,9 @@
                         alert('Menu mobile será implementado com drawer lateral.');
                     });
                 }
+                
+                // Verificar status a cada 30 segundos
+                setInterval(checkLiveStatus, 30000);
             });
 
             // Keyboard shortcuts
@@ -1741,24 +1807,11 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch(err => {
+                navigator.serviceWorker.register('/sw.js').catch(err => {
                     console.log('ServiceWorker registration failed: ', err);
                 });
             });
         }
-        <script>
-                // ── Mobile Drawer ──
-        const mobileMenuBtn = document.getElementById('mobile-menu-button');
-        const mobileDrawer  = document.getElementById('mobile-drawer');
-        const mobileOverlay = document.getElementById('mobile-overlay');
-        const mobileClose   = document.getElementById('mobile-drawer-close');
-        function openDrawer()  { mobileDrawer?.classList.add('open'); mobileOverlay?.classList.add('open'); document.body.style.overflow='hidden'; }
-        function closeDrawer() { mobileDrawer?.classList.remove('open'); mobileOverlay?.classList.remove('open'); document.body.style.overflow=''; }
-        mobileMenuBtn?.addEventListener('click', openDrawer);
-        mobileClose?.addEventListener('click', closeDrawer);
-        mobileOverlay?.addEventListener('click', closeDrawer);
-        document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
-        window.addEventListener('resize', () => { if(window.innerWidth > 768) closeDrawer(); });
     </script>
 </body>
 </html>
