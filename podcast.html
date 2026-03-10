@@ -8,18 +8,35 @@
     <!-- SEO -->
     <meta name="description" content="Podcast do Big News. Entrevistas exclusivas com autoridades, análises aprofundadas e transmissões ao vivo da Costa Esmeralda.">
     <meta name="robots" content="index, follow">
+    <meta name="author" content="Big News Costa Esmeralda">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Podcast - Big News">
-    <meta property="og:description" content="Entrevistas exclusivas e transmissões ao vivo">
-    <meta property="og:url" content="https://bignewssc.com.br/podcast.html">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bignewssc.com.br/podcast.html">
+    <meta property="og:title" content="Podcast - Big News Costa Esmeralda">
+    <meta property="og:description" content="Entrevistas exclusivas e transmissões ao vivo">
+    <meta property="og:image" content="https://bignewssc.com.br/images/social-podcast.jpg">
     
-    <!-- Fonts e CSS -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://bignewssc.com.br/podcast.html">
+    <meta name="twitter:title" content="Podcast - Big News">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://bignewssc.com.br/podcast.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <style>
         /* ===== VARIÁVEIS ===== */
@@ -89,7 +106,7 @@
             top: 0;
         }
 
-        /* ===== HEADER ===== */
+        /* HEADER */
         .header {
             background: var(--white);
             border-bottom: 1px solid var(--border);
@@ -171,7 +188,7 @@
             text-transform: uppercase;
         }
 
-        /* ===== NAVEGAÇÃO ===== */
+        /* NAVEGAÇÃO */
         .nav-desktop {
             display: flex;
             gap: 2rem;
@@ -224,6 +241,11 @@
             border: 2px solid var(--primary);
         }
 
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
         .btn-accent {
             background: var(--accent);
             color: var(--white);
@@ -237,7 +259,7 @@
             padding: 0.375rem 0.75rem;
         }
 
-        /* ===== MAIN ===== */
+        /* MAIN */
         main {
             margin-top: 120px;
             min-height: calc(100vh - 120px);
@@ -270,7 +292,68 @@
             font-size: 1.125rem;
         }
 
-        /* ===== SEÇÃO AO VIVO ===== */
+        /* INDICADOR AO VIVO */
+        .live-indicator-page {
+            display: none;
+            margin-bottom: 2rem;
+        }
+        
+        .live-indicator-page a {
+            text-decoration: none;
+        }
+        
+        .live-indicator-box {
+            background: var(--live);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .live-badge-white {
+            background: white;
+            color: var(--live);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .live-badge-white i {
+            color: var(--live);
+            animation: pulse 2s infinite;
+        }
+        
+        .live-info-text {
+            flex: 1;
+        }
+        
+        .live-info-text strong {
+            font-size: 1.125rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .live-info-text p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .live-arrow {
+            font-size: 1.25rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* SEÇÃO AO VIVO */
         .live-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             border-radius: 12px;
@@ -304,11 +387,6 @@
         .live-badge i {
             font-size: 0.75rem;
             animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         .live-studio {
@@ -428,7 +506,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* ===== PODCASTS GRAVADOS ===== */
+        /* PODCASTS GRAVADOS */
         .podcast-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -535,7 +613,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* ===== ESTÚDIO BIG NEWS ===== */
+        /* ESTÚDIO BIG NEWS */
         .studio-section {
             background: var(--primary);
             color: var(--white);
@@ -587,7 +665,60 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== FOOTER ===== */
+        /* NEWSLETTER WIDGET */
+        .newsletter-widget {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+        
+        .newsletter-widget .widget-title {
+            color: var(--white);
+            border-bottom-color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-widget p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .newsletter-widget input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-widget input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .newsletter-widget button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        /* FOOTER */
         .footer {
             background: var(--primary);
             color: var(--white);
@@ -680,7 +811,7 @@
             text-decoration: none;
         }
 
-        /* ===== RESPONSIVIDADE ===== */
+        /* RESPONSIVIDADE */
         @media (max-width: 1024px) {
             .live-studio {
                 grid-template-columns: 1fr;
@@ -692,6 +823,10 @@
             
             .studio-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -708,19 +843,59 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .live-indicator-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .live-badge-white {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .live-studio {
+                gap: 1rem;
+            }
         }
+        
+        /* MOBILE DRAWER */
+        .mobile-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 200;
+        }
+        .mobile-overlay.open { display: block; }
+        .mobile-drawer {
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
+            background: var(--primary-dark); z-index: 201;
+            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
+        }
+        .mobile-drawer.open { left: 0; }
+        .mobile-drawer-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-drawer-close {
+            background: none; border: none; color: rgba(255,255,255,0.7);
+            font-size: 20px; cursor: pointer; padding: 4px;
+        }
+        .mobile-drawer-close:hover { color: #fff; }
+        .mobile-nav-links { padding: 12px 0; }
+        .mobile-nav-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 13px 20px; color: rgba(255,255,255,0.8);
+            text-decoration: none; font-family: 'Inter', sans-serif;
+            font-size: 15px; font-weight: 500; transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
     </style>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <a href="#main-content" class="skip-to-content">Pular para conteúdo principal</a>
 
-    <header class="header">
+    <header class="header" id="header">
         <div class="header-top">
             <div class="header-top-content">
                 <span><i class="fas fa-map-marker-alt"></i> Costa Esmeralda, SC</span>
@@ -738,7 +913,7 @@
                 </div>
             </a>
 
-                        <nav class="nav-desktop" aria-label="Menu principal">
+            <nav class="nav-desktop" aria-label="Menu principal">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="noticias.html" class="nav-link">Notícias</a>
                 <a href="esportes.html" class="nav-link">Esportes</a>
@@ -747,13 +922,14 @@
                 <a href="analises.html" class="nav-link">Análises</a>
                 <a href="podcast.html" class="nav-link active" aria-current="page">Podcast</a>
                 <a href="explica.html" class="nav-link">Explica</a>
+                <a href="live.html" class="nav-link">Ao Vivo</a>
             </nav>
 
             <div class="header-actions">
                 <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i><span class="sr-only">Buscar</span></button>
                 <button class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span></button>
-                            <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
-                    <i class="fas fa-bars" aria-hidden="true"></i>
+                <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
@@ -777,6 +953,7 @@
             <a href="analises.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i>Análises</a>
             <a href="podcast.html" class="mobile-nav-link active"><i class="fas fa-microphone"></i>Podcast</a>
             <a href="explica.html" class="mobile-nav-link"><i class="fas fa-lightbulb"></i>Explica</a>
+            <a href="live.html" class="mobile-nav-link"><i class="fas fa-video"></i>Ao Vivo</a>
         </div>
     </nav>
 
@@ -788,80 +965,91 @@
                     <p>Entrevistas exclusivas, debates e transmissões ao vivo da Costa Esmeralda</p>
                 </div>
 
-                <!-- ================================================
-                     SEÇÃO AO VIVO — OCULTA POR PADRÃO
-                     Para ATIVAR: remova as linhas com LIVE_OFF_START e LIVE_OFF_END
-                     Para DESATIVAR: coloque as linhas de volta
-                     Atualize título, convidado e horário antes de ativar.
-                ================================================ -->
-                <!-- LIVE_OFF_START
-                <div class="live-section">
-                    <div class="live-header">
-                        <span class="live-badge">
-                            <i class="fas fa-circle"></i> AO VIVO AGORA
-                        </span>
-                        <span>Estúdio Big News - Itapema</span>
-                    </div>
-                    
-                    <div class="live-studio">
-                        <div class="live-video-placeholder">
-                            <i class="fas fa-video live-camera-icon"></i>
-                            <p>Transmissão ao vivo iniciará em breve</p>
-                            <p style="font-size: 0.875rem; margin-top: 0.5rem;">Câmera 1 - Estúdio Central</p>
+                <!-- INDICADOR AO VIVO -->
+                <div class="live-indicator-page" id="livePageIndicator">
+                    <a href="live.html" id="livePageLink">
+                        <div class="live-indicator-box">
+                            <span class="live-badge-white">
+                                <i class="fas fa-circle"></i> AO VIVO AGORA
+                            </span>
+                            <div class="live-info-text">
+                                <strong id="livePageTitle">Carregando...</strong>
+                                <p>Clique para assistir à transmissão</p>
+                            </div>
+                            <i class="fas fa-arrow-right live-arrow"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- SEÇÃO AO VIVO - DESTAQUE PRINCIPAL (mostrada apenas quando há live de podcast) -->
+                <div id="podcastLiveSection" style="display: none;">
+                    <div class="live-section">
+                        <div class="live-header">
+                            <span class="live-badge">
+                                <i class="fas fa-circle"></i> AO VIVO AGORA
+                            </span>
+                            <span>Estúdio Big News - Itapema</span>
                         </div>
                         
-                        <div class="live-info">
-                            <h3>Entrevista com Prefeito de Itapema</h3>
-                            <p>Ao vivo agora: discutindo os 100 dias de governo, obras paradas e projetos para 2026.</p>
+                        <div class="live-studio">
+                            <div class="live-video-placeholder" id="podcastLivePlayer">
+                                <i class="fas fa-video live-camera-icon"></i>
+                                <p>Transmissão ao vivo iniciará em breve</p>
+                                <p style="font-size: 0.875rem; margin-top: 0.5rem;">Câmera 1 - Estúdio Central</p>
+                            </div>
                             
-                            <div class="live-guest">
-                                <div class="live-guest-icon">
-                                    <i class="fas fa-user-tie"></i>
+                            <div class="live-info">
+                                <h3 id="podcastLiveTitle">Podcast com convidado especial</h3>
+                                <p id="podcastLiveDescription">Acompanhe a entrevista ao vivo.</p>
+                                
+                                <div class="live-guest">
+                                    <div class="live-guest-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div class="live-guest-info">
+                                        <h4>CONVIDADO</h4>
+                                        <p id="podcastLiveGuest">Carregando...</p>
+                                    </div>
                                 </div>
-                                <div class="live-guest-info">
-                                    <h4>CONVIDADO</h4>
-                                    <p>Prefeito João Silva</p>
-                                </div>
-                            </div>
 
-                            <div class="live-guest">
-                                <div class="live-guest-icon">
-                                    <i class="fas fa-microphone-alt"></i>
+                                <div class="live-guest">
+                                    <div class="live-guest-icon">
+                                        <i class="fas fa-microphone-alt"></i>
+                                    </div>
+                                    <div class="live-guest-info">
+                                        <h4>ENTREVISTADOR</h4>
+                                        <p>Carlos Mendes - Editor-chefe</p>
+                                    </div>
                                 </div>
-                                <div class="live-guest-info">
-                                    <h4>ENTREVISTADOR</h4>
-                                    <p>Carlos Mendes - Editor-chefe</p>
-                                </div>
-                            </div>
 
-                            <div style="display: flex; gap: 1rem; margin: 2rem 0;">
-                                <button class="btn btn-accent">
-                                    <i class="fas fa-play"></i> Assistir ao vivo
-                                </button>
-                                <button class="btn btn-outline" style="border-color: var(--white); color: var(--white);">
-                                    <i class="fas fa-bell"></i> Lembrar-me
-                                </button>
-                            </div>
+                                <div style="display: flex; gap: 1rem; margin: 2rem 0;">
+                                    <a href="live.html?program=podcast" class="btn btn-accent" id="podcastLiveWatchBtn">
+                                        <i class="fas fa-play"></i> Assistir ao vivo
+                                    </a>
+                                    <button class="btn btn-outline" style="border-color: var(--white); color: var(--white);">
+                                        <i class="fas fa-bell"></i> Lembrar-me
+                                    </button>
+                                </div>
 
-                            <div class="live-schedule">
-                                <h4>Próximas entrevistas:</h4>
-                                <div class="schedule-item">
-                                    <span>📍 Porto Belo - Vereadora Ana Oliveira</span>
-                                    <span>Amanhã, 19h</span>
-                                </div>
-                                <div class="schedule-item">
-                                    <span>📍 Bombinhas - Secretário de Turismo</span>
-                                    <span>Quinta, 10h</span>
-                                </div>
-                                <div class="schedule-item">
-                                    <span>📍 Itapema - Líder da oposição</span>
-                                    <span>Sexta, 18h</span>
+                                <div class="live-schedule">
+                                    <h4>Próximas entrevistas:</h4>
+                                    <div class="schedule-item">
+                                        <span>📍 Porto Belo - Vereadora Ana Oliveira</span>
+                                        <span>Amanhã, 19h</span>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <span>📍 Bombinhas - Secretário de Turismo</span>
+                                        <span>Quinta, 10h</span>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <span>📍 Itapema - Líder da oposição</span>
+                                        <span>Sexta, 18h</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                LIVE_OFF_END -->
 
                 <!-- PODCASTS GRAVADOS -->
                 <h2 style="font-size: 2rem; color: var(--primary); margin: 3rem 0 2rem;">Episódios Recentes</h2>
@@ -964,6 +1152,17 @@
                     </article>
                 </div>
 
+                <!-- NEWSLETTER -->
+                <div class="newsletter-widget">
+                    <h3 class="widget-title">
+                        <i class="fas fa-envelope-open-text"></i>
+                        Newsletter Semanal
+                    </h3>
+                    <p>Receba toda quarta-feira, às 7h, o resumo da semana com os melhores episódios e entrevistas exclusivas.</p>
+                    <input type="email" placeholder="Seu melhor e-mail">
+                    <button class="btn btn-primary">Assinar gratuitamente</button>
+                </div>
+
                 <!-- ESTÚDIO BIG NEWS -->
                 <div class="studio-section">
                     <div class="container">
@@ -985,7 +1184,7 @@
                             </div>
                             <div class="studio-image">
                                 <i class="fas fa-microphone-alt"></i>
-                                <h3 style="color: var(--white); margin: 1rem 0;">Seja nosso convidado</h2>
+                                <h3 style="color: var(--white); margin: 1rem 0;">Seja nosso convidado</h3>
                                 <p style="color: #ccc;">Autoridades, especialistas e lideranças podem solicitar espaço para entrevistas.</p>
                                 <button class="btn btn-outline" style="border-color: var(--white); color: var(--white); margin-top: 1rem;">
                                     Quero participar
@@ -998,23 +1197,23 @@
         </section>
     </main>
 
-        <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo-title" style="font-size:1.875rem;">Big News</div>
                     <p>Portal de notícias e análises da Costa Esmeralda. Documentamos o presente para informar o futuro da nossa região.</p>
                     <div class="social-links">
-                        <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
-                        <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                        <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                        <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h4>Seções</h4>
                     <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="noticias.html">Notícias</a></li>
                         <li><a href="esportes.html">Esportes</a></li>
                         <li><a href="politica.html">Política</a></li>
@@ -1022,6 +1221,7 @@
                         <li><a href="analises.html">Análises</a></li>
                         <li><a href="podcast.html">Podcast</a></li>
                         <li><a href="explica.html">Explica</a></li>
+                        <li><a href="live.html">Ao Vivo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1036,17 +1236,9 @@
                 <div class="footer-column">
                     <h4>Contato</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:contato@bignewssc.com.br"><i class="fas fa-envelope" style="margin-right:6px;opacity:.7"></i>contato@bignewssc.com.br</a></li>
-                        <li><a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="margin-right:6px;opacity:.7"></i>WhatsApp</a></li>
-                        <li style="margin-top:.75rem;font-size:.8125rem;color:var(--text-light);font-family:'Inter',sans-serif;">Seg–Sex, 09h–18h</li>
+                        <li><a href="mailto:contato@bignewssc.com.br"><i class="fas fa-envelope"></i>contato@bignewssc.com.br</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i>WhatsApp</a></li>
                     </ul>
-                    <div style="margin-top:1rem;display:flex;gap:10px;flex-wrap:wrap;">
-                        <a href="https://instagram.com/SEU_PERFIL" target="_blank" rel="noopener" style="color:var(--text-light);font-size:1.1rem"><i class="fab fa-instagram"></i></a>
-                        <a href="https://twitter.com/SEU_PERFIL" target="_blank" rel="noopener" style="color:var(--text-light);font-size:1.1rem"><i class="fab fa-x-twitter"></i></a>
-                        <a href="https://youtube.com/@SEU_CANAL" target="_blank" rel="noopener" style="color:var(--text-light);font-size:1.1rem"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/5547XXXXXXXXX" target="_blank" rel="noopener" style="color:var(--text-light);font-size:1.1rem"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" rel="noopener" style="color:var(--text-light);font-size:1.1rem"><i class="fab fa-tiktok"></i></a>
-                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1060,8 +1252,133 @@
     </footer>
 
     <script>
+        // Atualizar data
+        const dateEl = document.getElementById('current-date');
+        if (dateEl) {
+            dateEl.textContent = new Date().toLocaleDateString('pt-BR', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header?.classList.add('scrolled');
+            } else {
+                header?.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Drawer
+        const mobileMenuBtn = document.getElementById('mobile-menu-button');
+        const mobileDrawer  = document.getElementById('mobile-drawer');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const mobileClose   = document.getElementById('mobile-drawer-close');
+        
+        function openDrawer() {
+            mobileDrawer?.classList.add('open');
+            mobileOverlay?.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeDrawer() {
+            mobileDrawer?.classList.remove('open');
+            mobileOverlay?.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        
+        mobileMenuBtn?.addEventListener('click', openDrawer);
+        mobileClose?.addEventListener('click', closeDrawer);
+        mobileOverlay?.addEventListener('click', closeDrawer);
+        
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeDrawer();
+        });
+
+        // Mostrar/ocultar botão mobile conforme tamanho da tela
+        const toggleMobileBtn = () => {
+            if (mobileMenuBtn) {
+                mobileMenuBtn.style.display = window.innerWidth <= 768 ? 'inline-flex' : 'none';
+            }
+        };
+        
+        window.addEventListener('resize', () => {
+            toggleMobileBtn();
+            if (window.innerWidth > 768) closeDrawer();
+        });
+        
+        toggleMobileBtn();
+
+        // VERIFICAR STATUS AO VIVO (API REAL)
+        function checkLiveStatus() {
+            fetch('/live-status.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Indicador principal (banner vermelho)
+                    const liveIndicator = document.getElementById('livePageIndicator');
+                    const liveTitle = document.getElementById('livePageTitle');
+                    const liveLink = document.getElementById('livePageLink');
+                    
+                    if (data.live) {
+                        // Mostrar indicador
+                        if (liveIndicator) liveIndicator.style.display = 'block';
+                        
+                        // Atualizar título
+                        if (liveTitle) liveTitle.textContent = data.title;
+                        
+                        // Atualizar link
+                        if (liveLink) liveLink.href = data.url;
+                        
+                        // Se for live de podcast, mostrar seção especial
+                        const podcastLiveSection = document.getElementById('podcastLiveSection');
+                        if (data.program === 'podcast' && podcastLiveSection) {
+                            podcastLiveSection.style.display = 'block';
+                            
+                            // Atualizar dados da live específica do podcast
+                            const liveTitle = document.getElementById('podcastLiveTitle');
+                            const liveDesc = document.getElementById('podcastLiveDescription');
+                            const liveGuest = document.getElementById('podcastLiveGuest');
+                            const liveWatchBtn = document.getElementById('podcastLiveWatchBtn');
+                            
+                            if (liveTitle) liveTitle.textContent = data.title;
+                            if (liveDesc) liveDesc.textContent = data.description || 'Acompanhe a entrevista ao vivo.';
+                            if (liveGuest) liveGuest.textContent = data.guest || 'Convidado especial';
+                            if (liveWatchBtn) liveWatchBtn.href = data.url;
+                        } else {
+                            if (podcastLiveSection) podcastLiveSection.style.display = 'none';
+                        }
+                    } else {
+                        // Esconder todos os indicadores
+                        if (liveIndicator) liveIndicator.style.display = 'none';
+                        const podcastLiveSection = document.getElementById('podcastLiveSection');
+                        if (podcastLiveSection) podcastLiveSection.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.log('Erro ao verificar live:', error);
+                    // Em caso de erro, esconder os indicadores
+                    const indicator = document.getElementById('livePageIndicator');
+                    if (indicator) indicator.style.display = 'none';
+                    const podcastLiveSection = document.getElementById('podcastLiveSection');
+                    if (podcastLiveSection) podcastLiveSection.style.display = 'none';
+                });
+        }
+
+        // Verificar na carga da página e a cada 30 segundos
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLiveStatus();
+            setInterval(checkLiveStatus, 30000);
+        });
+
+        // Service Worker
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+            });
         }
     </script>
 </body>
