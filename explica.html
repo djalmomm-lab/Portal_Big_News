@@ -32,6 +32,12 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
     
+    <!-- Preparação para App -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Big News">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +65,10 @@
             --live: #dc2626;
             --warning: #d97706;
             --info: #2563eb;
+            --whatsapp: #25D366;
+            --facebook: #1877f2;
+            --twitter: #000000;
+            --telegram: #0088cc;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -106,6 +116,12 @@
 
         .skip-to-content:focus {
             top: 0;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* HEADER */
@@ -274,7 +290,7 @@
         }
 
         .page-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--accent);
         }
@@ -288,63 +304,6 @@
         .page-header p {
             color: var(--text-light);
             font-size: 1.125rem;
-        }
-
-        /* INDICADOR AO VIVO (SIDEBAR) */
-        .live-sidebar-indicator {
-            display: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        .live-sidebar-indicator a {
-            text-decoration: none;
-        }
-        
-        .live-sidebar-box {
-            background: var(--live);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .live-sidebar-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .live-sidebar-badge {
-            background: white;
-            color: var(--live);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .live-sidebar-badge i {
-            color: var(--live);
-            animation: pulse 2s infinite;
-        }
-        
-        .live-sidebar-title {
-            font-weight: 600;
-            font-size: 0.9375rem;
-        }
-        
-        .live-sidebar-box p {
-            font-size: 0.8125rem;
-            opacity: 0.9;
-            margin: 0;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         /* CATEGORIAS */
@@ -722,6 +681,48 @@
             font-size: 0.875rem;
         }
 
+        /* COMPARTILHAR */
+        .share-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .share-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .share-whatsapp { background: var(--whatsapp); color: white; }
+        .share-facebook { background: var(--facebook); color: white; }
+        .share-twitter { background: var(--twitter); color: white; }
+        .share-telegram { background: var(--telegram); color: white; }
+
         /* SIDEBAR */
         .sidebar {
             display: flex;
@@ -796,6 +797,56 @@
 
         .newsletter-form button:hover {
             background: var(--accent-light);
+        }
+
+        .database-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .database-stat {
+            padding: 1rem;
+            background: var(--bg-paper);
+            border-radius: 4px;
+        }
+
+        .database-stat-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+        }
+
+        .database-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--error);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .live-indicator::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
         /* FOOTER */
@@ -890,6 +941,38 @@
             text-decoration: none;
         }
 
+        /* MOBILE DRAWER */
+        .mobile-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 200;
+        }
+        .mobile-overlay.open { display: block; }
+        .mobile-drawer {
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
+            background: var(--primary-dark); z-index: 201;
+            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
+        }
+        .mobile-drawer.open { left: 0; }
+        .mobile-drawer-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-drawer-close {
+            background: none; border: none; color: rgba(255,255,255,0.7);
+            font-size: 20px; cursor: pointer; padding: 4px;
+        }
+        .mobile-drawer-close:hover { color: #fff; }
+        .mobile-nav-links { padding: 12px 0; }
+        .mobile-nav-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 13px 20px; color: rgba(255,255,255,0.8);
+            text-decoration: none; font-family: 'Inter', sans-serif;
+            font-size: 15px; font-weight: 500; transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
+
         /* RESPONSIVIDADE */
         @media (max-width: 1024px) {
             .categorias-grid {
@@ -952,39 +1035,12 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .share-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
-        
-        /* MOBILE DRAWER */
-        .mobile-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.5); z-index: 200;
-        }
-        .mobile-overlay.open { display: block; }
-        .mobile-drawer {
-            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-            background: var(--primary-dark); z-index: 201;
-            transition: left 0.3s ease; overflow-y: auto; padding: 0 0 40px;
-        }
-        .mobile-drawer.open { left: 0; }
-        .mobile-drawer-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .mobile-drawer-close {
-            background: none; border: none; color: rgba(255,255,255,0.7);
-            font-size: 20px; cursor: pointer; padding: 4px;
-        }
-        .mobile-drawer-close:hover { color: #fff; }
-        .mobile-nav-links { padding: 12px 0; }
-        .mobile-nav-link {
-            display: flex; align-items: center; gap: 10px;
-            padding: 13px 20px; color: rgba(255,255,255,0.8);
-            text-decoration: none; font-family: 'Inter', sans-serif;
-            font-size: 15px; font-weight: 500; transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-        .mobile-nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
-        .mobile-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(184,134,11,0.08); }
     </style>
 </head>
 <body>
@@ -1017,12 +1073,13 @@
                 <a href="analises.html" class="nav-link">Análises</a>
                 <a href="podcast.html" class="nav-link">Podcast</a>
                 <a href="explica.html" class="nav-link active" aria-current="page">Explica</a>
-                <a href="live.html" class="nav-link">Ao Vivo</a>
             </nav>
 
             <div class="header-actions">
                 <button class="btn btn-outline btn-sm"><i class="fas fa-search"></i><span class="sr-only">Buscar</span></button>
-                <button class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span></button>
+                <button class="btn btn-primary btn-sm" onclick="scrollToNewsletter()">
+                    <i class="fas fa-envelope"></i><span class="sr-only">Newsletter</span>
+                </button>
                 <button class="btn btn-outline btn-sm" aria-label="Menu" id="mobile-menu-button" style="display:none">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -1048,7 +1105,6 @@
             <a href="analises.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i>Análises</a>
             <a href="podcast.html" class="mobile-nav-link"><i class="fas fa-microphone"></i>Podcast</a>
             <a href="explica.html" class="mobile-nav-link active"><i class="fas fa-lightbulb"></i>Explica</a>
-            <a href="live.html" class="mobile-nav-link"><i class="fas fa-video"></i>Ao Vivo</a>
         </div>
     </nav>
 
@@ -1060,384 +1116,352 @@
                     <p>Guias educativos para você entender melhor política, legislação e cidadania</p>
                 </div>
 
-                <div class="content-layout">
-                    <!-- COLUNA PRINCIPAL -->
-                    <div>
-                        <!-- CATEGORIAS RÁPIDAS -->
-                        <div class="categorias-grid">
-                            <div class="categoria-card">
-                                <div class="categoria-icon">
-                                    <i class="fas fa-landmark"></i>
-                                </div>
-                                <h3>Política</h3>
-                                <p>Entenda o funcionamento dos poderes</p>
+                <!-- CATEGORIAS RÁPIDAS -->
+                <div class="categorias-grid">
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Política</h3>
+                        <p>Entenda o funcionamento dos poderes</p>
+                    </div>
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Legislação</h3>
+                        <p>Como funcionam as leis municipais</p>
+                    </div>
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Cidadania</h3>
+                        <p>Seus direitos e deveres</p>
+                    </div>
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Dados Públicos</h3>
+                        <p>Como acessar informações oficiais</p>
+                    </div>
+                </div>
+
+                <!-- GUIA EM DESTAQUE -->
+                <div class="featured-guide">
+                    <div class="featured-content">
+                        <span class="featured-label">GUIA COMPLETO</span>
+                        <h2>Como funciona a Câmara de Vereadores</h2>
+                        <p>Entenda o papel do legislativo municipal, como são criadas as leis e como você pode participar das decisões da sua cidade.</p>
+                        <a href="#" class="btn btn-accent">Ler guia completo</a>
+                    </div>
+                </div>
+
+                <!-- GUIAS RECENTES -->
+                <h2 style="font-size: 2rem; color: var(--primary); margin-bottom: 2rem;">Guias recentes</h2>
+
+                <div class="guias-grid">
+                    <article class="guia-card">
+                        <div class="guia-image">
+                            <span class="guia-category">Política</span>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="guia-content">
+                            <div class="guia-meta">
+                                <span><i class="fas fa-calendar"></i> 05/03/2026</span>
+                                <span><i class="fas fa-eye"></i> 3.245 leituras</span>
                             </div>
-                            <div class="categoria-card">
-                                <div class="categoria-icon">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
-                                <h3>Legislação</h3>
-                                <p>Como funcionam as leis municipais</p>
+                            <h3 class="guia-title">
+                                <a href="#">Como funciona o processo legislativo municipal</a>
+                            </h3>
+                            <p class="guia-excerpt">Entenda o passo a passo desde a apresentação de um projeto de lei até sua aprovação ou veto.</p>
+                            <div class="guia-footer">
+                                <span class="guia-read-time"><i class="fas fa-clock"></i> 15 min</span>
+                                <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
                             </div>
-                            <div class="categoria-card">
-                                <div class="categoria-icon">
-                                    <i class="fas fa-balance-scale"></i>
-                                </div>
-                                <h3>Cidadania</h3>
-                                <p>Seus direitos e deveres</p>
+                        </div>
+                    </article>
+
+                    <article class="guia-card">
+                        <div class="guia-image" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                            <span class="guia-category">Cidadania</span>
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <div class="guia-content">
+                            <div class="guia-meta">
+                                <span><i class="fas fa-calendar"></i> 03/03/2026</span>
+                                <span><i class="fas fa-eye"></i> 2.890 leituras</span>
                             </div>
-                            <div class="categoria-card">
-                                <div class="categoria-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <h3>Dados Públicos</h3>
-                                <p>Como acessar informações oficiais</p>
+                            <h3 class="guia-title">
+                                <a href="#">Lei de Acesso à Informação: como solicitar dados públicos</a>
+                            </h3>
+                            <p class="guia-excerpt">Guia prático para fazer pedidos de informação à prefeitura e câmaras municipais.</p>
+                            <div class="guia-footer">
+                                <span class="guia-read-time"><i class="fas fa-clock"></i> 10 min</span>
+                                <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guia-card">
+                        <div class="guia-image" style="background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%);">
+                            <span class="guia-category">Orçamento</span>
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="guia-content">
+                            <div class="guia-meta">
+                                <span><i class="fas fa-calendar"></i> 28/02/2026</span>
+                                <span><i class="fas fa-eye"></i> 1.567 leituras</span>
+                            </div>
+                            <h3 class="guia-title">
+                                <a href="#">Como funciona o orçamento público municipal</a>
+                            </h3>
+                            <p class="guia-excerpt">Entenda a diferença entre PPA, LDO e LOA e como o dinheiro público é planejado.</p>
+                            <div class="guia-footer">
+                                <span class="guia-read-time"><i class="fas fa-clock"></i> 12 min</span>
+                                <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guia-card">
+                        <div class="guia-image" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                            <span class="guia-category">Eleições</span>
+                            <i class="fas fa-vote-yea"></i>
+                        </div>
+                        <div class="guia-content">
+                            <div class="guia-meta">
+                                <span><i class="fas fa-calendar"></i> 25/02/2026</span>
+                                <span><i class="fas fa-eye"></i> 4.123 leituras</span>
+                            </div>
+                            <h3 class="guia-title">
+                                <a href="#">Eleições municipais: o que muda em 2026?</a>
+                            </h3>
+                            <p class="guia-excerpt">Calendário eleitoral, regras de candidatura e como funciona o sistema proporcional.</p>
+                            <div class="guia-footer">
+                                <span class="guia-read-time"><i class="fas fa-clock"></i> 18 min</span>
+                                <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- GLOSSÁRIO POLÍTICO -->
+                <div class="glossario-section">
+                    <div class="glossario-header">
+                        <h2>Glossário Político</h2>
+                        <div class="glossario-search">
+                            <input type="text" placeholder="Buscar termo..." id="glossario-search">
+                            <button><i class="fas fa-search"></i> Buscar</button>
+                        </div>
+                    </div>
+
+                    <div class="glossario-list">
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Abstenção
+                            </div>
+                            <div class="glossario-definicao">
+                                Quando um vereador ou deputado não vota, seja por se declarar impedido ou por se recusar a votar.
                             </div>
                         </div>
 
-                        <!-- GUIA EM DESTAQUE -->
-                        <div class="featured-guide">
-                            <div class="featured-content">
-                                <span class="featured-label">GUIA COMPLETO</span>
-                                <h2>Como funciona a Câmara de Vereadores</h2>
-                                <p>Entenda o papel do legislativo municipal, como são criadas as leis e como você pode participar das decisões da sua cidade.</p>
-                                <a href="#" class="btn btn-accent">Ler guia completo</a>
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Ato administrativo
+                            </div>
+                            <div class="glossario-definicao">
+                                Decisão tomada por autoridade pública no exercício de suas funções.
                             </div>
                         </div>
 
-                        <!-- GUIAS RECENTES -->
-                        <h2 style="font-size: 2rem; color: var(--primary); margin-bottom: 2rem;">Guias recentes</h2>
-
-                        <div class="guias-grid">
-                            <article class="guia-card">
-                                <div class="guia-image">
-                                    <span class="guia-category">Política</span>
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div class="guia-content">
-                                    <div class="guia-meta">
-                                        <span><i class="fas fa-calendar"></i> 05/03/2026</span>
-                                        <span><i class="fas fa-eye"></i> 3.245 leituras</span>
-                                    </div>
-                                    <h3 class="guia-title">
-                                        <a href="#">Como funciona o processo legislativo municipal</a>
-                                    </h3>
-                                    <p class="guia-excerpt">Entenda o passo a passo desde a apresentação de um projeto de lei até sua aprovação ou veto.</p>
-                                    <div class="guia-footer">
-                                        <span class="guia-read-time"><i class="fas fa-clock"></i> 15 min</span>
-                                        <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="guia-card">
-                                <div class="guia-image" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
-                                    <span class="guia-category">Cidadania</span>
-                                    <i class="fas fa-file-signature"></i>
-                                </div>
-                                <div class="guia-content">
-                                    <div class="guia-meta">
-                                        <span><i class="fas fa-calendar"></i> 03/03/2026</span>
-                                        <span><i class="fas fa-eye"></i> 2.890 leituras</span>
-                                    </div>
-                                    <h3 class="guia-title">
-                                        <a href="#">Lei de Acesso à Informação: como solicitar dados públicos</a>
-                                    </h3>
-                                    <p class="guia-excerpt">Guia prático para fazer pedidos de informação à prefeitura e câmaras municipais.</p>
-                                    <div class="guia-footer">
-                                        <span class="guia-read-time"><i class="fas fa-clock"></i> 10 min</span>
-                                        <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="guia-card">
-                                <div class="guia-image" style="background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%);">
-                                    <span class="guia-category">Orçamento</span>
-                                    <i class="fas fa-chart-pie"></i>
-                                </div>
-                                <div class="guia-content">
-                                    <div class="guia-meta">
-                                        <span><i class="fas fa-calendar"></i> 28/02/2026</span>
-                                        <span><i class="fas fa-eye"></i> 1.567 leituras</span>
-                                    </div>
-                                    <h3 class="guia-title">
-                                        <a href="#">Como funciona o orçamento público municipal</a>
-                                    </h3>
-                                    <p class="guia-excerpt">Entenda a diferença entre PPA, LDO e LOA e como o dinheiro público é planejado.</p>
-                                    <div class="guia-footer">
-                                        <span class="guia-read-time"><i class="fas fa-clock"></i> 12 min</span>
-                                        <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="guia-card">
-                                <div class="guia-image" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
-                                    <span class="guia-category">Eleições</span>
-                                    <i class="fas fa-vote-yea"></i>
-                                </div>
-                                <div class="guia-content">
-                                    <div class="guia-meta">
-                                        <span><i class="fas fa-calendar"></i> 25/02/2026</span>
-                                        <span><i class="fas fa-eye"></i> 4.123 leituras</span>
-                                    </div>
-                                    <h3 class="guia-title">
-                                        <a href="#">Eleições municipais: o que muda em 2026?</a>
-                                    </h3>
-                                    <p class="guia-excerpt">Calendário eleitoral, regras de candidatura e como funciona o sistema proporcional.</p>
-                                    <div class="guia-footer">
-                                        <span class="guia-read-time"><i class="fas fa-clock"></i> 18 min</span>
-                                        <a href="#" class="btn btn-outline btn-sm">Ler guia</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <!-- GLOSSÁRIO POLÍTICO -->
-                        <div class="glossario-section">
-                            <div class="glossario-header">
-                                <h2>Glossário Político</h2>
-                                <div class="glossario-search">
-                                    <input type="text" placeholder="Buscar termo..." id="glossario-search">
-                                    <button><i class="fas fa-search"></i> Buscar</button>
-                                </div>
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Audiência pública
                             </div>
-
-                            <div class="glossario-list">
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Abstenção
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Quando um vereador ou deputado não vota, seja por se declarar impedido ou por se recusar a votar.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Ato administrativo
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Decisão tomada por autoridade pública no exercício de suas funções.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Audiência pública
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Reunião aberta à participação da sociedade para discutir temas relevantes.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Base aliada
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Conjunto de partidos e parlamentares que apoiam o governo.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Coligação
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        União temporária de partidos para disputar eleições.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Quórum
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Número mínimo de parlamentares presentes para realizar uma votação.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Veto
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Recusa do prefeito em sancionar um projeto aprovado pela Câmara.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Emenda
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Proposta de alteração a um projeto de lei em tramitação.
-                                    </div>
-                                </div>
-
-                                <div class="glossario-item">
-                                    <div class="glossario-termo">
-                                        <i class="fas fa-circle"></i> Regimento Interno
-                                    </div>
-                                    <div class="glossario-definicao">
-                                        Conjunto de regras que define o funcionamento da Câmara Municipal.
-                                    </div>
-                                </div>
+                            <div class="glossario-definicao">
+                                Reunião aberta à participação da sociedade para discutir temas relevantes.
                             </div>
                         </div>
 
-                        <!-- PERGUNTAS FREQUENTES -->
-                        <div class="faq-section">
-                            <h2>Perguntas Frequentes</h2>
-                            
-                            <div class="faq-list">
-                                <div class="faq-item">
-                                    <div class="faq-question" onclick="toggleFaq(this)">
-                                        <span>Como posso acompanhar as sessões da Câmara?</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                    <div class="faq-answer">
-                                        <div class="faq-answer-content">
-                                            As sessões são transmitidas ao vivo pelo YouTube oficial da Câmara Municipal e também podem ser acompanhadas presencialmente no plenário. Os horários e pautas são publicados no site oficial com antecedência.
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Base aliada
+                            </div>
+                            <div class="glossario-definicao">
+                                Conjunto de partidos e parlamentares que apoiam o governo.
+                            </div>
+                        </div>
 
-                                <div class="faq-item">
-                                    <div class="faq-question" onclick="toggleFaq(this)">
-                                        <span>Qual a diferença entre projeto de lei e lei?</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                    <div class="faq-answer">
-                                        <div class="faq-answer-content">
-                                            Projeto de lei é a proposta inicial, ainda em tramitação. Quando aprovado pela Câmara e sancionado pelo prefeito, o projeto se torna uma lei, passando a ter validade e obrigatoriedade.
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Coligação
+                            </div>
+                            <div class="glossario-definicao">
+                                União temporária de partidos para disputar eleições.
+                            </div>
+                        </div>
 
-                                <div class="faq-item">
-                                    <div class="faq-question" onclick="toggleFaq(this)">
-                                        <span>Como posso falar com meu vereador?</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                    <div class="faq-answer">
-                                        <div class="faq-answer-content">
-                                            Cada vereador tem um gabinete na Câmara Municipal, com telefone e email disponíveis no site oficial. Você também pode agendar uma visita ou participar das sessões e usar a Tribuna Livre.
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Quórum
+                            </div>
+                            <div class="glossario-definicao">
+                                Número mínimo de parlamentares presentes para realizar uma votação.
+                            </div>
+                        </div>
 
-                                <div class="faq-item">
-                                    <div class="faq-question" onclick="toggleFaq(this)">
-                                        <span>O que é a Lei de Acesso à Informação?</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                    <div class="faq-answer">
-                                        <div class="faq-answer-content">
-                                            É a lei que garante a qualquer cidadão o direito de solicitar informações públicas aos órgãos governamentais. A prefeitura tem prazo legal para responder, sob pena de sanções.
-                                        </div>
-                                    </div>
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Veto
+                            </div>
+                            <div class="glossario-definicao">
+                                Recusa do prefeito em sancionar um projeto aprovado pela Câmara.
+                            </div>
+                        </div>
+
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Emenda
+                            </div>
+                            <div class="glossario-definicao">
+                                Proposta de alteração a um projeto de lei em tramitação.
+                            </div>
+                        </div>
+
+                        <div class="glossario-item">
+                            <div class="glossario-termo">
+                                <i class="fas fa-circle"></i> Regimento Interno
+                            </div>
+                            <div class="glossario-definicao">
+                                Conjunto de regras que define o funcionamento da Câmara Municipal.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PERGUNTAS FREQUENTES -->
+                <div class="faq-section">
+                    <h2>Perguntas Frequentes</h2>
+                    
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                <span>Como posso acompanhar as sessões da Câmara?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    As sessões são transmitidas ao vivo pelo YouTube oficial da Câmara Municipal e também podem ser acompanhadas presencialmente no plenário. Os horários e pautas são publicados no site oficial com antecedência.
                                 </div>
                             </div>
                         </div>
 
-                        <!-- INFOGRÁFICOS -->
-                        <h2 style="font-size: 2rem; color: var(--primary); margin: 3rem 0 2rem;">Infográficos educativos</h2>
-
-                        <div class="infograficos-grid">
-                            <div class="infografico-card">
-                                <div class="infografico-image">
-                                    <i class="fas fa-sitemap"></i>
-                                </div>
-                                <div class="infografico-content">
-                                    <h3>Estrutura dos Poderes Municipais</h3>
-                                    <p>Entenda as funções do Executivo, Legislativo e dos órgãos auxiliares.</p>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                <span>Qual a diferença entre projeto de lei e lei?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    Projeto de lei é a proposta inicial, ainda em tramitação. Quando aprovado pela Câmara e sancionado pelo prefeito, o projeto se torna uma lei, passando a ter validade e obrigatoriedade.
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="infografico-card">
-                                <div class="infografico-image" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
-                                    <i class="fas fa-file-invoice"></i>
-                                </div>
-                                <div class="infografico-content">
-                                    <h3>Ciclo Orçamentário</h3>
-                                    <p>Como o dinheiro público é planejado, aprovado e executado.</p>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                <span>Como posso falar com meu vereador?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    Cada vereador tem um gabinete na Câmara Municipal, com telefone e email disponíveis no site oficial. Você também pode agendar uma visita ou participar das sessões e usar a Tribuna Livre.
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="infografico-card">
-                                <div class="infografico-image" style="background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%);">
-                                    <i class="fas fa-vote-yea"></i>
-                                </div>
-                                <div class="infografico-content">
-                                    <h3>Processo Legislativo</h3>
-                                    <p>Passo a passo desde a ideia até a lei em vigor.</p>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                <span>O que é a Lei de Acesso à Informação?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    É a lei que garante a qualquer cidadão o direito de solicitar informações públicas aos órgãos governamentais. A prefeitura tem prazo legal para responder, sob pena de sanções.
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- SIDEBAR -->
-                    <aside class="sidebar">
-                        <!-- INDICADOR AO VIVO (SIDEBAR) -->
-                        <div class="live-sidebar-indicator" id="liveSidebarIndicator">
-                            <a href="live.html" id="liveSidebarLink">
-                                <div class="live-sidebar-box">
-                                    <div class="live-sidebar-header">
-                                        <span class="live-sidebar-badge">
-                                            <i class="fas fa-circle"></i> AO VIVO
-                                        </span>
-                                        <span class="live-sidebar-title" id="liveSidebarTitle">Carregando...</span>
-                                    </div>
-                                    <p>Clique para assistir</p>
-                                </div>
-                            </a>
-                        </div>
+                <!-- INFOGRÁFICOS -->
+                <h2 style="font-size: 2rem; color: var(--primary); margin: 3rem 0 2rem;">Infográficos educativos</h2>
 
-                        <!-- NEWSLETTER -->
-                        <div class="sidebar-widget newsletter-widget" id="newsletter">
-                            <h3 class="widget-title">
-                                <i class="fas fa-envelope-open-text"></i>
-                                Newsletter Semanal
-                            </h3>
-                            <p>Receba toda quarta-feira, às 7h, o resumo da semana com os guias e explicações mais importantes.</p>
-                            <form class="newsletter-form" id="newsletter-form">
-                                <input type="email" placeholder="Seu melhor e-mail" required>
-                                <button type="submit">
-                                    <i class="fas fa-paper-plane"></i>
-                                    Assinar gratuitamente
-                                </button>
-                            </form>
+                <div class="infograficos-grid">
+                    <div class="infografico-card">
+                        <div class="infografico-image">
+                            <i class="fas fa-sitemap"></i>
                         </div>
+                        <div class="infografico-content">
+                            <h3>Estrutura dos Poderes Municipais</h3>
+                            <p>Entenda as funções do Executivo, Legislativo e dos órgãos auxiliares.</p>
+                        </div>
+                    </div>
 
-                        <!-- DESTAQUES -->
-                        <div class="sidebar-widget">
-                            <h3 class="widget-title">
-                                <i class="fas fa-star"></i>
-                                Guias Mais Acessados
-                            </h3>
-                            <ul style="list-style: none;">
-                                <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
-                                    <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 600;">Como funciona a Câmara</a>
-                                    <p style="font-size: 0.8125rem; color: var(--text-light); margin-top: 0.25rem;">12.890 visualizações</p>
-                                </li>
-                                <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
-                                    <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 600;">Lei de Acesso à Informação</a>
-                                    <p style="font-size: 0.8125rem; color: var(--text-light); margin-top: 0.25rem;">8.456 visualizações</p>
-                                </li>
-                                <li style="margin-bottom: 1rem;">
-                                    <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 600;">Processo Legislativo</a>
-                                    <p style="font-size: 0.8125rem; color: var(--text-light); margin-top: 0.25rem;">7.234 visualizações</p>
-                                </li>
-                            </ul>
+                    <div class="infografico-card">
+                        <div class="infografico-image" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                            <i class="fas fa-file-invoice"></i>
                         </div>
-                    </aside>
+                        <div class="infografico-content">
+                            <h3>Ciclo Orçamentário</h3>
+                            <p>Como o dinheiro público é planejado, aprovado e executado.</p>
+                        </div>
+                    </div>
+
+                    <div class="infografico-card">
+                        <div class="infografico-image" style="background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%);">
+                            <i class="fas fa-vote-yea"></i>
+                        </div>
+                        <div class="infografico-content">
+                            <h3>Processo Legislativo</h3>
+                            <p>Passo a passo desde a ideia até a lei em vigor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COMPARTILHAR PÁGINA -->
+                <div class="share-container">
+                    <span class="share-label">Compartilhe esta página:</span>
+                    <div class="share-buttons">
+                        <a href="https://wa.me/?text=Confira%20os%20guias%20educativos%20do%20Big%20News%20-%20Costa%20Esmeralda%20https%3A%2F%2Fbignewssc.com.br%2Fexplica.html" target="_blank" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbignewssc.com.br%2Fexplica.html" target="_blank" class="share-btn share-facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text=Confira%20os%20guias%20educativos%20do%20Big%20News%20-%20Costa%20Esmeralda&url=https%3A%2F%2Fbignewssc.com.br%2Fexplica.html" target="_blank" class="share-btn share-twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://t.me/share/url?url=https%3A%2F%2Fbignewssc.com.br%2Fexplica.html&text=Confira%20os%20guias%20educativos%20do%20Big%20News%20-%20Costa%20Esmeralda" target="_blank" class="share-btn share-telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- NEWSLETTER (invisível mas funcional) -->
+    <div style="display: none;" id="newsletter">
+        <div class="sidebar-widget newsletter-widget">
+            <h3 class="widget-title">
+                <i class="fas fa-envelope-open-text"></i>
+                Newsletter Semanal
+            </h3>
+            <p>Receba toda quarta-feira, às 7h, o resumo da semana com os guias e explicações mais importantes.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    Assinar gratuitamente
+                </button>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -1463,7 +1487,6 @@
                         <li><a href="analises.html">Análises</a></li>
                         <li><a href="podcast.html">Podcast</a></li>
                         <li><a href="explica.html">Explica</a></li>
-                        <li><a href="live.html">Ao Vivo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1541,12 +1564,27 @@
             });
         });
 
+        // Scroll para newsletter
+        window.scrollToNewsletter = function() {
+            const newsletter = document.getElementById('newsletter');
+            if (newsletter) {
+                newsletter.style.display = 'block';
+                newsletter.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    const input = newsletter.querySelector('input[type="email"]');
+                    if (input) input.focus();
+                }, 500);
+            }
+        };
+
         // Newsletter form
         const newsletterForm = document.getElementById('newsletter-form');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const email = newsletterForm.querySelector('input[type="email"]').value;
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                const email = emailInput.value;
+                
                 if (!email || !email.includes('@')) {
                     alert('Por favor, insira um e-mail válido.');
                     return;
@@ -1561,7 +1599,10 @@
                     alert('Obrigado por assinar! Você receberá a Newsletter Semanal às quartas-feiras às 7h.');
                     button.innerHTML = originalText;
                     button.disabled = false;
-                    newsletterForm.reset();
+                    emailInput.value = '';
+                    
+                    // Esconder newsletter após envio
+                    document.getElementById('newsletter').style.display = 'none';
                 }, 1000);
             });
         }
@@ -1592,7 +1633,6 @@
             if (e.key === 'Escape') closeDrawer();
         });
 
-        // Mostrar/ocultar botão mobile conforme tamanho da tela
         const toggleMobileBtn = () => {
             if (mobileMenuBtn) {
                 mobileMenuBtn.style.display = window.innerWidth <= 768 ? 'inline-flex' : 'none';
@@ -1605,43 +1645,6 @@
         });
         
         toggleMobileBtn();
-
-        // VERIFICAR STATUS AO VIVO (API REAL)
-        function checkLiveStatus() {
-            fetch('/live-status.json')
-                .then(response => response.json())
-                .then(data => {
-                    const liveIndicator = document.getElementById('liveSidebarIndicator');
-                    const liveTitle = document.getElementById('liveSidebarTitle');
-                    const liveLink = document.getElementById('liveSidebarLink');
-                    
-                    if (data.live) {
-                        // Mostrar indicador na sidebar
-                        if (liveIndicator) liveIndicator.style.display = 'block';
-                        
-                        // Atualizar título
-                        if (liveTitle) liveTitle.textContent = data.title;
-                        
-                        // Atualizar link
-                        if (liveLink) liveLink.href = data.url;
-                    } else {
-                        // Esconder indicador
-                        if (liveIndicator) liveIndicator.style.display = 'none';
-                    }
-                })
-                .catch(error => {
-                    console.log('Erro ao verificar live:', error);
-                    // Em caso de erro, esconder o indicador
-                    const indicator = document.getElementById('liveSidebarIndicator');
-                    if (indicator) indicator.style.display = 'none';
-                });
-        }
-
-        // Verificar na carga da página e a cada 30 segundos
-        document.addEventListener('DOMContentLoaded', () => {
-            checkLiveStatus();
-            setInterval(checkLiveStatus, 30000);
-        });
 
         // Service Worker
         if ('serviceWorker' in navigator) {
