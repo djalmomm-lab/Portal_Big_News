@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big News SC - Últimas Notícias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fafaf9; font-family: "Merriweather", Georgia, serif; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1a365d; margin-bottom: 30px; padding-bottom: 15px; }
+        .section-header h2 { color: #1a365d; font-size: 28px; display: flex; align-items: center; gap: 10px; }
+        .section-header h2 i { color: #b8860b; }
+        .article-list { display: flex; flex-direction: column; gap: 30px; }
+        .article-item { display: grid; grid-template-columns: 200px 1fr; gap: 25px; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
+        .article-image { width: 200px; height: 150px; background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 48px; }
+        .article-content { padding: 20px; }
+        .article-meta { display: flex; gap: 15px; font-size: 14px; color: #4b5563; margin-bottom: 10px; flex-wrap: wrap; }
+        .tag { background: #f5f5dc; padding: 4px 12px; border-radius: 4px; color: #1a365d; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+        .tag i { color: #b8860b; margin-right: 5px; }
+        h3 { font-size: 20px; margin: 10px 0; color: #1a365d; }
+        h3 a { color: #1a365d; text-decoration: none; }
+        h3 a:hover { color: #b8860b; }
+        .article-excerpt { color: #374151; line-height: 1.6; margin-bottom: 15px; }
+        .image-info { margin-top: 15px; padding: 10px; background: #f5f5dc; border-left: 3px solid #b8860b; font-size: 12px; color: #4b5563; }
+        .fonte-info { margin-top: 10px; font-size: 11px; color: #6b7280; }
+        .fonte-info i { color: #b8860b; }
+        .footer-note { margin-top: 40px; padding: 20px; background: #1a365d; color: #ffffff; border-radius: 8px; text-align: center; }
+        .footer-note i { color: #b8860b; }
+        @media (max-width: 768px) { .article-item { grid-template-columns: 1fr; } .article-image { width: 100%; height: 200px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fas fa-newspaper"></i> Últimas Notícias</h2>
+            <span style="color: #b8860b;">Arquivo completo <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="article-list">
+            <article class="article-item" data-municipio="porto-belo" data-category="segurança">
+                <div class="article-image">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Porto Belo</span>
+                        <span class="tag"><i class="fas fa-shield-alt"></i> Segurança</span>
+                        <span><i class="fas fa-clock"></i> Há 12 horas</span>
+                    </div>
+                    <h3><a href="#">Porto Belo registra aumento na segurança pública</a></h3>
+                    <p class="article-excerpt">Aumento na segurança pública em Porto Belo. Nova estratégia de patrulhamento é implementada.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Viatura da Polícia Militar em patrulhamento</p>
+                        <p><strong>Alt text:</strong> Viatura da Polícia Militar em patrulhamento</p>
+                        <p style="font-style: italic;">Legenda: Viatura da Polícia Militar em patrulhamento na Costa Esmeralda</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Prefeitura de Porto Belo • Prefeitura
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="itapema" data-category="educação">
+                <div class="article-image">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Itapema</span>
+                        <span class="tag"><i class="fas fa-graduation-cap"></i> Educação</span>
+                        <span><i class="fas fa-clock"></i> Há 18 horas</span>
+                    </div>
+                    <h3><a href="#">Itapema lança programa de educação ambiental</a></h3>
+                    <p class="article-excerpt">Programa de educação ambiental é lançado em Itapema. Iniciativa visa conscientizar a população sobre a importância da conservação do meio ambiente.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Estudantes em sala de aula</p>
+                        <p><strong>Alt text:</strong> Estudantes em sala de aula</p>
+                        <p style="font-style: italic;">Legenda: Estudantes em sala de aula na Costa Esmeralda</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Prefeitura de Itapema • Prefeitura
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="bombinhas" data-category="turismo">
+                <div class="article-image">
+                    <i class="fas fa-umbrella-beach"></i>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
+                        <span class="tag"><i class="fas fa-umbrella-beach"></i> Turismo</span>
+                        <span><i class="fas fa-clock"></i> Há 6 horas</span>
+                    </div>
+                    <h3><a href="#">Bombinhas registra aumento no turismo</a></h3>
+                    <p class="article-excerpt">Aumento no turismo em Bombinhas. Cidade é destino procurado por turistas de todo o país.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Praia de Bombinhas com turistas</p>
+                        <p><strong>Alt text:</strong> Praia de Bombinhas com turistas</p>
+                        <p style="font-style: italic;">Legenda: Praia de Bombinhas com turistas na Costa Esmeralda</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Rádio Costa Esmeralda • Rádio
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="itapema" data-category="infraestrutura">
+                <div class="article-image">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Itapema</span>
+                        <span class="tag"><i class="fas fa-road"></i> Infraestrutura</span>
+                        <span><i class="fas fa-clock"></i> Há 4 horas</span>
+                    </div>
+                    <h3><a href="#">Itapema investe em infraestrutura</a></h3>
+                    <p class="article-excerpt">Itapema investe em infraestrutura. Cidade recebe recursos para melhorar a infraestrutura urbana.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Obras de pavimentação em andamento</p>
+                        <p><strong>Alt text:</strong> Obras de pavimentação em andamento</p>
+                        <p style="font-style: italic;">Legenda: Obras de pavimentação em andamento na Costa Esmeralda</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Prefeitura de Itapema • Prefeitura
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="porto-belo" data-category="comunidade">
+                <div class="article-image">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Porto Belo</span>
+                        <span class="tag"><i class="fas fa-users"></i> Comunidade</span>
+                        <span><i class="fas fa-clock"></i> Há 2 horas</span>
+                    </div>
+                    <h3><a href="#">Porto Belo promove evento comunitário</a></h3>
+                    <p class="article-excerpt">Porto Belo promove evento comunitário. Cidade realiza festa para comemorar o aniversário da cidade.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Evento comunitário com moradores</p>
+                        <p><strong>Alt text:</strong> Evento comunitário com moradores</p>
+                        <p style="font-style: italic;">Legenda: Evento comunitário com moradores na Costa Esmeralda</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Mega Hits FM • Rádio
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-check-circle"></i> Informação verificada com fontes oficiais - Big News SC
+        </div>
+    </div>
+</body>
+</html>
