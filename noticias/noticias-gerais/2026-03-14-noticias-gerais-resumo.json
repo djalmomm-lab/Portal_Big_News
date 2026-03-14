@@ -1,0 +1,41 @@
+{
+  "data": "2026-03-14T15:38:47.812Z",
+  "total": 5,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Porto Belo registra aumento na segurança pública",
+      "cidade": "Porto Belo",
+      "categoria": "Segurança",
+      "fonte": "Prefeitura de Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema lança programa de educação ambiental",
+      "cidade": "Itapema",
+      "categoria": "Educação",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas registra aumento no turismo",
+      "cidade": "Bombinhas",
+      "categoria": "Turismo",
+      "fonte": "Rádio Costa Esmeralda"
+    },
+    {
+      "id": 4,
+      "titulo": "Itapema investe em infraestrutura",
+      "cidade": "Itapema",
+      "categoria": "Infraestrutura",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 5,
+      "titulo": "Porto Belo promove evento comunitário",
+      "cidade": "Porto Belo",
+      "categoria": "Comunidade",
+      "fonte": "Mega Hits FM"
+    }
+  ]
+}
