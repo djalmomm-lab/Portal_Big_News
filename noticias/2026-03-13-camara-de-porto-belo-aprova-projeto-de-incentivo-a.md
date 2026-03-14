@@ -1,6 +1,6 @@
 ---
 title: "Câmara de Porto Belo aprova projeto de incentivo ao esporte"
-date: 2026-03-14T00:20:41.016Z
+date: 2026-03-14T00:21:49.973Z
 layout: post
 categories:
   - noticias
