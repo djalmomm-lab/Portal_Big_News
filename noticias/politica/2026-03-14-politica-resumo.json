@@ -1,0 +1,41 @@
+{
+  "data": "2026-03-14T15:38:51.723Z",
+  "total": 5,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Votação em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Câmara Municipal de Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema Anuncia Novo Projeto",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas Discute Orçamento",
+      "cidade": "Bombinhas",
+      "categoria": "Política",
+      "fonte": "Câmara Municipal de Bombinhas"
+    },
+    {
+      "id": 4,
+      "titulo": "Porto Belo Lança Programa de Desenvolvimento",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Porto Belo"
+    },
+    {
+      "id": 5,
+      "titulo": "Itapema Aprova Lei de Meio Ambiente",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Câmara Municipal de Itapema"
+    }
+  ]
+}
