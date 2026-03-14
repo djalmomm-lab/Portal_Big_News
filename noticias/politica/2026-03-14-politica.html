@@ -14,7 +14,8 @@
         .section-header h2 i { color: #b8860b; }
         .article-list { display: flex; flex-direction: column; gap: 30px; }
         .article-item { display: grid; grid-template-columns: 200px 1fr; gap: 25px; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
-        .article-image { width: 200px; height: 150px; background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 48px; }
+        .article-image { width: 200px; height: 150px; background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 48px; overflow: hidden; }
+        .article-image img { width: 100%; height: 100%; object-fit: cover; }
         .article-content { padding: 20px; }
         .article-meta { display: flex; gap: 15px; font-size: 14px; color: #4b5563; margin-bottom: 10px; flex-wrap: wrap; }
         .tag { background: #f5f5dc; padding: 4px 12px; border-radius: 4px; color: #1a365d; font-weight: 600; font-size: 12px; text-transform: uppercase; }
@@ -40,7 +41,7 @@
         <div class="article-list">
             <article class="article-item" data-municipio="porto-belo" data-category="política">
                 <div class="article-image">
-                    <i class="fas fa-landmark"></i>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
@@ -49,33 +50,33 @@
                         <span><i class="fas fa-clock"></i> Há 12 horas</span>
                     </div>
                     <h3><a href="#">Votação em Porto Belo</a></h3>
-                    <p class="article-excerpt">Lei aprovada na Câmara Municipal de Porto Belo. Beneficia pequenos empresários da região.</p>
+                    <p class="article-excerpt">A Câmara de Vereadores de Porto Belo aprovou um projeto de lei para melhorar a infraestrutura da cidade. O projeto inclui a construção de novas ruas e a reforma de praças.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Câmara de vereadores em sessão</p>
-                        <p><strong>Alt text:</strong> Câmara de vereadores em sessão</p>
-                        <p style="font-style: italic;">Legenda: Câmara de vereadores em sessão na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
                     </div>
                     <div class="fonte-info">
-                        <i class="fas fa-database"></i> Fonte: Câmara Municipal de Porto Belo • Câmara
+                        <i class="fas fa-database"></i> Fonte: Câmara de Vereadores de Porto Belo • Câmara
                     </div>
                 </div>
             </article>
             <article class="article-item" data-municipio="itapema" data-category="política">
                 <div class="article-image">
-                    <i class="fas fa-landmark"></i>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
                         <span class="tag"><i class="fas fa-map-marker-alt"></i> Itapema</span>
                         <span class="tag"><i class="fas fa-landmark"></i> Política</span>
-                        <span><i class="fas fa-clock"></i> Há 18 horas</span>
+                        <span><i class="fas fa-clock"></i> Há 10 horas</span>
                     </div>
-                    <h3><a href="#">Itapema Anuncia Novo Projeto</a></h3>
-                    <p class="article-excerpt">Programa de infraestrutura urbana lançado pela Prefeitura de Itapema. Investimentos em ruas e praças.</p>
+                    <h3><a href="#">Itapema anuncia novos investimentos</a></h3>
+                    <p class="article-excerpt">A Prefeitura de Itapema lançou um programa de desenvolvimento econômico para atrair novos investimentos. O programa inclui incentivos fiscais e apoio a pequenas empresas.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Câmara de vereadores em sessão</p>
-                        <p><strong>Alt text:</strong> Câmara de vereadores em sessão</p>
-                        <p style="font-style: italic;">Legenda: Câmara de vereadores em sessão na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
                     </div>
                     <div class="fonte-info">
                         <i class="fas fa-database"></i> Fonte: Prefeitura de Itapema • Prefeitura
@@ -84,42 +85,42 @@
             </article>
             <article class="article-item" data-municipio="bombinhas" data-category="política">
                 <div class="article-image">
-                    <i class="fas fa-landmark"></i>
+                    <img src="https://images.unsplash.com/photo-1668706971199-37e30a4e6298?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTU4MzZ8MHwxfHNlYXJjaHwxfHxCb21iaW5oYXMlMjBQb2wlQzMlQUR0aWNhJTIwQm9tYmluaGFzJTIwZGViYXRlJTIwbWVpb3xlbnwwfDB8fHwxNzczNTI3MjU5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="a sign on a wall">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
                         <span class="tag"><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
                         <span class="tag"><i class="fas fa-landmark"></i> Política</span>
-                        <span><i class="fas fa-clock"></i> Há 6 horas</span>
+                        <span><i class="fas fa-clock"></i> Há 8 horas</span>
                     </div>
-                    <h3><a href="#">Bombinhas Discute Orçamento</a></h3>
-                    <p class="article-excerpt">Câmara Municipal de Bombinhas discute orçamento para o próximo ano. Prioridades incluem saúde e educação.</p>
+                    <h3><a href="#">Bombinhas debate meio ambiente</a></h3>
+                    <p class="article-excerpt">A Câmara de Vereadores de Bombinhas realizou uma audiência pública sobre proteção ambiental. A audiência contou com a participação de especialistas e representantes da comunidade.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Câmara de vereadores em sessão</p>
-                        <p><strong>Alt text:</strong> Câmara de vereadores em sessão</p>
-                        <p style="font-style: italic;">Legenda: Câmara de vereadores em sessão na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> a sign on a wall</p>
+                        <p><strong>Alt text:</strong> a sign on a wall</p>
+                        <p style="font-style: italic;">Foto: Jon Tyson via Unsplash</p>
                     </div>
                     <div class="fonte-info">
-                        <i class="fas fa-database"></i> Fonte: Câmara Municipal de Bombinhas • Câmara
+                        <i class="fas fa-database"></i> Fonte: Câmara de Vereadores de Bombinhas • Câmara
                     </div>
                 </div>
             </article>
             <article class="article-item" data-municipio="porto-belo" data-category="política">
                 <div class="article-image">
-                    <i class="fas fa-landmark"></i>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
                         <span class="tag"><i class="fas fa-map-marker-alt"></i> Porto Belo</span>
                         <span class="tag"><i class="fas fa-landmark"></i> Política</span>
-                        <span><i class="fas fa-clock"></i> Há 4 horas</span>
+                        <span><i class="fas fa-clock"></i> Há 6 horas</span>
                     </div>
-                    <h3><a href="#">Porto Belo Lança Programa de Desenvolvimento</a></h3>
-                    <p class="article-excerpt">Programa de desenvolvimento econômico lançado pela Prefeitura de Porto Belo. Incentivos para empresas e empreendedores.</p>
+                    <h3><a href="#">Porto Belo lança programa de saúde</a></h3>
+                    <p class="article-excerpt">A Prefeitura de Porto Belo lançou um programa de saúde pública para melhorar a atenção médica na cidade. O programa inclui a contratação de novos médicos e a reforma de unidades de saúde.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Câmara de vereadores em sessão</p>
-                        <p><strong>Alt text:</strong> Câmara de vereadores em sessão</p>
-                        <p style="font-style: italic;">Legenda: Câmara de vereadores em sessão na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
                     </div>
                     <div class="fonte-info">
                         <i class="fas fa-database"></i> Fonte: Prefeitura de Porto Belo • Prefeitura
@@ -128,23 +129,23 @@
             </article>
             <article class="article-item" data-municipio="itapema" data-category="política">
                 <div class="article-image">
-                    <i class="fas fa-landmark"></i>
+                    <img src="https://images.unsplash.com/photo-1558698435-45372de7dff8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTU4MzZ8MHwxfHNlYXJjaHwxfHxJdGFwZW1hJTIwUG9sJUMzJUFEdGljYSUyMEl0YXBlbWElMjBhcHJvdmElMjBvciVDMyVBN2FtZW50b3xlbnwwfDB8fHwxNzczNTI3MjYwfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="grayscale photo of building">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
                         <span class="tag"><i class="fas fa-map-marker-alt"></i> Itapema</span>
                         <span class="tag"><i class="fas fa-landmark"></i> Política</span>
-                        <span><i class="fas fa-clock"></i> Há 2 horas</span>
+                        <span><i class="fas fa-clock"></i> Há 4 horas</span>
                     </div>
-                    <h3><a href="#">Itapema Aprova Lei de Meio Ambiente</a></h3>
-                    <p class="article-excerpt">Lei aprovada na Câmara Municipal de Itapema para proteger o meio ambiente. Restrições a atividades poluentes.</p>
+                    <h3><a href="#">Itapema aprova orçamento para 2024</a></h3>
+                    <p class="article-excerpt">A Câmara de Vereadores de Itapema aprovou o orçamento para o próximo ano. O orçamento inclui investimentos em infraestrutura, educação e saúde.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Câmara de vereadores em sessão</p>
-                        <p><strong>Alt text:</strong> Câmara de vereadores em sessão</p>
-                        <p style="font-style: italic;">Legenda: Câmara de vereadores em sessão na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> grayscale photo of building</p>
+                        <p><strong>Alt text:</strong> grayscale photo of building</p>
+                        <p style="font-style: italic;">Foto: kylie De Guia via Unsplash</p>
                     </div>
                     <div class="fonte-info">
-                        <i class="fas fa-database"></i> Fonte: Câmara Municipal de Itapema • Câmara
+                        <i class="fas fa-database"></i> Fonte: Câmara de Vereadores de Itapema • Câmara
                     </div>
                 </div>
             </article>
