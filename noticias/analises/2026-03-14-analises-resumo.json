@@ -1,0 +1,16 @@
+{
+  "data": "2026-03-14T15:39:04.617Z",
+  "total": 2,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Desenvolvimento Sustentável na Costa Esmeralda",
+      "cidade": "Regional"
+    },
+    {
+      "id": 2,
+      "titulo": "O Impacto do Turismo na Economia Local de Bombinhas",
+      "cidade": "Bombinhas"
+    }
+  ]
+}
