@@ -1,0 +1,21 @@
+{
+  "data": "2026-03-14T15:38:59.673Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Declaração: Porto Belo terá 100% de esgoto tratado",
+      "cidade": "Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Declaração: Itapema terá novo hospital",
+      "cidade": "Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Declaração: Bombinhas terá 50% de redução de impostos",
+      "cidade": "Bombinhas"
+    }
+  ]
+}
