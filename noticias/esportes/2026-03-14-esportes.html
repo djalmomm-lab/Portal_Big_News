@@ -14,7 +14,8 @@
         .section-header h2 i { color: #b8860b; }
         .article-list { display: flex; flex-direction: column; gap: 30px; }
         .article-item { display: grid; grid-template-columns: 200px 1fr; gap: 25px; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
-        .article-image { width: 200px; height: 150px; background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 48px; }
+        .article-image { width: 200px; height: 150px; background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 48px; overflow: hidden; }
+        .article-image img { width: 100%; height: 100%; object-fit: cover; }
         .article-content { padding: 20px; }
         .article-meta { display: flex; gap: 15px; font-size: 14px; color: #4b5563; margin-bottom: 10px; flex-wrap: wrap; }
         .tag { background: #f5f5dc; padding: 4px 12px; border-radius: 4px; color: #1a365d; font-weight: 600; font-size: 12px; text-transform: uppercase; }
@@ -40,7 +41,7 @@
         <div class="article-list">
             <article class="article-item" data-municipio="porto-belo" data-category="esporte">
                 <div class="article-image">
-                    <i class="fas fa-trophy"></i>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
@@ -48,12 +49,12 @@
                         <span class="tag"><i class="fas fa-trophy"></i> Esporte</span>
                         <span><i class="fas fa-clock"></i> Há 5 horas</span>
                     </div>
-                    <h3><a href="#">Porto Belo Sedia Competição de Vôlei Adaptado</a></h3>
-                    <p class="article-excerpt">A competição reuniu equipes de vôlei adaptado de todo o estado. O evento foi um sucesso, com grande participação da comunidade.</p>
+                    <h3><a href="#">Porto Belo Sedia Torneio de Vôlei Adaptado</a></h3>
+                    <p class="article-excerpt">O torneio de vôlei adaptado em Porto Belo contou com a participação de 5 equipes. A competição foi um sucesso.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Atletas em competição esportiva</p>
-                        <p><strong>Alt text:</strong> Atletas em competição esportiva</p>
-                        <p style="font-style: italic;">Legenda: Atletas em competição esportiva na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
                     </div>
                     <div class="fonte-info">
                         <i class="fas fa-database"></i> Fonte: Secretaria de Esportes • Órgão oficial
@@ -62,7 +63,7 @@
             </article>
             <article class="article-item" data-municipio="itapema" data-category="esporte">
                 <div class="article-image">
-                    <i class="fas fa-trophy"></i>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
@@ -71,55 +72,11 @@
                         <span><i class="fas fa-clock"></i> Há 10 horas</span>
                     </div>
                     <h3><a href="#">Itapema Se Prepara para os JOIA 2025</a></h3>
-                    <p class="article-excerpt">A cidade de Itapema foi escolhida para sediar os JOIA 2025. O evento é considerado um dos mais importantes do esporte inclusivo no Brasil.</p>
+                    <p class="article-excerpt">Os JOIA 2025 serão realizados em Itapema, com diversas modalidades esportivas. A competição é aberta a todos.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Atletas em competição esportiva</p>
-                        <p><strong>Alt text:</strong> Atletas em competição esportiva</p>
-                        <p style="font-style: italic;">Legenda: Atletas em competição esportiva na Costa Esmeralda</p>
-                    </div>
-                    <div class="fonte-info">
-                        <i class="fas fa-database"></i> Fonte: Prefeitura de Itapema • Órgão oficial
-                    </div>
-                </div>
-            </article>
-            <article class="article-item" data-municipio="bombinhas" data-category="esporte">
-                <div class="article-image">
-                    <i class="fas fa-surfboard"></i>
-                </div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
-                        <span class="tag"><i class="fas fa-surfboard"></i> Esporte</span>
-                        <span><i class="fas fa-clock"></i> Há 12 horas</span>
-                    </div>
-                    <h3><a href="#">Surfistas de Bombinhas Conquistam Títulos em Competição Estadual</a></h3>
-                    <p class="article-excerpt">A cidade de Bombinhas é conhecida por suas praias perfeitas para o surf. Recentemente, surfistas da cidade conquistaram títulos em uma competição estadual.</p>
-                    <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Atletas em competição esportiva</p>
-                        <p><strong>Alt text:</strong> Atletas em competição esportiva</p>
-                        <p style="font-style: italic;">Legenda: Atletas em competição esportiva na Costa Esmeralda</p>
-                    </div>
-                    <div class="fonte-info">
-                        <i class="fas fa-database"></i> Fonte: Federação de Surf • Entidade esportiva
-                    </div>
-                </div>
-            </article>
-            <article class="article-item" data-municipio="porto-belo e itapema" data-category="esporte">
-                <div class="article-image">
-                    <i class="fas fa-futbol"></i>
-                </div>
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Porto Belo e Itapema</span>
-                        <span class="tag"><i class="fas fa-futbol"></i> Esporte</span>
-                        <span><i class="fas fa-clock"></i> Há 4 horas</span>
-                    </div>
-                    <h3><a href="#">Escolinhas de Futebol de Porto Belo e Itapema Se Unem para Competição Amistosa</a></h3>
-                    <p class="article-excerpt">As escolinhas de futebol de Porto Belo e Itapema se uniram para uma competição amistosa. O evento foi um sucesso, com grande participação da comunidade.</p>
-                    <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Atletas em competição esportiva</p>
-                        <p><strong>Alt text:</strong> Atletas em competição esportiva</p>
-                        <p style="font-style: italic;">Legenda: Atletas em competição esportiva na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
                     </div>
                     <div class="fonte-info">
                         <i class="fas fa-database"></i> Fonte: Secretaria de Esportes • Órgão oficial
@@ -128,23 +85,67 @@
             </article>
             <article class="article-item" data-municipio="bombinhas" data-category="esporte">
                 <div class="article-image">
-                    <i class="fas fa-school"></i>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
                 </div>
                 <div class="article-content">
                     <div class="article-meta">
                         <span class="tag"><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
-                        <span class="tag"><i class="fas fa-school"></i> Esporte</span>
+                        <span class="tag"><i class="fas fa-surfboard"></i> Esporte</span>
                         <span><i class="fas fa-clock"></i> Há 8 horas</span>
                     </div>
-                    <h3><a href="#">Competições Interescolares de Esportes em Bombinhas Atraem Centenas de Alunos</a></h3>
-                    <p class="article-excerpt">A cidade de Bombinhas realiza competições interescolares de esportes regularmente. Os eventos atraem centenas de alunos e promovem a saúde e a integração entre as escolas.</p>
+                    <h3><a href="#">Surfistas de Bombinhas Conquistam Títulos em Competição</a></h3>
+                    <p class="article-excerpt">Os surfistas de Bombinhas conquistaram títulos em uma competição realizada na cidade. As praias da cidade são conhecidas por suas ondas perfeitas.</p>
                     <div class="image-info">
-                        <p><strong>📷 Imagem:</strong> Atletas em competição esportiva</p>
-                        <p><strong>Alt text:</strong> Atletas em competição esportiva</p>
-                        <p style="font-style: italic;">Legenda: Atletas em competição esportiva na Costa Esmeralda</p>
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
                     </div>
                     <div class="fonte-info">
-                        <i class="fas fa-database"></i> Fonte: Prefeitura de Bombinhas • Órgão oficial
+                        <i class="fas fa-database"></i> Fonte: Associação de Surf de Bombinhas • Entidade esportiva
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="porto-belo e itapema" data-category="esporte">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Porto Belo e Itapema</span>
+                        <span class="tag"><i class="fas fa-futbol"></i> Esporte</span>
+                        <span><i class="fas fa-clock"></i> Há 6 horas</span>
+                    </div>
+                    <h3><a href="#">Escolinhas de Futebol de Porto Belo e Itapema Se Preparam para Competição</a></h3>
+                    <p class="article-excerpt">As escolinhas de futebol de Porto Belo e Itapema se preparam para uma competição interescolar. Os times infantis estão ansiosos para disputar o título.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Secretaria de Esportes • Órgão oficial
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="bombinhas" data-category="esporte">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
+                        <span class="tag"><i class="fas fa-graduation-cap"></i> Esporte</span>
+                        <span><i class="fas fa-clock"></i> Há 12 horas</span>
+                    </div>
+                    <h3><a href="#">Competições Interescolares de Esportes em Bombinhas Atraem Centenas de Alunos</a></h3>
+                    <p class="article-excerpt">As competições interescolares de esportes em Bombinhas atraem centenas de alunos. Os eventos esportivos promovem a saúde e a socialização.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Secretaria de Educação • Órgão oficial
                     </div>
                 </div>
             </article>
