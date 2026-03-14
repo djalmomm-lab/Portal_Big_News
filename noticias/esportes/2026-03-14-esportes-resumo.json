@@ -1,0 +1,41 @@
+{
+  "data": "2026-03-14T15:38:56.668Z",
+  "total": 5,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Porto Belo Sedia Competição de Vôlei Adaptado",
+      "cidade": "Porto Belo",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Esportes"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema Se Prepara para os JOIA 2025",
+      "cidade": "Itapema",
+      "categoria": "Esporte",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Surfistas de Bombinhas Conquistam Títulos em Competição Estadual",
+      "cidade": "Bombinhas",
+      "categoria": "Esporte",
+      "fonte": "Federação de Surf"
+    },
+    {
+      "id": 4,
+      "titulo": "Escolinhas de Futebol de Porto Belo e Itapema Se Unem para Competição Amistosa",
+      "cidade": "Porto Belo e Itapema",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Esportes"
+    },
+    {
+      "id": 5,
+      "titulo": "Competições Interescolares de Esportes em Bombinhas Atraem Centenas de Alunos",
+      "cidade": "Bombinhas",
+      "categoria": "Esporte",
+      "fonte": "Prefeitura de Bombinhas"
+    }
+  ]
+}
