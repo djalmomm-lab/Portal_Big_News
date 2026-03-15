@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-15T03:19:40.662Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Votação em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema recebe recursos para educação",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas recebe visita de deputado estadual",
+      "cidade": "Bombinhas",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Bombinhas"
+    }
+  ]
+}
