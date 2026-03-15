@@ -1,0 +1,16 @@
+{
+  "data": "2026-03-15T03:47:00.260Z",
+  "total": 2,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Declaração: Porto Belo tem o maior IDH da Costa Esmeralda",
+      "cidade": "Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Declaração: Bombinhas investiu R$ 10 milhões em infraestrutura",
+      "cidade": "Bombinhas"
+    }
+  ]
+}
