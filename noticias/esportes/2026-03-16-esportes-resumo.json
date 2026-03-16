@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-16T03:26:23.489Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Itapema Sedia Competição de Vôlei Adaptado",
+      "cidade": "Itapema",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Esportes de Itapema"
+    },
+    {
+      "id": 2,
+      "titulo": "Bombinhas se Prepara para os JOIA 2025",
+      "cidade": "Bombinhas",
+      "categoria": "Esporte",
+      "fonte": "Prefeitura de Bombinhas"
+    },
+    {
+      "id": 3,
+      "titulo": "Porto Belo Investe em Escolinhas de Futebol",
+      "cidade": "Porto Belo",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Esportes de Porto Belo"
+    }
+  ]
+}
