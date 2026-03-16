@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-16T03:05:22.910Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Porto Belo registra aumento na segurança pública",
+      "cidade": "Porto Belo",
+      "categoria": "Segurança",
+      "fonte": "Polícia Militar"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema investe em infraestrutura para o turismo",
+      "cidade": "Itapema",
+      "categoria": "Infraestrutura",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas sedia festival de música na praia",
+      "cidade": "Bombinhas",
+      "categoria": "Turismo",
+      "fonte": "Rádio Costa Esmeralda"
+    }
+  ]
+}
