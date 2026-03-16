@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-16T03:19:42.825Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Itapema aprova projeto de lei para construção de nova escola",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Itapema"
+    },
+    {
+      "id": 2,
+      "titulo": "Porto Belo lança programa de incentivo ao turismo",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Porto Belo"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas aprova orçamento para 2024",
+      "cidade": "Bombinhas",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Bombinhas"
+    }
+  ]
+}
