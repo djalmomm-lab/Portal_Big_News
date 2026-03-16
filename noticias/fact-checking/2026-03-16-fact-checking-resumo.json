@@ -1,0 +1,16 @@
+{
+  "data": "2026-03-16T03:47:00.189Z",
+  "total": 2,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Declaração: Porto Belo tem o maior índice de crescimento turístico da região",
+      "cidade": "Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Declaração: Itapema investe 30% do orçamento em educação",
+      "cidade": "Itapema"
+    }
+  ]
+}
