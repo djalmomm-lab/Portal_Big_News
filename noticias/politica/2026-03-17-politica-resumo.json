@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-17T03:19:42.641Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Itapema aprova projeto de lei para melhorias na infraestrutura",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Itapema"
+    },
+    {
+      "id": 2,
+      "titulo": "Bombinhas lança programa de apoio a pequenos empresários",
+      "cidade": "Bombinhas",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Bombinhas"
+    },
+    {
+      "id": 3,
+      "titulo": "Porto Belo realiza audiência pública sobre orçamento municipal",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Porto Belo"
+    }
+  ]
+}
