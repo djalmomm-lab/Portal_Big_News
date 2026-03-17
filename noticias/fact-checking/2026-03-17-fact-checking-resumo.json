@@ -1,0 +1,16 @@
+{
+  "data": "2026-03-17T03:46:59.846Z",
+  "total": 2,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Declaração: Porto Belo tem a melhor infraestrutura turística da Costa Esmeralda",
+      "cidade": "Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Declaração: Itapema investe 30% do orçamento municipal em educação",
+      "cidade": "Itapema"
+    }
+  ]
+}
