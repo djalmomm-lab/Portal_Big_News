@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-17T03:05:21.963Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Operação de Segurança em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Segurança",
+      "fonte": "Polícia Militar de Santa Catarina"
+    },
+    {
+      "id": 2,
+      "titulo": "Investimentos em Infraestrutura em Itapema",
+      "cidade": "Itapema",
+      "categoria": "Infraestrutura",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Festival de Turismo em Bombinhas",
+      "cidade": "Bombinhas",
+      "categoria": "Turismo",
+      "fonte": "Rádio Costa Esmeralda"
+    }
+  ]
+}
