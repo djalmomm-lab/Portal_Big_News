@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big News SC - Fact-Checking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fafaf9; font-family: "Merriweather", Georgia, serif; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { border-bottom: 2px solid #1a365d; margin-bottom: 30px; padding-bottom: 15px; }
+        .section-header h2 { color: #1a365d; font-size: 28px; display: flex; align-items: center; gap: 10px; }
+        .section-header h2 i { color: #b8860b; }
+        .fact-list { display: flex; flex-direction: column; gap: 30px; }
+        .fact-item { background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
+        .fact-header { padding: 20px; background: #f5f5dc; border-bottom: 1px solid #e5e7eb; }
+        .declarante { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .declarante i { color: #b8860b; }
+        .declaracao { font-style: italic; font-size: 18px; margin: 15px 0; padding-left: 20px; border-left: 3px solid #b8860b; }
+        .verificacao { display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; color: white; }
+        .verificacao.verdadeiro { background: #059669; }
+        .verificacao.falso { background: #dc2626; }
+        .verificacao.distorcido { background: #d97706; }
+        .fact-body { padding: 20px; }
+        .fontes { margin-top: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #4b5563; }
+        .footer-note { margin-top: 40px; padding: 20px; background: #1a365d; color: #ffffff; border-radius: 8px; text-align: center; }
+        .footer-note i { color: #b8860b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fas fa-check-circle"></i> Fact-Checking</h2>
+        </div>
+        <div class="fact-list">
+            <div class="fact-item">
+                <div class="fact-header">
+                    <div class="declarante">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <strong>João Silva</strong> (Prefeito - Porto Belo)
+                        </div>
+                    </div>
+                    <div><i class="fas fa-calendar"></i> 10/02/2023 • Sessão da Câmara Municipal</div>
+                </div>
+                <div class="fact-body">
+                    <div class="declaracao">"Porto Belo é a joia da coroa da Costa Esmeralda, com a melhor infraestrutura turística da região"</div>
+                    <div>
+                        <span class="verificacao distorcido">
+                            <i class="fas fa-exclamation-triangle"></i> DISTORCIDO
+                        </span>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Análise:</strong> Embora Porto Belo tenha investido em infraestrutura turística, não há dados concretos que comprovem ser a melhor da região. Itapema e Bombinhas também possuem infraestruturas turísticas bem desenvolvidas</p>
+                    <div class="fontes">
+                        <i class="fas fa-database"></i> Fontes: Relatório de Desenvolvimento Turístico da Costa Esmeralda, Análise de Infraestrutura Turística da Região
+                    </div>
+                </div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-header">
+                    <div class="declarante">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <strong>Maria Oliveira</strong> (Vereadora - Itapema)
+                        </div>
+                    </div>
+                    <div><i class="fas fa-calendar"></i> 20/01/2023 • Entrevista ao jornal local</div>
+                </div>
+                <div class="fact-body">
+                    <div class="declaracao">"Itapema é a cidade que mais cresce economicamente na Costa Esmeralda, com uma taxa de crescimento de 10% ao ano"</div>
+                    <div>
+                        <span class="verificacao falso">
+                            <i class="fas fa-times-circle"></i> FALSO
+                        </span>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Análise:</strong> De acordo com os dados oficiais, a taxa de crescimento econômico de Itapema é de 5% ao ano, abaixo da média regional. Bombinhas apresentou uma taxa de crescimento de 12% ao ano no mesmo período</p>
+                    <div class="fontes">
+                        <i class="fas fa-database"></i> Fontes: Dados Econômicos da Costa Esmeralda, Relatório de Crescimento Econômico de Itapema
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-check-circle"></i> Fact-checks baseados em documentos oficiais - Big News SC
+        </div>
+    </div>
+</body>
+</html>
