@@ -1,0 +1,16 @@
+{
+  "data": "2026-03-19T03:46:59.279Z",
+  "total": 2,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Declaração: Porto Belo tem o maior número de praias da Costa Esmeralda",
+      "cidade": "Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Declaração: Bombinhas tem o maior investimento em infraestrutura da região",
+      "cidade": "Bombinhas"
+    }
+  ]
+}
