@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big News SC - Esportes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fafaf9; font-family: "Merriweather", Georgia, serif; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1a365d; margin-bottom: 30px; padding-bottom: 15px; }
+        .section-header h2 { color: #1a365d; font-size: 28px; display: flex; align-items: center; gap: 10px; }
+        .section-header h2 i { color: #b8860b; }
+        .article-list { display: flex; flex-direction: column; gap: 30px; }
+        .article-item { display: grid; grid-template-columns: 200px 1fr; gap: 25px; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
+        .article-image { width: 200px; height: 150px; background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 48px; overflow: hidden; }
+        .article-image img { width: 100%; height: 100%; object-fit: cover; }
+        .article-content { padding: 20px; }
+        .article-meta { display: flex; gap: 15px; font-size: 14px; color: #4b5563; margin-bottom: 10px; flex-wrap: wrap; }
+        .tag { background: #f5f5dc; padding: 4px 12px; border-radius: 4px; color: #1a365d; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+        .tag i { color: #b8860b; margin-right: 5px; }
+        h3 { font-size: 20px; margin: 10px 0; color: #1a365d; }
+        h3 a { color: #1a365d; text-decoration: none; }
+        h3 a:hover { color: #b8860b; }
+        .article-excerpt { color: #374151; line-height: 1.6; margin-bottom: 15px; }
+        .image-info { margin-top: 15px; padding: 10px; background: #f5f5dc; border-left: 3px solid #b8860b; font-size: 12px; color: #4b5563; }
+        .fonte-info { margin-top: 10px; font-size: 11px; color: #6b7280; }
+        .fonte-info i { color: #b8860b; }
+        .footer-note { margin-top: 40px; padding: 20px; background: #1a365d; color: #ffffff; border-radius: 8px; text-align: center; }
+        .footer-note i { color: #b8860b; }
+        @media (max-width: 768px) { .article-item { grid-template-columns: 1fr; } .article-image { width: 100%; height: 200px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fas fa-newspaper"></i> Esportes</h2>
+            <span style="color: #b8860b;">Arquivo completo <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="article-list">
+            <article class="article-item" data-municipio="porto-belo" data-category="esporte">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca" loading="lazy">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Porto Belo</span>
+                        <span class="tag"><i class="fas fa-trophy"></i> Esporte</span>
+                        <span><i class="fas fa-clock"></i> Há 4 horas</span>
+                    </div>
+                    <h3><a href="#">Porto Belo Sedia Competição de Vôlei Adaptado</a></h3>
+                    <p class="article-excerpt">O vôlei adaptado ganha espaço na Costa Esmeralda. O evento reuniu equipes de várias cidades.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Secretaria de Esportes de Porto Belo • Órgão oficial
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="itapema" data-category="esporte">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Vista aérea de praia paradisíaca" loading="lazy">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Itapema</span>
+                        <span class="tag"><i class="fas fa-trophy"></i> Esporte</span>
+                        <span><i class="fas fa-clock"></i> Há 6 horas</span>
+                    </div>
+                    <h3><a href="#">Itapema se Prepara para os JOIA 2025</a></h3>
+                    <p class="article-excerpt">Itapema está se preparando para sediar os JOIA 2025, um evento que promete reunir atletas de todo o estado.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> Praia da Costa Esmeralda</p>
+                        <p><strong>Alt text:</strong> Vista aérea de praia paradisíaca</p>
+                        <p style="font-style: italic;">Foto: Unsplash (imagem padrão)</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Prefeitura de Itapema • Órgão oficial
+                    </div>
+                </div>
+            </article>
+            <article class="article-item" data-municipio="bombinhas" data-category="esporte">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1610222310987-a9266cf4af29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTU4MzZ8MHwxfHNlYXJjaHwxfHxCb21iaW5oYXMlMjBFc3BvcnRlJTIwU3VyZiUyMGUlMjBFc2NvbGluaGFzfGVufDB8MHx8fDE3NzM4OTA3ODR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="man in red and black wet suit holding white surfboard on water during daytime" loading="lazy">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Bombinhas</span>
+                        <span class="tag"><i class="fas fa-trophy"></i> Esporte</span>
+                        <span><i class="fas fa-clock"></i> Há 5 horas</span>
+                    </div>
+                    <h3><a href="#">Surf e Escolinhas de Futebol em Bombinhas</a></h3>
+                    <p class="article-excerpt">Bombinhas é conhecida por suas praias e esportes aquáticos, mas também tem se destacado em esportes terrestres, como o futebol.</p>
+                    <div class="image-info">
+                        <p><strong>📷 Imagem:</strong> man in red and black wet suit holding white surfboard on water during daytime</p>
+                        <p><strong>Alt text:</strong> man in red and black wet suit holding white surfboard on water during daytime</p>
+                        <p style="font-style: italic;">Foto: Miguel A Amutio via Unsplash</p>
+                    </div>
+                    <div class="fonte-info">
+                        <i class="fas fa-database"></i> Fonte: Secretaria de Esportes de Bombinhas • Órgão oficial
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-check-circle"></i> Informação verificada com fontes oficiais - Big News SC
+        </div>
+    </div>
+</body>
+</html>
