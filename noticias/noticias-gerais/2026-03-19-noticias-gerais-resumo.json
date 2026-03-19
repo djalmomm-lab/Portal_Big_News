@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-19T03:05:21.698Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Incêndio em Bombinhas deixa família desabrigada",
+      "cidade": "Bombinhas",
+      "categoria": "Segurança",
+      "fonte": "Bombeiros de Bombinhas"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema investe em infraestrutura para o verão",
+      "cidade": "Itapema",
+      "categoria": "Infraestrutura",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Porto Belo recebe investimento em educação",
+      "cidade": "Porto Belo",
+      "categoria": "Educação",
+      "fonte": "Prefeitura de Porto Belo"
+    }
+  ]
+}
