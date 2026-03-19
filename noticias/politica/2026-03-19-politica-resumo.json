@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-19T03:19:43.348Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Votação em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema aprova orçamento para 2024",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas realiza audiência pública",
+      "cidade": "Bombinhas",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Bombinhas"
+    }
+  ]
+}
