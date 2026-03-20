@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-20T03:05:22.991Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Incêndio em Bombinhas",
+      "cidade": "Bombinhas",
+      "categoria": "Segurança",
+      "fonte": "Prefeitura de Bombinhas"
+    },
+    {
+      "id": 2,
+      "titulo": "Festival de Música em Itapema",
+      "cidade": "Itapema",
+      "categoria": "Comunidade",
+      "fonte": "Rádio Costa Esmeralda"
+    },
+    {
+      "id": 3,
+      "titulo": "Obras em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Infraestrutura",
+      "fonte": "Prefeitura de Porto Belo"
+    }
+  ]
+}
