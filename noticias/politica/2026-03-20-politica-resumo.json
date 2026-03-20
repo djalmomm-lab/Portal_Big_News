@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-20T03:19:41.033Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Votação em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema investe em educação",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas discute turismo",
+      "cidade": "Bombinhas",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Bombinhas"
+    }
+  ]
+}
