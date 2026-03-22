@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-22T03:26:23.112Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Itapema Sede do Vôlei Adaptado para o JOIA 2025",
+      "cidade": "Itapema",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Esportes"
+    },
+    {
+      "id": 2,
+      "titulo": "Surf em Bombinhas: Competição Interescolar Atrai Alunos de Todo o Litoral",
+      "cidade": "Bombinhas",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Educação"
+    },
+    {
+      "id": 3,
+      "titulo": "Porto Belo Investe em Escolinhas de Futebol para Crianças e Jovens",
+      "cidade": "Porto Belo",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Esportes"
+    }
+  ]
+}
