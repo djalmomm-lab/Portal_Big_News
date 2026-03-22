@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-22T03:19:42.444Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Votação Histórica em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Política",
+      "fonte": "Câmara de Vereadores de Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema Investe em Educação",
+      "cidade": "Itapema",
+      "categoria": "Política",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas Recebe Investimento em Turismo",
+      "cidade": "Bombinhas",
+      "categoria": "Política",
+      "fonte": "Governo do Estado"
+    }
+  ]
+}
