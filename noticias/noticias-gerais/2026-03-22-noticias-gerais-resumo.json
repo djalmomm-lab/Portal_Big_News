@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-22T03:05:21.763Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Porto Belo Investe em Segurança",
+      "cidade": "Porto Belo",
+      "categoria": "Segurança",
+      "fonte": "Prefeitura de Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Itapema Recebe Investimento em Educação",
+      "cidade": "Itapema",
+      "categoria": "Educação",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Bombinhas Sedia Evento de Turismo",
+      "cidade": "Bombinhas",
+      "categoria": "Turismo",
+      "fonte": "Rádio Costa Esmeralda"
+    }
+  ]
+}
