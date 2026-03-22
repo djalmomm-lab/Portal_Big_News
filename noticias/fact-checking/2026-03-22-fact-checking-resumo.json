@@ -1,0 +1,16 @@
+{
+  "data": "2026-03-22T03:46:59.450Z",
+  "total": 2,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Declaração: Porto Belo tem a maior taxa de crescimento turístico",
+      "cidade": "Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Declaração: Bombinhas tem 90% de suas praias limpas",
+      "cidade": "Bombinhas"
+    }
+  ]
+}
