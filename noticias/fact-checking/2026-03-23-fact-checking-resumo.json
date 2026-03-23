@@ -1,0 +1,16 @@
+{
+  "data": "2026-03-23T03:46:58.442Z",
+  "total": 2,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Declaração: Porto Belo tem a melhor infraestrutura turística da Costa Esmeralda",
+      "cidade": "Porto Belo"
+    },
+    {
+      "id": 2,
+      "titulo": "Declaração: Itapema reduziu a taxa de desemprego em 50% nos últimos 2 anos",
+      "cidade": "Itapema"
+    }
+  ]
+}
