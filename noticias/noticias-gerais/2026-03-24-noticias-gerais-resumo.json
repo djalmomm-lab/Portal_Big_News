@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-24T03:05:23.693Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Operação de Segurança em Porto Belo",
+      "cidade": "Porto Belo",
+      "categoria": "Segurança",
+      "fonte": "Polícia Militar"
+    },
+    {
+      "id": 2,
+      "titulo": "Inauguração de Nova Escola em Itapema",
+      "cidade": "Itapema",
+      "categoria": "Educação",
+      "fonte": "Prefeitura de Itapema"
+    },
+    {
+      "id": 3,
+      "titulo": "Festival de Turismo em Bombinhas",
+      "cidade": "Bombinhas",
+      "categoria": "Turismo",
+      "fonte": "Rádio Costa Esmeralda"
+    }
+  ]
+}
