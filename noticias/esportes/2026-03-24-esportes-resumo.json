@@ -1,0 +1,27 @@
+{
+  "data": "2026-03-24T03:26:23.146Z",
+  "total": 3,
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Itapema Sede do Campeonato de Vôlei Adaptado",
+      "cidade": "Itapema",
+      "categoria": "Esporte",
+      "fonte": "Secretaria de Esportes de Itapema"
+    },
+    {
+      "id": 2,
+      "titulo": "Bombinhas Se Prepara para os JOIA 2025",
+      "cidade": "Bombinhas",
+      "categoria": "Esporte",
+      "fonte": "Prefeitura de Bombinhas"
+    },
+    {
+      "id": 3,
+      "titulo": "Porto Belo Recebe Competição de Surf",
+      "cidade": "Porto Belo",
+      "categoria": "Esporte",
+      "fonte": "Associação de Surf de Porto Belo"
+    }
+  ]
+}
